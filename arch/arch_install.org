@@ -1,0 +1,60 @@
+* arch linux install
+** system install
+*** download iso
+#+begin_src bash
+wget http://mirror.lzu.edu.cn/archlinux/iso/2016.10.01/archlinux-2016.10.01-dual.iso
+md5sum archlinux-2016.10.01-dual.iso  #  make sure md5sum is true
+#+end_src
+
+*** install arch system
+running in iso  # get a shell
+#+begin_src shell
+loadkeys us  # set key layout
+ping -c 2 qq.com # make sure connect to internet
+timedatectl set-ntp true  # update system time
+fdisk -l  # view disk part
+fdisk /dev/sda  # part install disk
+  --> n \n p \n \n +512M \n \n
+  --> n \n p \n \n \n w
+fdisk -l  #  tow part disk
+# sda      8:0    0    20G  0 disk
+# ├─sda1   8:1    0   512M  0 part
+# ├─sda2   8:2    0  15.5G  0 part
+mkfs.fat /dev/sda1   # fomat part to fat32(boot)
+mkfs.ext4 /dev/sda2  # fomat part to ext4(root)
+mount /dev/sda2 /mnt  # / part
+mkdir -p /mnt/boot   # make boot dir
+mount /dev/sda1 /mnt/boot  # sda1 is boot part
+sed -i '/Score/{/China/!{n;s/^/#/}}' /etc/pacman.d/mirrorlist  # command other score url
+pacstrap /mnt base base-devel net-tools  # start install system to disk
+genfstab -U /mnt >> /mnt/etc/fstab  # add mount table
+arch_chroot /mnt  # change root directory to install disk
+echo flytrap > /etc/hostname  # set hostname
+passwd  # input the same password to stdin, set root password
+pacman -S zsh  # install zsh
+chsh -s /bin/zsh  # change default shell to zsh
+systemctl enable dhcpcd  # the boot is start dhcp
+pacman -S grub  # install grub
+grub-install --boot-directory=/boot /dev/sda  # install grub to disk
+grub-mkconfig -o /boot/grub/grub.cfg  # retouch grub config file
+exit  # exit cur shell
+reboot
+#+end_src
+system install ok!!!
+Use root user login to system.
+#+begin_src shell
+echo $SHELL  # /bin/zsh
+# hwclock --systohc --utc
+#+end_src
+*** install arch desktop
+i3 install ok!!!
+#+begin_src shell
+pacman -S xorg-server xorg-xinit # install xorg server and xinit
+pacman -S i3  # install i3 desktop system
+pacman -S xf86-video-vesa  # device open sorce
+cd /etc/X11/xinit/  # change xinit setting
+# command last five line and add two line:
+i3-wm &
+exec i3
+startx
+#+end_src
