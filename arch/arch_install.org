@@ -12,7 +12,7 @@ running in iso  # get a shell
 loadkeys us  # set key layout
 ping -c 2 qq.com # make sure connect to internet
 timedatectl set-ntp true  # update system time
-fdisk -l  # view disk part
+lsblk /dev/sda  # view disk part
 fdisk /dev/sda  # part install disk
   --> n \n p \n \n +512M \n \n
   --> n \n p \n \n \n w
@@ -57,4 +57,36 @@ cd /etc/X11/xinit/  # change xinit setting
 i3-wm &
 exec i3
 startx
+#+end_src
+*** install arch to usb
+install arch to usb
+
+#+begin_src shell
+mount ~/soft/iso/archlinux-2016.10.01-dual.iso /mnt/iso/  # mount iso to disk
+unsquashfs -d /tmp/arch ./x86_64/airootfs.sfs  # system install env ready
+fdisk /dev/sdc  # part disk
+fdisk /dev/sdc  # part install disk
+  --> n \n p \n \n +256M \n \n
+  --> n \n p \n \n \n w
+lsblk /dev/sdc  #  tow part disk
+# sdc      8:32   1  7.4G  0 disk
+# ├─sdc1   8:33   1  256M  0 part
+# └─sdc2   8:34   1  7.1G  0 part
+cd /tmp/arch  # change pwd to arch env
+cp /etc/resolv.conf etc/
+mount --rbind /proc/ proc/
+mount --rbind /sys/ sys/
+mount --rbind /dev/ dev/
+mount --rbind /run/ run/
+chroot .  # change path
+mkfs.fat /dev/sdc1
+mkfs.ext4 /dev/sdc2
+mount /dev/sdc2 /mnt/usb/
+mkdir -p /mnt/usb/boot/efi
+mount /dev/sdc1 /mnt/usb/
+mount /dev/sdc1 /mnt/usb/boot/efi/
+mount --rbind /mnt mnt/
+sed -i '/Score/{/China/!{n;s/^/#/}}' /etc/pacman.d/mirrorlist
+pacstrap /mnt base base-devel net-tools
+...
 #+end_src
