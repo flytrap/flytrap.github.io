@@ -1,0 +1,79 @@
+* base
+** normal
+| C-g     | keyboard-quit                |            |
+| C-x C-f | find-file                    |            |
+| C-x C-v | find-alternate-file          |            |
+| C-x i   | insert-file                  |            |
+| C-x C-s | save-buffer                  |            |
+| C-x C-w | write-file                   | other file |
+| C-x C-c | save-buffers-kill-emacs      |            |
+| C-h     | help-command                 |            |
+| C-h f   | describe-function            |            |
+| C-h k   | describe-key                 |            |
+| C-h t   | help-with-tutorial           |            |
+| C-h i   | info-goto-emacs-command-mode |            |
+
+* file editor
+** normal
+| C-f   | forward-char        |                           |
+| C-b   | backward-char       |                           |
+| C-p   | previous-line       |                           |
+| C-n   | next-line           |                           |
+| ESC e | forward-sentence    |                           |
+| ESC a | backward-sentend    |                           |
+| ESC } | forward-paragraph   |                           |
+| ESC { | backward-paragraph  |                           |
+| C-v   | scroll-up           |                           |
+| Esc v | scroll-down         |                           |
+| C-x ] | forward-page        | curor                     |
+| C-x [ | backward-page       | curor                     |
+| ESC < | beginning-of-buffer | file-header               |
+| ESC > | end-of-buffer       | file-end                  |
+|       | goto-line           | point lines               |
+|       | goto-char           | point char                |
+| C-l   | recenter            | flush pic                 |
+| ESC n | digit-argument      | repeat command            |
+| C-u n | universal-argument  | repeat command(defualt 4) |
+** delete
+| C-d              | delete-char             |                 |
+| DEL              | delete-backward-char    |                 |
+| ESC d            | kill-word               |                 |
+| ESC DEL          | backward-kill-word      |                 |
+| C-k              | kill-line               | del to end line |
+| ESC k            | kill-sentence           |                 |
+| C-x DEL          | backward-kill-sentence  | sentence        |
+| C-y/SHIFT-INSERT | yank                    | resore          |
+| C-w/SHIFT-DELETE | kill-region             | file->cut       |
+|                  | kill-paragraph          |                 |
+|                  | backward-kill-paragraph |                 |
+** block
+| C-@/C-SPACE    | set-mark-command        |
+| C-x C-x        | exchange-point-and-mark |
+| ESC w/C-INSERT | kill-ring-save          |
+| ESC h          | mark-paragraph          |
+| C-x C-p        | mark-page               |
+| C-x h          | mark-whole-buffer       |
+| ESC y          | yank-pop                | 
+** editor  
+| C-t     | transpose-chars      | change char |
+| ESC t   | transpose-words      | change word |
+| C-x C-t | transpose-lines      | change line |
+|         | transpose-sentences  |             |
+|         | transpose-paragraphs |             | 
+  
+| ESC c       | cpitalize-word                     |
+| ESC n       | upcase-word                        |
+| ESC - ECS c | negitive-argument;captitalize-word |
+| ESC - ESC u | negitive-argument;upcase-word      |
+| ESC - ESC l | negtive-argument;downcase-word     | 
+
+** other
+| INSERT  | overwrite-mode  |                 |
+|         | rever-buffer    | reload file     |
+| C-x n   | advertised-undo | revoked         |
+| C-_/C-/ | undo            |                 |
+|         | revert-buffer   | resotre to disk |
+|         | recover-file    | show auto save  |
+* replace
+** normal
+
