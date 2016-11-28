@@ -20,7 +20,7 @@ pip install Flask-SQLAlchemy  # database manager
 裝不上？
 有代理沒有？
 有：請移步
-[[/linux/proxychains.html][  proxychains]]
+  [[http://blog.flytrap.top/linux/proxychains.html][proxychains]]
   查看如何在命令行中使用代理。
 沒有：
   安裝命令後面追加
