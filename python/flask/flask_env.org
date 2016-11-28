@@ -1,0 +1,19 @@
+* flask env install
+** install virtualenv
+#+begin_src bash
+pip install virtualenv
+#+end_src
+** install flask
+#+begin_src bash
+virtualenv --no-download flask_env  # create virtualenv no download
+source flask_env/bin/activate
+pip install flask  # bask pkg
+#+end_src
+** install flask ext
+#+begin_src bash
+pip install flask-Bootstrap  # bootstrap forward
+pip install flask-Script  # auto
+pip install flask-Moment  # locate time
+pip install flask-WTF  # form auth
+pip install Flask-SQLAlchemy  # database manager
+#+end_src
