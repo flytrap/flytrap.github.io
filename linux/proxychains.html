@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>flask_env</title>
-<!-- 2016-11-29 Tue 00:11 -->
+<title>proxychains</title>
+<!-- 2016-11-29 Tue 00:15 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -136,81 +136,81 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">flask_env</h1>
+<h1 class="title">proxychains</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. flask env install</a>
+<li><a href="#sec-1">1. proxychains</a>
 <ul>
-<li><a href="#sec-1-1">1.1. install virtualenv</a></li>
-<li><a href="#sec-1-2">1.2. install flask</a></li>
-<li><a href="#sec-1-3">1.3. install flask ext</a></li>
+<li><a href="#sec-1-1">1.1. desc</a></li>
+<li><a href="#sec-1-2">1.2. proxychains install</a></li>
+<li><a href="#sec-1-3">1.3. proxychains setting</a></li>
+<li><a href="#sec-1-4">1.4. proxychains use</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> flask env install</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> proxychains</h2>
 <div class="outline-text-2" id="text-1">
 </div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> install virtualenv</h3>
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> desc</h3>
 <div class="outline-text-3" id="text-1-1">
-<div class="org-src-container">
-
-<pre class="src src-bash">pip install virtualenv
-</pre>
-</div>
+<p>
+小夥伴都知道在瀏覽器中配置代理，在各種軟件中配置代理，可是終端呢？
+很簡單，就這麼幹，這篇文章就是爲你解決這個問題的。
+</p>
 </div>
 </div>
 <div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> install flask</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> proxychains install</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 
-<pre class="src src-bash">virtualenv --no-download flask_env  # create virtualenv no download
-source flask_env/bin/activate
-pip install flask  # bask pkg
+<pre class="src src-bash">pacman -Syu proxychains  # arch
+apt-get install proxychains  # debian, ubuntu
+yum/dnf install proxychains  # redhat, centos, fedora
 </pre>
 </div>
+<p>
+非root用戶，自動前面追加sudo
+裝不了？沒關系，檢查自己的源。
+</p>
 </div>
 </div>
 <div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> install flask ext</h3>
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> proxychains setting</h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
 
-<pre class="src src-bash">pip install flask-Bootstrap  # bootstrap forward
-pip install flask-Script  # auto
-pip install flask-Moment  # locate time
-pip install flask-WTF  # form auth
-pip install Flask-SQLAlchemy  # database manager
+<pre class="src src-bash">vim + /etc/proxychains.conf
+
+[ProxyList]
+http   0.0.0.0 80
+socks4 0.0.0.0 4444
+socks5 0.0.0.0 5555
+# 只要一行，選擇自己的代理類型，修改之.
+格式:代理類型 ip 端口
 </pre>
 </div>
-<p>
-裝不上？
-有代理沒有？
-有：請移步
-<a href="file:///linux/proxychains.html">  proxychains</a>
-  查看如何在命令行中使用代理。
-沒有：
-  安裝命令後面追加
-</p>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> proxychains use</h3>
+<div class="outline-text-3" id="text-1-4">
 <div class="org-src-container">
 
-<pre class="src src-bash">-i http://pypi.douban.com/simple  # 豆瓣源
+<pre class="src src-bash">proxychains command  # proxychains 後面跟上你的命令就行咯.
 </pre>
 </div>
-<p>
-也是一個不錯的選擇哦。
-</p>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-11-29 Tue 00:11</p>
+<p class="date">Created: 2016-11-29 Tue 00:15</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

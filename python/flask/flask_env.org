@@ -17,3 +17,14 @@ pip install flask-Moment  # locate time
 pip install flask-WTF  # form auth
 pip install Flask-SQLAlchemy  # database manager
 #+end_src
+裝不上？
+有代理沒有？
+有：請移步
+[[/linux/proxychains.html][  proxychains]]
+  查看如何在命令行中使用代理。
+沒有：
+  安裝命令後面追加
+#+begin_src bash
+-i http://pypi.douban.com/simple  # 豆瓣源
+#+end_src
+也是一個不錯的選擇哦。
