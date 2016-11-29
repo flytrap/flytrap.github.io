@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>emacs_keys</title>
-<!-- 2016-11-27 Sun 23:21 -->
+<!-- 2016-11-29 Tue 23:54 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -155,9 +155,14 @@ for the JavaScript code in this tag.
 <li><a href="#sec-2-5">2.5. other</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">3. replace</a>
+<li><a href="#sec-3">3. find and replace</a>
 <ul>
-<li><a href="#sec-3-1">3.1. normal</a></li>
+<li><a href="#sec-3-1">3.1. isearch</a></li>
+<li><a href="#sec-3-2">3.2. simple search</a></li>
+<li><a href="#sec-3-3">3.3. replace</a></li>
+<li><a href="#sec-3-4">3.4. regexp</a></li>
+<li><a href="#sec-3-5">3.5. Ispell</a></li>
+<li><a href="#sec-3-6">3.6. abbrev</a></li>
 </ul>
 </li>
 </ul>
@@ -213,7 +218,7 @@ for the JavaScript code in this tag.
 <tr>
 <td class="left">C-x C-w</td>
 <td class="left">write-file</td>
-<td class="left">other file</td>
+<td class="left"># other file</td>
 </tr>
 
 <tr>
@@ -337,55 +342,55 @@ for the JavaScript code in this tag.
 <tr>
 <td class="left">C-x ]</td>
 <td class="left">forward-page</td>
-<td class="left">curor</td>
+<td class="left"># curor</td>
 </tr>
 
 <tr>
 <td class="left">C-x [</td>
 <td class="left">backward-page</td>
-<td class="left">curor</td>
+<td class="left"># curor</td>
 </tr>
 
 <tr>
 <td class="left">ESC &lt;</td>
 <td class="left">beginning-of-buffer</td>
-<td class="left">file-header</td>
+<td class="left"># file-header</td>
 </tr>
 
 <tr>
 <td class="left">ESC &gt;</td>
 <td class="left">end-of-buffer</td>
-<td class="left">file-end</td>
+<td class="left"># file-end</td>
 </tr>
 
 <tr>
 <td class="left">&#xa0;</td>
 <td class="left">goto-line</td>
-<td class="left">point lines</td>
+<td class="left"># point lines</td>
 </tr>
 
 <tr>
 <td class="left">&#xa0;</td>
 <td class="left">goto-char</td>
-<td class="left">point char</td>
+<td class="left"># point char</td>
 </tr>
 
 <tr>
 <td class="left">C-l</td>
 <td class="left">recenter</td>
-<td class="left">flush pic</td>
+<td class="left"># flush pic</td>
 </tr>
 
 <tr>
 <td class="left">ESC n</td>
 <td class="left">digit-argument</td>
-<td class="left">repeat command</td>
+<td class="left"># repeat command</td>
 </tr>
 
 <tr>
 <td class="left">C-u n</td>
 <td class="left">universal-argument</td>
-<td class="left">repeat command(defualt 4)</td>
+<td class="left"># repeat command(defualt 4)</td>
 </tr>
 </tbody>
 </table>
@@ -432,7 +437,7 @@ for the JavaScript code in this tag.
 <tr>
 <td class="left">C-k</td>
 <td class="left">kill-line</td>
-<td class="left">del to end line</td>
+<td class="left"># del to end line</td>
 </tr>
 
 <tr>
@@ -444,19 +449,19 @@ for the JavaScript code in this tag.
 <tr>
 <td class="left">C-x DEL</td>
 <td class="left">backward-kill-sentence</td>
-<td class="left">sentence</td>
+<td class="left"># sentence</td>
 </tr>
 
 <tr>
 <td class="left">C-y/SHIFT-INSERT</td>
 <td class="left">yank</td>
-<td class="left">resore</td>
+<td class="left"># resore</td>
 </tr>
 
 <tr>
 <td class="left">C-w/SHIFT-DELETE</td>
 <td class="left">kill-region</td>
-<td class="left">file-&gt;cut</td>
+<td class="left"># file-&gt;cut</td>
 </tr>
 
 <tr>
@@ -541,19 +546,19 @@ for the JavaScript code in this tag.
 <tr>
 <td class="left">C-t</td>
 <td class="left">transpose-chars</td>
-<td class="left">change char</td>
+<td class="left"># change char</td>
 </tr>
 
 <tr>
 <td class="left">ESC t</td>
 <td class="left">transpose-words</td>
-<td class="left">change word</td>
+<td class="left"># change word</td>
 </tr>
 
 <tr>
 <td class="left">C-x C-t</td>
 <td class="left">transpose-lines</td>
-<td class="left">change line</td>
+<td class="left"># change line</td>
 </tr>
 
 <tr>
@@ -631,13 +636,13 @@ for the JavaScript code in this tag.
 <tr>
 <td class="left">&#xa0;</td>
 <td class="left">rever-buffer</td>
-<td class="left">reload file</td>
+<td class="left"># reload file</td>
 </tr>
 
 <tr>
 <td class="left">C-x n</td>
 <td class="left">advertised-undo</td>
-<td class="left">revoked</td>
+<td class="left"># revoked</td>
 </tr>
 
 <tr>
@@ -649,13 +654,13 @@ for the JavaScript code in this tag.
 <tr>
 <td class="left">&#xa0;</td>
 <td class="left">revert-buffer</td>
-<td class="left">resotre to disk</td>
+<td class="left"># resotre to disk</td>
 </tr>
 
 <tr>
 <td class="left">&#xa0;</td>
 <td class="left">recover-file</td>
-<td class="left">show auto save</td>
+<td class="left"># show auto save</td>
 </tr>
 </tbody>
 </table>
@@ -663,15 +668,379 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> replace</h2>
+<h2 id="sec-3"><span class="section-number-2">3</span> find and replace</h2>
 <div class="outline-text-2" id="text-3">
 </div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> normal</h3>
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> isearch</h3>
+<div class="outline-text-3" id="text-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-s</td>
+<td class="left">isearch-forward</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-r</td>
+<td class="left">isearch-backward</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">RETURN</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-g</td>
+<td class="left">keyboard-quit</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">DEL</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-s C-w</td>
+<td class="left">&#xa0;</td>
+<td class="left">select word isearch</td>
+</tr>
+
+<tr>
+<td class="left">C-s ESC y</td>
+<td class="left">&#xa0;</td>
+<td class="left">delete word isearch</td>
+</tr>
+
+<tr>
+<td class="left">C-s C-s</td>
+<td class="left">&#xa0;</td>
+<td class="left">repeat</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> simple search</h3>
+<div class="outline-text-3" id="text-3-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-s RETURN</td>
+<td class="left">&#xa0;</td>
+<td class="left">Search-&gt;Search</td>
+</tr>
+
+<tr>
+<td class="left">C-s</td>
+<td class="left">&#xa0;</td>
+<td class="left">next</td>
+</tr>
+
+<tr>
+<td class="left">C-r RETURN</td>
+<td class="left">&#xa0;</td>
+<td class="left">Search-&gt;Search Backwards</td>
+</tr>
+
+<tr>
+<td class="left">C-r</td>
+<td class="left">&#xa0;</td>
+<td class="left">back next</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> replace</h3>
+<div class="outline-text-3" id="text-3-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">ESC %</td>
+<td class="left">&#xa0;</td>
+<td class="left">Search-Query Replace</td>
+</tr>
+
+<tr>
+<td class="left">SPACE/y</td>
+<td class="left">&#xa0;</td>
+<td class="left">new string relace old</td>
+</tr>
+
+<tr>
+<td class="left">DEL/n</td>
+<td class="left">&#xa0;</td>
+<td class="left">not replace</td>
+</tr>
+
+<tr>
+<td class="left">.</td>
+<td class="left">&#xa0;</td>
+<td class="left">replace and exit</td>
+</tr>
+
+<tr>
+<td class="left">,</td>
+<td class="left">&#xa0;</td>
+<td class="left">replace and stop (y)continue</td>
+</tr>
+
+<tr>
+<td class="left">\!</td>
+<td class="left">&#xa0;</td>
+<td class="left">next all replace</td>
+</tr>
+
+<tr>
+<td class="left">\^</td>
+<td class="left">&#xa0;</td>
+<td class="left">return up replace location</td>
+</tr>
+
+<tr>
+<td class="left">RETURN/q</td>
+<td class="left">&#xa0;</td>
+<td class="left">quit query, replace option</td>
+</tr>
+
+<tr>
+<td class="left">C-r</td>
+<td class="left">&#xa0;</td>
+<td class="left">Recursion editor</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-c</td>
+<td class="left">&#xa0;</td>
+<td class="left">quit Recursion status, continue</td>
+</tr>
+
+<tr>
+<td class="left">C-]</td>
+<td class="left">&#xa0;</td>
+<td class="left">quit Recursion,query,replace status</td>
+</tr>
+</tbody>
+</table>
+<p>
+ESC x set-variable RETURN case-fold-search RETURN nil RETURN  # no case
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> regexp</h3>
+<div class="outline-text-3" id="text-3-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">ESC C-s RETURN</td>
+<td class="left">re-search-forward</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-r RETURN</td>
+<td class="left">re-search-backward</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-s</td>
+<td class="left">isearch-forward-regexp</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-r</td>
+<td class="left">isearch-backward-regexp</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">query-relace-regexp</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">replace-regexp</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Ispell</h3>
+<div class="outline-text-3" id="text-3-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">ESC $</td>
+<td class="left">ispell-word</td>
+<td class="left">check cur location word</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">ispell-reglon</td>
+<td class="left">check text work</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">ispell-buffer</td>
+<td class="left">check buffer work</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">ispell-message</td>
+<td class="left">check email text</td>
+</tr>
+
+<tr>
+<td class="left">C-u ESC $</td>
+<td class="left">ispell-continue</td>
+<td class="left">restart run</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">ispell-kill-ispell</td>
+<td class="left">kill ispell</td>
+</tr>
+
+<tr>
+<td class="left">ESC TAB</td>
+<td class="left">ispell-complete-word</td>
+<td class="left">text auto completion</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> abbrev</h3>
+<div class="outline-text-3" id="text-3-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">abbrev-mode</td>
+<td class="left">on</td>
+</tr>
+
+<tr>
+<td class="left">C-x a -</td>
+<td class="left">inverse-add-global-abbrev</td>
+<td class="left">global</td>
+</tr>
+
+<tr>
+<td class="left">C-x a i g</td>
+<td class="left">&#xa0;</td>
+<td class="left">global</td>
+</tr>
+
+<tr>
+<td class="left">C-x a i l</td>
+<td class="left">inverse-add-mode-adrev</td>
+<td class="left">local</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">unexpund-abbrev</td>
+<td class="left">undo</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">write-abbrev-file</td>
+<td class="left">save file</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">edit-abbrevs</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">list-abbrevs</td>
+<td class="left">view</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">kill-all-abbrevs</td>
+<td class="left">off</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-11-27 Sun 23:21</p>
+<p class="date">Created: 2016-11-29 Tue 23:54</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

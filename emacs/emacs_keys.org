@@ -1,51 +1,51 @@
 * base
 ** normal
-| C-g     | keyboard-quit                |            |
-| C-x C-f | find-file                    |            |
-| C-x C-v | find-alternate-file          |            |
-| C-x i   | insert-file                  |            |
-| C-x C-s | save-buffer                  |            |
-| C-x C-w | write-file                   | other file |
-| C-x C-c | save-buffers-kill-emacs      |            |
-| C-h     | help-command                 |            |
-| C-h f   | describe-function            |            |
-| C-h k   | describe-key                 |            |
-| C-h t   | help-with-tutorial           |            |
-| C-h i   | info-goto-emacs-command-mode |            |
+| C-g     | keyboard-quit                |              |
+| C-x C-f | find-file                    |              |
+| C-x C-v | find-alternate-file          |              |
+| C-x i   | insert-file                  |              |
+| C-x C-s | save-buffer                  |              |
+| C-x C-w | write-file                   | # other file |
+| C-x C-c | save-buffers-kill-emacs      |              |
+| C-h     | help-command                 |              |
+| C-h f   | describe-function            |              |
+| C-h k   | describe-key                 |              |
+| C-h t   | help-with-tutorial           |              |
+| C-h i   | info-goto-emacs-command-mode |              |
 
 * file editor
 ** normal
-| C-f   | forward-char        |                           |
-| C-b   | backward-char       |                           |
-| C-p   | previous-line       |                           |
-| C-n   | next-line           |                           |
-| ESC e | forward-sentence    |                           |
-| ESC a | backward-sentend    |                           |
-| ESC } | forward-paragraph   |                           |
-| ESC { | backward-paragraph  |                           |
-| C-v   | scroll-up           |                           |
-| Esc v | scroll-down         |                           |
-| C-x ] | forward-page        | curor                     |
-| C-x [ | backward-page       | curor                     |
-| ESC < | beginning-of-buffer | file-header               |
-| ESC > | end-of-buffer       | file-end                  |
-|       | goto-line           | point lines               |
-|       | goto-char           | point char                |
-| C-l   | recenter            | flush pic                 |
-| ESC n | digit-argument      | repeat command            |
-| C-u n | universal-argument  | repeat command(defualt 4) |
+| C-f   | forward-char        |                             |
+| C-b   | backward-char       |                             |
+| C-p   | previous-line       |                             |
+| C-n   | next-line           |                             |
+| ESC e | forward-sentence    |                             |
+| ESC a | backward-sentend    |                             |
+| ESC } | forward-paragraph   |                             |
+| ESC { | backward-paragraph  |                             |
+| C-v   | scroll-up           |                             |
+| Esc v | scroll-down         |                             |
+| C-x ] | forward-page        | # curor                     |
+| C-x [ | backward-page       | # curor                     |
+| ESC < | beginning-of-buffer | # file-header               |
+| ESC > | end-of-buffer       | # file-end                  |
+|       | goto-line           | # point lines               |
+|       | goto-char           | # point char                |
+| C-l   | recenter            | # flush pic                 |
+| ESC n | digit-argument      | # repeat command            |
+| C-u n | universal-argument  | # repeat command(defualt 4) |
 ** delete
-| C-d              | delete-char             |                 |
-| DEL              | delete-backward-char    |                 |
-| ESC d            | kill-word               |                 |
-| ESC DEL          | backward-kill-word      |                 |
-| C-k              | kill-line               | del to end line |
-| ESC k            | kill-sentence           |                 |
-| C-x DEL          | backward-kill-sentence  | sentence        |
-| C-y/SHIFT-INSERT | yank                    | resore          |
-| C-w/SHIFT-DELETE | kill-region             | file->cut       |
-|                  | kill-paragraph          |                 |
-|                  | backward-kill-paragraph |                 |
+| C-d              | delete-char             |                   |
+| DEL              | delete-backward-char    |                   |
+| ESC d            | kill-word               |                   |
+| ESC DEL          | backward-kill-word      |                   |
+| C-k              | kill-line               | # del to end line |
+| ESC k            | kill-sentence           |                   |
+| C-x DEL          | backward-kill-sentence  | # sentence        |
+| C-y/SHIFT-INSERT | yank                    | # resore          |
+| C-w/SHIFT-DELETE | kill-region             | # file->cut       |
+|                  | kill-paragraph          |                   |
+|                  | backward-kill-paragraph |                   |
 ** block
 | C-@/C-SPACE    | set-mark-command        |
 | C-x C-x        | exchange-point-and-mark |
@@ -55,9 +55,9 @@
 | C-x h          | mark-whole-buffer       |
 | ESC y          | yank-pop                | 
 ** editor  
-| C-t     | transpose-chars      | change char |
-| ESC t   | transpose-words      | change word |
-| C-x C-t | transpose-lines      | change line |
+| C-t     | transpose-chars      | # change char |
+| ESC t   | transpose-words      | # change word |
+| C-x C-t | transpose-lines      | # change line |
 |         | transpose-sentences  |             |
 |         | transpose-paragraphs |             | 
   
@@ -69,11 +69,61 @@
 
 ** other
 | INSERT  | overwrite-mode  |                 |
-|         | rever-buffer    | reload file     |
-| C-x n   | advertised-undo | revoked         |
+|         | rever-buffer    | # reload file   |
+| C-x n   | advertised-undo | # revoked       |
 | C-_/C-/ | undo            |                 |
-|         | revert-buffer   | resotre to disk |
-|         | recover-file    | show auto save  |
-* replace
-** normal
-
+|         | revert-buffer   | # resotre to disk |
+|         | recover-file    | # show auto save |
+* find and replace
+** isearch
+| C-s        | isearch-forward  |                     |
+| C-r        | isearch-backward |                     |
+| RETURN     |                  |                     |
+| C-g        | keyboard-quit    |                     |
+| DEL        |                  |                     |
+| C-s C-w    |                  | select word isearch |
+| C-s ESC y  |                  | delete word isearch |
+| C-s C-s    |                  | repeat              | 
+** simple search
+| C-s RETURN |   | Search->Search           |
+| C-s        |   | next                     |
+| C-r RETURN |   | Search->Search Backwards |
+| C-r        |   | back next                |
+** replace
+| ESC %    |   | Search-Query Replace                |
+| SPACE/y  |   | new string relace old               |
+| DEL/n    |   | not replace                         |
+| .        |   | replace and exit                    |
+| ,        |   | replace and stop (y)continue        |
+| \!       |   | next all replace                    |
+| \^       |   | return up replace location          |
+| RETURN/q |   | quit query, replace option          |
+| C-r      |   | Recursion editor                    |
+| ESC C-c  |   | quit Recursion status, continue     |
+| C-]      |   | quit Recursion,query,replace status |
+ESC x set-variable RETURN case-fold-search RETURN nil RETURN  # no case
+** regexp
+| ESC C-s RETURN | re-search-forward       |
+| ESC C-r RETURN | re-search-backward      |
+| ESC C-s        | isearch-forward-regexp  |
+| ESC C-r        | isearch-backward-regexp |
+|                | query-relace-regexp     |
+|                | replace-regexp          | 
+** Ispell
+| ESC $     | ispell-word          | check cur location word |
+|           | ispell-reglon        | check text work         |
+|           | ispell-buffer        | check buffer work       |
+|           | ispell-message       | check email text        |
+| C-u ESC $ | ispell-continue      | restart run             |
+|           | ispell-kill-ispell   | kill ispell             |
+| ESC TAB   | ispell-complete-word | text auto completion    | 
+** abbrev
+|           | abbrev-mode               | on        |
+| C-x a -   | inverse-add-global-abbrev | global    |
+| C-x a i g |                           | global    |
+| C-x a i l | inverse-add-mode-adrev    | local     |
+|           | unexpund-abbrev           | undo      |
+|           | write-abbrev-file         | save file |
+|           | edit-abbrevs              |           |
+|           | list-abbrevs              | view      |
+|           | kill-all-abbrevs          | off       |
