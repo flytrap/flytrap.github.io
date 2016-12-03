@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>emacs_keys</title>
-<!-- 2016-11-29 Tue 23:54 -->
+<!-- 2016-12-03 Sat 17:52 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -163,6 +163,44 @@ for the JavaScript code in this tag.
 <li><a href="#sec-3-4">3.4. regexp</a></li>
 <li><a href="#sec-3-5">3.5. Ispell</a></li>
 <li><a href="#sec-3-6">3.6. abbrev</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. buffer and window</a>
+<ul>
+<li><a href="#sec-4-1">4.1. window</a></li>
+<li><a href="#sec-4-2">4.2. buffer</a></li>
+<li><a href="#sec-4-3">4.3. bookmark</a></li>
+<li><a href="#sec-4-4">4.4. window block</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. emacs work</a>
+<ul>
+<li><a href="#sec-5-1">5.1. shell</a></li>
+<li><a href="#sec-5-2">5.2. Dired</a></li>
+<li><a href="#sec-5-3">5.3. print</a></li>
+<li><a href="#sec-5-4">5.4. time</a></li>
+<li><a href="#sec-5-5">5.5. calendar</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. mail</a>
+<ul>
+<li><a href="#sec-6-1">6.1. mail send</a></li>
+<li><a href="#sec-6-2">6.2. mail read</a></li>
+<li><a href="#sec-6-3">6.3. del mail</a></li>
+<li><a href="#sec-6-4">6.4. save mail</a></li>
+<li><a href="#sec-6-5">6.5. gnus</a>
+<ul>
+<li><a href="#sec-6-5-1">6.5.1. summary</a></li>
+<li><a href="#sec-6-5-2">6.5.2. filter</a></li>
+<li><a href="#sec-6-5-3">6.5.3. post article</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-7">7. net tools</a>
+<ul>
+<li><a href="#sec-7-1">7.1. telnet</a></li>
+<li><a href="#sec-7-2">7.2. w3</a></li>
 </ul>
 </li>
 </ul>
@@ -1038,9 +1076,2165 @@ ESC x set-variable RETURN case-fold-search RETURN nil RETURN  # no case
 </div>
 </div>
 </div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> buffer and window</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> window</h3>
+<div class="outline-text-3" id="text-4-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x 2</td>
+<td class="left">split-window-vertically</td>
+</tr>
+
+<tr>
+<td class="left">C-x 3</td>
+<td class="left">split-window-borttontally</td>
+</tr>
+
+<tr>
+<td class="left">C-x &gt;</td>
+<td class="left">scroll-right</td>
+</tr>
+
+<tr>
+<td class="left">C-x &lt;</td>
+<td class="left">scroll-left</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> buffer</h3>
+<div class="outline-text-3" id="text-4-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x b</td>
+<td class="left">switch-to-buffer</td>
+</tr>
+
+<tr>
+<td class="left">C-x C-b</td>
+<td class="left">list-buffer</td>
+</tr>
+
+<tr>
+<td class="left">C-x k</td>
+<td class="left">kill-buffer</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">kill-some-buffer</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">rename-buffer</td>
+</tr>
+
+<tr>
+<td class="left">C-x s</td>
+<td class="left">save-some-buffers</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x n</td>
+<td class="left">next-buffer</td>
+</tr>
+
+<tr>
+<td class="left">SPACE</td>
+<td class="left">next-buffer</td>
+</tr>
+
+<tr>
+<td class="left">C-p</td>
+<td class="left">per-buffer</td>
+</tr>
+
+<tr>
+<td class="left">d</td>
+<td class="left">add del tag 'x' run</td>
+</tr>
+
+<tr>
+<td class="left">k</td>
+<td class="left">add del tag 'x' run</td>
+</tr>
+
+<tr>
+<td class="left">s</td>
+<td class="left">add save tag</td>
+</tr>
+
+<tr>
+<td class="left">n</td>
+<td class="left">add opt tag</td>
+</tr>
+
+<tr>
+<td class="left">x</td>
+<td class="left">add run tag</td>
+</tr>
+
+<tr>
+<td class="left">DEL</td>
+<td class="left">del buffer tag</td>
+</tr>
+
+<tr>
+<td class="left">~</td>
+<td class="left">buffer add unchange tag</td>
+</tr>
+
+<tr>
+<td class="left">%</td>
+<td class="left">readonly</td>
+</tr>
+
+<tr>
+<td class="left">1</td>
+<td class="left">max</td>
+</tr>
+
+<tr>
+<td class="left">2</td>
+<td class="left">self and next buffer to same window</td>
+</tr>
+
+<tr>
+<td class="left">f</td>
+<td class="left">change buffer window</td>
+</tr>
+
+<tr>
+<td class="left">o</td>
+<td class="left">move to other window</td>
+</tr>
+
+<tr>
+<td class="left">m</td>
+<td class="left">buffer add visble tag</td>
+</tr>
+
+<tr>
+<td class="left">v</td>
+<td class="left">show 'm' command tag</td>
+</tr>
+
+<tr>
+<td class="left">q</td>
+<td class="left">exit buffer list</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> bookmark</h3>
+<div class="outline-text-3" id="text-4-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x r b</td>
+<td class="left">bookmark-jump</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">bookmark-delete</td>
+</tr>
+
+<tr>
+<td class="left">C-x r l</td>
+<td class="left">bookmark-menu-list</td>
+</tr>
+
+<tr>
+<td class="left">d</td>
+<td class="left">bookmark-delete</td>
+</tr>
+
+<tr>
+<td class="left">r</td>
+<td class="left">bookmark-rename</td>
+</tr>
+
+<tr>
+<td class="left">s</td>
+<td class="left">bookmark-save</td>
+</tr>
+
+<tr>
+<td class="left">f</td>
+<td class="left">show tag</td>
+</tr>
+
+<tr>
+<td class="left">m</td>
+<td class="left">add show tag</td>
+</tr>
+
+<tr>
+<td class="left">v</td>
+<td class="left">add visble tag</td>
+</tr>
+
+<tr>
+<td class="left">t</td>
+<td class="left">change tab status</td>
+</tr>
+
+<tr>
+<td class="left">w</td>
+<td class="left">show file location</td>
+</tr>
+
+<tr>
+<td class="left">x</td>
+<td class="left">del d tag</td>
+</tr>
+
+<tr>
+<td class="left">u</td>
+<td class="left">del per tag</td>
+</tr>
+
+<tr>
+<td class="left">DEL</td>
+<td class="left">cancel tag opt</td>
+</tr>
+
+<tr>
+<td class="left">q</td>
+<td class="left">exit bookmark list</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">bookmark-insert</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">bookmark-write</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">bookmark-load</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> window block</h3>
+<div class="outline-text-3" id="text-4-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x 5 o</td>
+<td class="left">other-frame</td>
+</tr>
+
+<tr>
+<td class="left">C-x 5 0</td>
+<td class="left">delete-frame</td>
+</tr>
+
+<tr>
+<td class="left">C-x 5 2</td>
+<td class="left">makr-frame</td>
+</tr>
+
+<tr>
+<td class="left">C-x 5 r</td>
+<td class="left">find-file-read-only-oher-frame</td>
+</tr>
+
+<tr>
+<td class="left">C-x 5 f</td>
+<td class="left">find-file-other-frame</td>
+</tr>
+
+<tr>
+<td class="left">C-x 5 b</td>
+<td class="left">swith-to-buffer-other-frame</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> emacs work</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> shell</h3>
+<div class="outline-text-3" id="text-5-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-c C-c</td>
+<td class="left">comint-interrupt-subjob</td>
+</tr>
+
+<tr>
+<td class="left">C-d</td>
+<td class="left">comint-delchr-or-maybe-eof</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-d</td>
+<td class="left">comint-send-eof</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-u</td>
+<td class="left">comint-kill-input</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-z</td>
+<td class="left">comint-stop-subjob</td>
+</tr>
+
+<tr>
+<td class="left">ESC p</td>
+<td class="left">comint-previous-input</td>
+</tr>
+
+<tr>
+<td class="left">ESC n</td>
+<td class="left">comint-send-input</td>
+</tr>
+
+<tr>
+<td class="left">RETURN</td>
+<td class="left">comint-send-input</td>
+</tr>
+
+<tr>
+<td class="left">TAB</td>
+<td class="left">comint-dynamic-complete</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-o</td>
+<td class="left">comint-kill-output</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-r</td>
+<td class="left">comint-show-output</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-e</td>
+<td class="left">somint-show-maximum-output</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-p</td>
+<td class="left">comint-previous-prompt</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-n</td>
+<td class="left">comint-next-prompt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Dired</h3>
+<div class="outline-text-3" id="text-5-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x d</td>
+<td class="left">dired</td>
+</tr>
+
+<tr>
+<td class="left">C</td>
+<td class="left">Dired-do-copy</td>
+</tr>
+
+<tr>
+<td class="left">d</td>
+<td class="left">dired-flag-file-deletion</td>
+</tr>
+
+<tr>
+<td class="left">D</td>
+<td class="left">dired-to-delete</td>
+</tr>
+
+<tr>
+<td class="left">e</td>
+<td class="left">dired-find-file</td>
+</tr>
+
+<tr>
+<td class="left">f</td>
+<td class="left">dired-advertisd-find-file</td>
+</tr>
+
+<tr>
+<td class="left">g</td>
+<td class="left">rever-buffer</td>
+</tr>
+
+<tr>
+<td class="left">G</td>
+<td class="left">dired-do-chgrp</td>
+</tr>
+
+<tr>
+<td class="left">k</td>
+<td class="left">dired-do-kill-lines</td>
+</tr>
+
+<tr>
+<td class="left">m</td>
+<td class="left">dired-mark</td>
+</tr>
+
+<tr>
+<td class="left">n</td>
+<td class="left">dired-next-line</td>
+</tr>
+
+<tr>
+<td class="left">o</td>
+<td class="left">dired-find-file-other-window</td>
+</tr>
+
+<tr>
+<td class="left">C-o</td>
+<td class="left">dired-display-file</td>
+</tr>
+
+<tr>
+<td class="left">P</td>
+<td class="left">dired-do-print</td>
+</tr>
+
+<tr>
+<td class="left">q</td>
+<td class="left">dired-quit</td>
+</tr>
+
+<tr>
+<td class="left">Q</td>
+<td class="left">dired-do-query-replace</td>
+</tr>
+
+<tr>
+<td class="left">R</td>
+<td class="left">dired-do-rename</td>
+</tr>
+
+<tr>
+<td class="left">u</td>
+<td class="left">dired-unmark</td>
+</tr>
+
+<tr>
+<td class="left">v</td>
+<td class="left">dired-view-file</td>
+</tr>
+
+<tr>
+<td class="left">x</td>
+<td class="left">dired-do-flagged-delete</td>
+</tr>
+
+<tr>
+<td class="left">Z</td>
+<td class="left">dired-do-compress</td>
+</tr>
+
+<tr>
+<td class="left">ESC DEL</td>
+<td class="left">dired-unmark-all-files</td>
+</tr>
+
+<tr>
+<td class="left">~</td>
+<td class="left">dired-flag-backup-files</td>
+</tr>
+
+<tr>
+<td class="left">*</td>
+<td class="left">dired-mark-executables</td>
+</tr>
+
+<tr>
+<td class="left">#</td>
+<td class="left">dired-flag-auto-save-files</td>
+</tr>
+
+<tr>
+<td class="left">`</td>
+<td class="left">dired-clean-directory</td>
+</tr>
+
+<tr>
+<td class="left">=</td>
+<td class="left">dired-diff</td>
+</tr>
+
+<tr>
+<td class="left">ESC =</td>
+<td class="left">dired-bakup-diff</td>
+</tr>
+
+<tr>
+<td class="left">!</td>
+<td class="left">dired-do-shell-command</td>
+</tr>
+
+<tr>
+<td class="left">ESC )</td>
+<td class="left">dired-next-mark-file</td>
+</tr>
+
+<tr>
+<td class="left">ESC (</td>
+<td class="left">dired-prev-marked-file</td>
+</tr>
+
+<tr>
+<td class="left">%d</td>
+<td class="left">dired-flag-files-regexp</td>
+</tr>
+
+<tr>
+<td class="left">%m</td>
+<td class="left">dired-mark-files-regexp</td>
+</tr>
+
+<tr>
+<td class="left">+</td>
+<td class="left">dired-creat-directory</td>
+</tr>
+
+<tr>
+<td class="left">&gt;</td>
+<td class="left">dired-next-dirline</td>
+</tr>
+
+<tr>
+<td class="left">&lt;</td>
+<td class="left">dired-prev-dirline</td>
+</tr>
+
+<tr>
+<td class="left">S</td>
+<td class="left">dired-sort-toggle-or-edit</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> print</h3>
+<div class="outline-text-3" id="text-5-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">ESC x print-buffer</td>
+</tr>
+
+<tr>
+<td class="left">ESC x print-region</td>
+</tr>
+
+<tr>
+<td class="left">ESC x lpr-buffer</td>
+</tr>
+
+<tr>
+<td class="left">ESC x lpr-region</td>
+</tr>
+
+<tr>
+<td class="left">ESC x dired-do-print</td>
+</tr>
+
+<tr>
+<td class="left">ESC x ps-print-buffer-with-faces</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> time</h3>
+<div class="outline-text-3" id="text-5-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">display-time</td>
+</tr>
+
+<tr>
+<td class="left">calendar</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-5-5" class="outline-3">
+<h3 id="sec-5-5"><span class="section-number-3">5.5</span> calendar</h3>
+<div class="outline-text-3" id="text-5-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">.</td>
+<td class="left">calendar-goto-today</td>
+</tr>
+
+<tr>
+<td class="left">C-f</td>
+<td class="left">calendar-forward-day</td>
+</tr>
+
+<tr>
+<td class="left">C-b</td>
+<td class="left">calendar-backward-day</td>
+</tr>
+
+<tr>
+<td class="left">C-n</td>
+<td class="left">calendar-forward-week</td>
+</tr>
+
+<tr>
+<td class="left">C-p</td>
+<td class="left">calendar-backward-week</td>
+</tr>
+
+<tr>
+<td class="left">ESC }</td>
+<td class="left">calendar-forward-month</td>
+</tr>
+
+<tr>
+<td class="left">ESC {</td>
+<td class="left">calendar-backward-month</td>
+</tr>
+
+<tr>
+<td class="left">C-x ]</td>
+<td class="left">calendar-forward-year</td>
+</tr>
+
+<tr>
+<td class="left">C-x [</td>
+<td class="left">calendar-backward-year</td>
+</tr>
+
+<tr>
+<td class="left">C-a</td>
+<td class="left">calendar-gedinning-of-week</td>
+</tr>
+
+<tr>
+<td class="left">C-e</td>
+<td class="left">calendar-end-of-week</td>
+</tr>
+
+<tr>
+<td class="left">ESC a</td>
+<td class="left">calendar-beginning-of-month</td>
+</tr>
+
+<tr>
+<td class="left">ESC e</td>
+<td class="left">calendar-end-of-month</td>
+</tr>
+
+<tr>
+<td class="left">ESC &lt;</td>
+<td class="left">calendar-beginning-of-year</td>
+</tr>
+
+<tr>
+<td class="left">ESC &gt;</td>
+<td class="left">calendar-beginning-of-year</td>
+</tr>
+
+<tr>
+<td class="left">C-u n</td>
+<td class="left">nuiversal-argument</td>
+</tr>
+
+<tr>
+<td class="left">g d</td>
+<td class="left">calendar-goto-date</td>
+</tr>
+
+<tr>
+<td class="left">o</td>
+<td class="left">calendar-other-month</td>
+</tr>
+
+<tr>
+<td class="left">C-x &lt;</td>
+<td class="left">scroll-calendar-left</td>
+</tr>
+
+<tr>
+<td class="left">C-x &gt;</td>
+<td class="left">scroll-calendar-right</td>
+</tr>
+
+<tr>
+<td class="left">SPACE</td>
+<td class="left">scroll-other-window</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> mail</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> mail send</h3>
+<div class="outline-text-3" id="text-6-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x m</td>
+<td class="left">mail</td>
+</tr>
+
+<tr>
+<td class="left">C-x 4 m</td>
+<td class="left">mail-other-window</td>
+</tr>
+
+<tr>
+<td class="left">C-x 5 m</td>
+<td class="left">mail-other-frame</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f C-t</td>
+<td class="left">mail-to</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f C-c</td>
+<td class="left">mail-cc</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f C-b</td>
+<td class="left">mail-bcc</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f C-f</td>
+<td class="left">mail-fcc</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f C-r</td>
+<td class="left">mail-reply-to</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f C-s</td>
+<td class="left">mail-subject</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-t</td>
+<td class="left">mail-text</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-w</td>
+<td class="left">mail-signature</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-c</td>
+<td class="left">mail-send-and-exit</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-s</td>
+<td class="left">mail-send</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">defind-mail-alias</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">mail-dont-send</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> mail read</h3>
+<div class="outline-text-3" id="text-6-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">SPACE</td>
+<td class="left">scroll-up</td>
+</tr>
+
+<tr>
+<td class="left">DEL</td>
+<td class="left">scroll-down</td>
+</tr>
+
+<tr>
+<td class="left">.</td>
+<td class="left">rmail-beginning-of-message</td>
+</tr>
+
+<tr>
+<td class="left">n</td>
+<td class="left">rmail-next-undeleted-message</td>
+</tr>
+
+<tr>
+<td class="left">p</td>
+<td class="left">rmail-previour-undeleted-message</td>
+</tr>
+
+<tr>
+<td class="left">&lt;</td>
+<td class="left">rmail-first-message</td>
+</tr>
+
+<tr>
+<td class="left">&gt;</td>
+<td class="left">rmail-last-message</td>
+</tr>
+
+<tr>
+<td class="left">j</td>
+<td class="left">rmail-show-message</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> del mail</h3>
+<div class="outline-text-3" id="text-6-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">d</td>
+<td class="left">rmail-delete-forward</td>
+</tr>
+
+<tr>
+<td class="left">C-d</td>
+<td class="left">rmail-delete-backward</td>
+</tr>
+
+<tr>
+<td class="left">ESC n</td>
+<td class="left">rmail-next-message</td>
+</tr>
+
+<tr>
+<td class="left">ESC p</td>
+<td class="left">rmail-previous-message</td>
+</tr>
+
+<tr>
+<td class="left">u</td>
+<td class="left">rmail-undelete-previour-message</td>
+</tr>
+
+<tr>
+<td class="left">x</td>
+<td class="left">rmail-expunge</td>
+</tr>
+
+<tr>
+<td class="left">s</td>
+<td class="left">rmail-expunge-and-save</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> save mail</h3>
+<div class="outline-text-3" id="text-6-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">o filename RETURN</td>
+<td class="left">rmail-output-to-rmail-file</td>
+</tr>
+
+<tr>
+<td class="left">C-o filename RETURN</td>
+<td class="left">rmail-output</td>
+</tr>
+
+<tr>
+<td class="left">i filename RETURN</td>
+<td class="left">rmail-input</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">unrmail</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-6-5" class="outline-3">
+<h3 id="sec-6-5"><span class="section-number-3">6.5</span> gnus</h3>
+<div class="outline-text-3" id="text-6-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">gnus</td>
+</tr>
+
+<tr>
+<td class="left">SPACE</td>
+<td class="left">gnus-group-read-group</td>
+</tr>
+
+<tr>
+<td class="left">j</td>
+<td class="left">gnus-group-jump-to-group</td>
+</tr>
+
+<tr>
+<td class="left">n</td>
+<td class="left">gnus-group-next-unread-group</td>
+</tr>
+
+<tr>
+<td class="left">p</td>
+<td class="left">gnus-group-prev-unread-group</td>
+</tr>
+
+<tr>
+<td class="left">N</td>
+<td class="left">gnus-group-next-group</td>
+</tr>
+
+<tr>
+<td class="left">P</td>
+<td class="left">gnus-group-prev-group</td>
+</tr>
+
+<tr>
+<td class="left">&lt;</td>
+<td class="left">beginning-of-buffer</td>
+</tr>
+
+<tr>
+<td class="left">&gt;</td>
+<td class="left">end-of-buffer</td>
+</tr>
+
+<tr>
+<td class="left">u</td>
+<td class="left">gnus-group-unsubseribe-current-group</td>
+</tr>
+
+<tr>
+<td class="left">U</td>
+<td class="left">gnus-group-unsubscribe-group</td>
+</tr>
+
+<tr>
+<td class="left">c</td>
+<td class="left">gnus-group-catchup-current</td>
+</tr>
+
+<tr>
+<td class="left">C</td>
+<td class="left">gnus-group-catchup-current-all</td>
+</tr>
+
+<tr>
+<td class="left">A k</td>
+<td class="left">gnus-group-list-killed</td>
+</tr>
+
+<tr>
+<td class="left">I</td>
+<td class="left">gnus-group-list-groups</td>
+</tr>
+
+<tr>
+<td class="left">L</td>
+<td class="left">gnus-group-list-all-groups</td>
+</tr>
+
+<tr>
+<td class="left">g</td>
+<td class="left">gnus-group-get-new-news</td>
+</tr>
+
+<tr>
+<td class="left">R</td>
+<td class="left">gnus-group-restart</td>
+</tr>
+
+<tr>
+<td class="left">b</td>
+<td class="left">gnus-group-check-bogus-groups</td>
+</tr>
+
+<tr>
+<td class="left">a</td>
+<td class="left">gnus-group-post-news</td>
+</tr>
+
+<tr>
+<td class="left">C-x C-t</td>
+<td class="left">gnus-group-transpose-groups</td>
+</tr>
+
+<tr>
+<td class="left">s</td>
+<td class="left">gnus-group-save-newrc</td>
+</tr>
+
+<tr>
+<td class="left">z</td>
+<td class="left">gnus-group-suspend</td>
+</tr>
+
+<tr>
+<td class="left">q</td>
+<td class="left">gnus-group-exit</td>
+</tr>
+
+<tr>
+<td class="left">Q</td>
+<td class="left">gnus-group-quit</td>
+</tr>
+
+<tr>
+<td class="left">V</td>
+<td class="left">gnus-version</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-sec-6-5-1" class="outline-4">
+<h4 id="sec-6-5-1"><span class="section-number-4">6.5.1</span> summary</h4>
+<div class="outline-text-4" id="text-6-5-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">SPACE</td>
+<td class="left">gnus-summary-next-page</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">DEL</td>
+<td class="left">gnus-summary-prev-page</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">RETURN</td>
+<td class="left">gnus-summary-scroll-up</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">.</td>
+<td class="left">gnus-summary-first-unread-article</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&lt;</td>
+<td class="left">gnus-summary-beginning-of-article</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&gt;</td>
+<td class="left">gnus-summary-end-of-article</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">n</td>
+<td class="left">gnus-summary-next-unread-artcle</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">N</td>
+<td class="left">gnus-summary-next-article</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">p</td>
+<td class="left">gnus-summary-prev-unread-article</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">P</td>
+<td class="left">gnus-summary-prev-article</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">l</td>
+<td class="left">gnus-summary-goto-last-article</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">H f</td>
+<td class="left">gnus-summary-fetch-faq</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-t</td>
+<td class="left">gnus-summary-toggle-thread</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-k</td>
+<td class="left">gnus-summary-kill-thread</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-d</td>
+<td class="left">gnus-summary-down-thread</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-u</td>
+<td class="left">gnus-summary-up-thread</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-f</td>
+<td class="left">gnus-summary-next-thread</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-b</td>
+<td class="left">gnus-summary-prev-thread</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-h</td>
+<td class="left">gnus-summary-hide-thread</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-s</td>
+<td class="left">gnus-summary-showthread</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">q</td>
+<td class="left">gnus-summary-exit</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Q</td>
+<td class="left">gnus-summary-exit</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">c</td>
+<td class="left">gnus-summary-catchup-and-exit</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">u</td>
+<td class="left">gnus-summary-tick-article-forward</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">U</td>
+<td class="left">gnus-summary-tic-article-backward</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-o</td>
+<td class="left">gnus-summary-save-article-mail</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">o</td>
+<td class="left">gnus-summary-save-article</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">d</td>
+<td class="left">gnus-summary-mark-as-read-backward</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">D</td>
+<td class="left">gnus-summary-mark-as-read-backward</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">j</td>
+<td class="left">guns-summary-goto-subject</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC n</td>
+<td class="left">gnus-summary-next-unread-subject</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC p</td>
+<td class="left">gnus-summary-prev-unread-subject</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-n</td>
+<td class="left">gnus-summary-next-save-subject</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-p</td>
+<td class="left">gnus-summary-prev-save-subject</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">m</td>
+<td class="left">gnus-summary-mail-other-window</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f</td>
+<td class="left">gnus-summary-mail-forward</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">=</td>
+<td class="left">guns-summary-expand-window</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">g</td>
+<td class="left">gnus-summary-show-article</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">s</td>
+<td class="left">gnus-summary-isearch-article</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC s</td>
+<td class="left">gnus-summary-search-article-forward</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC r</td>
+<td class="left">gnus-summary-search-article-backward</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">t</td>
+<td class="left">gnus-summary-toggle-header</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">w</td>
+<td class="left">gnus-summary-stop-page-breaking</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">x</td>
+<td class="left">gnus-summary-remove-lines-marked-as-read</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-c TAB</td>
+<td class="left">gnus-info-find-node</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-r</td>
+<td class="left">gnus-summary-caesar-message</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-x C-s</td>
+<td class="left">gnus-summary-reselect-current-group</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC t</td>
+<td class="left">gnus-summary-toggle-mime</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC U</td>
+<td class="left">gnus-summary-clear-mark-backward</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ESC u</td>
+<td class="left">gnus-summary-clear-mark-forward</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-t</td>
+<td class="left">gnus-summary-toggle-truncation</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&amp;</td>
+<td class="left">gnus-summary-execute-command</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">gnus-summary-pipe-output</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">C-d</td>
+<td class="left">gnus-summary-rmail-digest</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-6-5-2" class="outline-4">
+<h4 id="sec-6-5-2"><span class="section-number-4">6.5.2</span> filter</h4>
+<div class="outline-text-4" id="text-6-5-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-k</td>
+<td class="left">gnus-summary-kill-same-subject</td>
+</tr>
+
+<tr>
+<td class="left">k</td>
+<td class="left">gnus-summary-kill-same-subject-and-select</td>
+</tr>
+
+<tr>
+<td class="left">ESC k</td>
+<td class="left">gnus-summary-edit-local-kill</td>
+</tr>
+
+<tr>
+<td class="left">ESC K</td>
+<td class="left">gnus-summary-edit-global-kill</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-k C-a</td>
+<td class="left">gnus-kill-file-kill-by-author</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-k C-s</td>
+<td class="left">gnus-kill-file-kill-by-subject</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-c</td>
+<td class="left">gnus-kill-file-exit</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-6-5-3" class="outline-4">
+<h4 id="sec-6-5-3"><span class="section-number-4">6.5.3</span> post article</h4>
+<div class="outline-text-4" id="text-6-5-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">a</td>
+<td class="left">gnus-summary-post-news</td>
+</tr>
+
+<tr>
+<td class="left">r</td>
+<td class="left">gnus-summary-reply</td>
+</tr>
+
+<tr>
+<td class="left">R</td>
+<td class="left">gnus-summary-reply-with-original</td>
+</tr>
+
+<tr>
+<td class="left">f</td>
+<td class="left">gnus-summary-followup</td>
+</tr>
+
+<tr>
+<td class="left">F</td>
+<td class="left">gnus-summary-followup-with-original</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f C-n</td>
+<td class="left">news-reply-newsgroups</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f C-f</td>
+<td class="left">news-reply-followup-to</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f C-k</td>
+<td class="left">news-reply-keywords</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f C-d</td>
+<td class="left">news-reply-distribution</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f C-a</td>
+<td class="left">news-reply-summary</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-y</td>
+<td class="left">news-reply-yank-original</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-q</td>
+<td class="left">mail-fill-yanked-message</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-r</td>
+<td class="left">gnus-summary-caesar-message</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-c</td>
+<td class="left">news-inesw</td>
+</tr>
+
+<tr>
+<td class="left">C</td>
+<td class="left">gnus-summary-cancel-article</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> net tools</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> telnet</h3>
+<div class="outline-text-3" id="text-7-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">tlenet</td>
+</tr>
+
+<tr>
+<td class="left">C-d</td>
+<td class="left">comint-delchar-or-maybe-eof</td>
+</tr>
+
+<tr>
+<td class="left">RETURN</td>
+<td class="left">telnet-send-input</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-c</td>
+<td class="left">telnet-interrupt-subjob</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-q</td>
+<td class="left">send-process-next-char</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-d</td>
+<td class="left">comint-send-eof</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-r</td>
+<td class="left">comint-show-output</td>
+</tr>
+
+<tr>
+<td class="left">ESC C-l</td>
+<td class="left">comint-show-output</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-e</td>
+<td class="left">comint-show-maximum-output</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-o</td>
+<td class="left">comint-kill-output</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-z</td>
+<td class="left">telnet-c-z</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-w</td>
+<td class="left">backward-kill-word</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-u</td>
+<td class="left">comint-kill-input</td>
+</tr>
+
+<tr>
+<td class="left">ESC n</td>
+<td class="left">comint-next-input</td>
+</tr>
+
+<tr>
+<td class="left">ESC P</td>
+<td class="left">comint-previous-input</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> w3</h3>
+<div class="outline-text-3" id="text-7-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">w3-follow-URL-at-point</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">w3</td>
+</tr>
+
+<tr>
+<td class="left">C-o</td>
+<td class="left">w3-fetch</td>
+</tr>
+
+<tr>
+<td class="left">SPACE</td>
+<td class="left">scroll-up</td>
+</tr>
+
+<tr>
+<td class="left">DEL</td>
+<td class="left">scroll-down</td>
+</tr>
+
+<tr>
+<td class="left">RETURN</td>
+<td class="left">w3-follow-link</td>
+</tr>
+
+<tr>
+<td class="left">&lt;</td>
+<td class="left">w3-start-of-document</td>
+</tr>
+
+<tr>
+<td class="left">&lt;</td>
+<td class="left">w3-end-of-document</td>
+</tr>
+
+<tr>
+<td class="left">TAB/n</td>
+<td class="left">w3-forward-link</td>
+</tr>
+
+<tr>
+<td class="left">b</td>
+<td class="left">w3-back-link</td>
+</tr>
+
+<tr>
+<td class="left">m</td>
+<td class="left">w3-complete-link</td>
+</tr>
+
+<tr>
+<td class="left">I</td>
+<td class="left">w3-goto-last-buffer</td>
+</tr>
+
+<tr>
+<td class="left">B</td>
+<td class="left">w3-backward-in-history</td>
+</tr>
+
+<tr>
+<td class="left">F</td>
+<td class="left">w3-forward-in-history</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-b</td>
+<td class="left">w3-show-history-list</td>
+</tr>
+
+<tr>
+<td class="left">a</td>
+<td class="left">w3-hotlist-add-document</td>
+</tr>
+
+<tr>
+<td class="left">A</td>
+<td class="left">w3-hotlist-add-document-at-point</td>
+</tr>
+
+<tr>
+<td class="left">d</td>
+<td class="left">w3-hotlist-delete</td>
+</tr>
+
+<tr>
+<td class="left">H</td>
+<td class="left">w3-show-hotlist</td>
+</tr>
+
+<tr>
+<td class="left">b</td>
+<td class="left">w3-use-hotlist</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">w3-rename-hotlist-entry</td>
+</tr>
+
+<tr>
+<td class="left">ESC RETURN</td>
+<td class="left">w3-follow-inlined-image</td>
+</tr>
+
+<tr>
+<td class="left">v</td>
+<td class="left">url-view-url</td>
+</tr>
+
+<tr>
+<td class="left">V</td>
+<td class="left">w3-view-this-url</td>
+</tr>
+
+<tr>
+<td class="left">k/C-k</td>
+<td class="left">w3-save-url</td>
+</tr>
+
+<tr>
+<td class="left">K</td>
+<td class="left">w3-save-this-url</td>
+</tr>
+
+<tr>
+<td class="left">s</td>
+<td class="left">w3-source-document</td>
+</tr>
+
+<tr>
+<td class="left">S</td>
+<td class="left">w3-source-document-point</td>
+</tr>
+
+<tr>
+<td class="left">o</td>
+<td class="left">w3-optn-local</td>
+</tr>
+
+<tr>
+<td class="left">U</td>
+<td class="left">w3-use-lines</td>
+</tr>
+
+<tr>
+<td class="left">?</td>
+<td class="left">w3-help</td>
+</tr>
+
+<tr>
+<td class="left">Q/u</td>
+<td class="left">w3-leave-buffer</td>
+</tr>
+
+<tr>
+<td class="left">q</td>
+<td class="left">w3-quit</td>
+</tr>
+
+<tr>
+<td class="left">g/r</td>
+<td class="left">w3-reload-document</td>
+</tr>
+
+<tr>
+<td class="left">l</td>
+<td class="left">w3-goto-last-buffer</td>
+</tr>
+
+<tr>
+<td class="left">P</td>
+<td class="left">w3-print-url-under-point</td>
+</tr>
+
+<tr>
+<td class="left">p</td>
+<td class="left">w3-submit-bug</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-v</td>
+<td class="left">w3-version</td>
+</tr>
+
+<tr>
+<td class="left">ESC s</td>
+<td class="left">w3-search</td>
+</tr>
+
+<tr>
+<td class="left">ESC m</td>
+<td class="left">w3-mail-current-document</td>
+</tr>
+
+<tr>
+<td class="left">ESC M</td>
+<td class="left">w3-mail-document-under-point</td>
+</tr>
+
+<tr>
+<td class="left">ESC TAB</td>
+<td class="left">w3-insert-this-url</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">w3-import-netscape-bookmarks</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-11-29 Tue 23:54</p>
+<p class="date">Created: 2016-12-03 Sat 17:52</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
