@@ -29,7 +29,7 @@ class SiteMap(object):
         with open(self.template_html) as f:
             html_text = f.read()
             site_map_html = links_re.sub(links_html, html_text)
-            title_re2.sub(self.title, links_html)
+            site_map_html = title_re2.sub(self.title, site_map_html)
             with open(self.site_map_path, 'w') as site_map_file:
                 site_map_file.write(site_map_html)
                 print('site create ok...')
@@ -67,6 +67,11 @@ class SiteMap(object):
         for filename in files:
             html_path = filename.split('/')
             f_len = len(html_path) - 1
+            if f_len == 1:
+                if '/' not in path_dict:
+                    path_dict['/'] = []
+                path_dict['/'].append(filename)
+                continue
             if html_path[1] not in path_dict:
                 path_dict[html_path[1]] = []
             if f_len == 2:
