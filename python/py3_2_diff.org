@@ -1,0 +1,14 @@
+* python2 and python3 lib different points
+** Summary
+記錄一些遇到的不同的包的位置。
+其實說白了python3所做的事情就是把這些包分了一下類，把原來的零散的包，歸納到了一起。
+** urllib
+*** python2
+#+begin_src python
+urllib.
+urllib2.
+#+end_src
+*** python3
+#+begin_src python
+urllib.
+#+end_src
