@@ -1,9 +1,17 @@
 # coding: utf8
 # auto: flytrap
+import sys
 import os
 import re
 
 from common import get_files
+
+if sys.version > '3':
+    PY3 = True
+    basestring = str
+else:
+    PY3 = False
+
 
 title_re1 = re.compile('<h1\s+class="title">(.*?)</h1>')
 title_re2 = re.compile('{{ title }}')
@@ -12,6 +20,7 @@ Exclude_html = ['index.html', 'template.html']
 
 
 class SiteMap(object):
+
     def __init__(self, index_dir, template_html):
         self.index_dir = index_dir
         self.template_html = template_html
@@ -36,7 +45,8 @@ class SiteMap(object):
 
     def get_html_path(self):
         file_list = get_files(self.index_dir, '.html')
-        file_names = map(lambda filename: filename.split(self.index_dir)[1], file_list)
+        file_names = map(lambda filename: filename.split(
+            self.index_dir)[1], file_list)
         return filter(lambda filename: filename.split('/')[-1] not in Exclude_html, file_names)
 
     def create_link_block(self, files):
@@ -47,7 +57,7 @@ class SiteMap(object):
     def create_html(self, path_dict):
         html_text = ''
         if isinstance(path_dict, dict):
-            for cat, blog_list in path_dict.iteritems():
+            for cat, blog_list in path_dict.items():
                 html_text += '<ul>'
                 html_text += '<li>%s' % cat
                 html_text += self.create_html(blog_list)
@@ -77,8 +87,9 @@ class SiteMap(object):
             if f_len == 2:
                 path_dict[html_path[1]].append(filename)
                 continue
-            for i in xrange(f_len):
-                path_dict[html_path[1]].append((self._links_dict(html_path[2:], filename)))
+            for i in range(f_len):
+                path_dict[html_path[1]].append(
+                    (self._links_dict(html_path[2:], filename)))
                 break
         return path_dict
 
