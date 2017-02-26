@@ -1,0 +1,47 @@
+* laptop-mode
+** install 
+#+begin_src shell
+yaourt -Ss laptop-mode
+yaourt -Syu laptop-mode-tools
+#+end_src
+** startup laptop-mode
+#+begin_src shell
+systemctl start laptop-mode
+systemctl enable laptop-mode
+#+end_src
+
+** setting
+*** set brightness
+editor /etc/laptop-mode/conf.d/lcd-brightness.conf
+#+begin_src bash
+CONTROL_BRIGHTNESS=1
+
+BATT_BRIGHTNESS_COMMAND="echo 100"
+LM_AC_BRIGHTNESS_COMMAND="echo 100"
+NOLM_AC_BRIGHTNESS_COMMAND="echo 100"
+BRIGHTNESS_OUTPUT="/sys/class/backlight/intel_backlight/brightness"
+#+end_src
+*** set network
+editor /etc/laptop-mode/conf.d/ethernet.conf
+#+begin_src bash
+ETHERNET_DEVICES="enp0s25"  # set network device
+#+end_src
+
+#+begin_src html
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="11" data-title="laptop-mode" data-url="http://blog.flytrap.top/linux/arch/laptop-mode.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"flytrap"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+#+end_src
