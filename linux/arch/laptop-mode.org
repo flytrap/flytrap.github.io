@@ -27,7 +27,7 @@ editor /etc/laptop-mode/conf.d/ethernet.conf
 ETHERNET_DEVICES="enp0s25"  # set network device
 #+end_src
 
-#+begin_src html
+#+begin_html
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="11" data-title="laptop-mode" data-url="http://blog.flytrap.top/linux/arch/laptop-mode.html"></div>
 <!-- 多说评论框 end -->
