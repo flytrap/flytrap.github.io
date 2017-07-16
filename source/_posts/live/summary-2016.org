@@ -1,0 +1,61 @@
+#+TITLE:flytrap 2016
+#+DATE: <2017-02-04 Sat 17:49>
+#+TAGS: coder, orgmode, read, book, 生活
+#+LAYOUT: post
+#+CATEGORIES: live
+
+* 虚度2016
+** 读了几本不错的书
+*** 技术类:
+- 代码整洁之道
+- python源码剖析
+- http权威指南
+- sqlite权威指南
+- python渗透测试
+- Linux 内核技术手册
+- 
+
+*** 人物/历史:
+- 卑鄙圣人曹操
+- 人类简史
+- 孙子兵法
+- 掘金黑客
+ 
+** 新的语言
+- command lisp （这个值得研究）
+- elisp (为了emacs嘛，这个是必须的, 算是离不开了)
+- java (spark 工作需要，虽然写了没多久，算是入门吧)
+
+#+BEGIN_HTML
+<!--more-->
+#+END_HTML
+
+** 源码
+*** python
+- python2 c源码，大致过了一遍，收获颇多.
+- sqlmap 主要精力在整体框架上,略有收获
+- emacs linux kernel 环境
+
+*** elsip
+- elpy 由一个函数跳转问题引发的，不得不通读源码,大致了解了作者的思路，挺不错的python插件.
+- 一些python相关的插件和大牛的配置. 
+
+** 文档
+- python3 (tutorial，未完待续)
+- elpy
+- ecb
+- arch
+- i3-wm
+- emacs(part)
+- nethunter
+
+** 收获
+- python 并发处理(多进程,比较深刻,顺便看了不少python源代码)
+- emacs(代码跳转，补齐，pep8)
+- spark map,reduce思维
+- 代码整洁，工程管理
+- docker 各种环境搭建
+- arch i3 深入理解linux工作细节
+- blog 迁移至github page
+- 日常linux
+- one plus 2黑手nethunter(cm14)

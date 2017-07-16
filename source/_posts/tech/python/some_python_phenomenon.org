@@ -1,0 +1,109 @@
+#+TITLE: 一些python现象理解
+#+DATE: <2016-11-27 Sun 15:36>
+#+TAGS: python
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* loop
+** code
+#+begin_src python
+>items():pass
+>
+>y
+>{'a': 1, 'b': 2}
+#+end_src
+** analysis
+#+begin_src python
+>x.iterms()  # (('a', 1), ('b', 2))
+>k = 'a'
+>y['a'] = 1
+>pass
+>k = 'b'
+>y['b'] = 2
+#+end_src
+
+#+BEGIN_HTML
+<!--more-->
+#+END_HTML
+
+* bool
+** code
+#+begin_src python
+>"Hello" + True
+>TypeError: Can't convert 'bool' object to str implicitly
+>"Hello" * True
+>'Hello'
+#+end_src
+** analysis
+#+begin_src python
+>int(True)  # True 真實值爲1，參見python C源碼定義, True就是整型的特殊值.
+>1
+#+end_src
+
+* hash
+** code
+#+begin_src python
+>def greet(): return
+>d = {greet: 1}
+>d
+>{<function __main__.greet>: 1}
+#+end_src
+** analysis
+#+begin_src python
+>hasattr(greet, '__hash__')  # True
+>greet.__hash__()  # -9223363285414220592
+#+end_src
+function 是可哈希的，在其生成的一瞬間，就已經固定不變，包括其中參數的id
+
+* int
+#+begin_src python
+>x = 1
+>y = 1
+>x is y
+>True
+>x = 999
+>y = 999
+>x is y
+>False
+#+end_src
+** analysis
+詭異？
+其實python在初始化的時候就把一部分整型對象生成好了(這個叫小整型對象池)，
+但是不可能所有的都生成，官方會測試出一個最佳值來在源碼中寫死;
+大於其值，則重新生成，小於等於則直接返回給你，所以，你懂得.
+999明顯大於，而1,明顯是直接返回的，只是內部引用增加了而已
+正常編譯應該是[-5,256].
+測試代碼:
+#+begin_src python
+# 1)
+>x = -5
+>x is int(str(x))  # False
+# 2)
+>test_int = lambda x: x is int(str(x))
+>test_int(256)  # True
+# [-5, 256] return True
+# <=-6, >=257  return False
+#+end_src
+
+* tuple
+** code
+#+begin_src python
+>a = [1, 0]
+>a[0], a[a[0]] = a[a[0]], a[0]
+>a
+>[1, 0]
+>a[a[0]], a[0] = a[0], a[a[0]]
+>a
+>[0, 1]
+#+end_src
+** analysis
+不好理解？其實就是表達式看起來復雜了點兒，道理很簡單,看代碼
+#+begin_src python
+>a[0], a[a[0]] = a[a[0]], a[0]
+>>a[0] = a[a[0]]; a[a[0]] = a[0]
+# 其實，這個時候最後一個a[0] 可以確定是1了，而第二個a[a[0]], 是a[0]賦值過一次之後才得到a[0]
+>>>a[0] = a[1]  # a[0]=0;  a[0] = 1  # a-->[1, 0]
+# 這個好理解
+>a[a[0]], a[0] = a[0], a[a[0]]
+>>a[1] = 1; a[0] = a[1]  # a-->[0, 1]
+#+end_src

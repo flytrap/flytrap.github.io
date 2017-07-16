@@ -1,0 +1,41 @@
+#+TITLE: flask环境
+#+DATE: <2016-11-29 Tue 00:27>
+#+TAGS: python, flask
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* flask env install
+** install virtualenv
+#+begin_src bash
+pip install virtualenv
+#+end_src
+** install flask
+#+begin_src bash
+virtualenv --no-download flask_env  # create virtualenv no download
+source flask_env/bin/activate
+pip install flask  # bask pkg
+#+end_src
+** install flask ext
+#+begin_src bash
+pip install flask-Bootstrap  # bootstrap forward
+pip install flask-Script  # auto
+pip install flask-Moment  # locate time
+pip install flask-WTF  # form auth
+pip install Flask-SQLAlchemy  # database manager
+#+end_src
+
+#+BEGIN_HTML
+<!--more-->
+#+END_HTML
+
+裝不上？
+有代理沒有？
+有：請移步
+  [[http://flytrap.github.io/2016/11/29/tech/linux/proxychains/][proxychains]]
+  查看如何在命令行中使用代理。
+沒有：
+  安裝命令後面追加
+#+begin_src bash
+-i http://pypi.douban.com/simple  # 豆瓣源
+#+end_src
+也是一個不錯的選擇哦。

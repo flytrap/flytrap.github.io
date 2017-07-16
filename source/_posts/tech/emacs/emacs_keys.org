@@ -1,0 +1,493 @@
+#+TITLE: emacs快捷键
+#+DATE: <2016-12-10>
+#+TAGS: emacs
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* base
+** normal
+| C-g     | keyboard-quit                |              |
+| C-x C-f | find-file                    |              |
+| C-x C-v | find-alternate-file          |              |
+| C-x i   | insert-file                  |              |
+| C-x C-s | save-buffer                  |              |
+| C-x C-w | write-file                   | # other file |
+| C-x C-c | save-buffers-kill-emacs      |              |
+| C-h     | help-command                 |              |
+| C-h f   | describe-function            |              |
+| C-h k   | describe-key                 |              |
+| C-h t   | help-with-tutorial           |              |
+| C-h i   | info-goto-emacs-command-mode |              |
+
+* file editor
+** normal
+| C-f   | forward-char        |                             |
+| C-b   | backward-char       |                             |
+| C-p   | previous-line       |                             |
+| C-n   | next-line           |                             |
+| ESC e | forward-sentence    |                             |
+| ESC a | backward-sentend    |                             |
+| ESC } | forward-paragraph   |                             |
+| ESC { | backward-paragraph  |                             |
+| C-v   | scroll-up           |                             |
+| Esc v | scroll-down         |                             |
+| C-x ] | forward-page        | # curor                     |
+| C-x [ | backward-page       | # curor                     |
+| ESC < | beginning-of-buffer | # file-header               |
+| ESC > | end-of-buffer       | # file-end                  |
+|       | goto-line           | # point lines               |
+|       | goto-char           | # point char                |
+| C-l   | recenter            | # flush pic                 |
+| ESC n | digit-argument      | # repeat command            |
+| C-u n | universal-argument  | # repeat command(defualt 4) |
+
+#+BEGIN_HTML
+<!--more-->
+#+END_HTML
+
+** delete
+| C-d              | delete-char             |                   |
+| DEL              | delete-backward-char    |                   |
+| ESC d            | kill-word               |                   |
+| ESC DEL          | backward-kill-word      |                   |
+| C-k              | kill-line               | # del to end line |
+| ESC k            | kill-sentence           |                   |
+| C-x DEL          | backward-kill-sentence  | # sentence        |
+| C-y/SHIFT-INSERT | yank                    | # resore          |
+| C-w/SHIFT-DELETE | kill-region             | # file->cut       |
+|                  | kill-paragraph          |                   |
+|                  | backward-kill-paragraph |                   |
+** block
+| C-@/C-SPACE    | set-mark-command        |
+| C-x C-x        | exchange-point-and-mark |
+| ESC w/C-INSERT | kill-ring-save          |
+| ESC h          | mark-paragraph          |
+| C-x C-p        | mark-page               |
+| C-x h          | mark-whole-buffer       |
+| ESC y          | yank-pop                | 
+** editor  
+| C-t     | transpose-chars      | # change char |
+| ESC t   | transpose-words      | # change word |
+| C-x C-t | transpose-lines      | # change line |
+|         | transpose-sentences  |             |
+|         | transpose-paragraphs |             | 
+  
+| ESC c       | cpitalize-word                     |
+| ESC n       | upcase-word                        |
+| ESC - ECS c | negitive-argument;captitalize-word |
+| ESC - ESC u | negitive-argument;upcase-word      |
+| ESC - ESC l | negtive-argument;downcase-word     | 
+
+** other
+| INSERT  | overwrite-mode  |                 |
+|         | rever-buffer    | # reload file   |
+| C-x n   | advertised-undo | # revoked       |
+| C-_/C-/ | undo            |                 |
+|         | revert-buffer   | # resotre to disk |
+|         | recover-file    | # show auto save |
+* find and replace
+** isearch
+| C-s        | isearch-forward  |                     |
+| C-r        | isearch-backward |                     |
+| RETURN     |                  |                     |
+| C-g        | keyboard-quit    |                     |
+| DEL        |                  |                     |
+| C-s C-w    |                  | select word isearch |
+| C-s ESC y  |                  | delete word isearch |
+| C-s C-s    |                  | repeat              | 
+** simple search
+| C-s RETURN |   | Search->Search           |
+| C-s        |   | next                     |
+| C-r RETURN |   | Search->Search Backwards |
+| C-r        |   | back next                |
+** replace
+| ESC %    |   | Search-Query Replace                |
+| SPACE/y  |   | new string relace old               |
+| DEL/n    |   | not replace                         |
+| .        |   | replace and exit                    |
+| ,        |   | replace and stop (y)continue        |
+| \!       |   | next all replace                    |
+| \^       |   | return up replace location          |
+| RETURN/q |   | quit query, replace option          |
+| C-r      |   | Recursion editor                    |
+| ESC C-c  |   | quit Recursion status, continue     |
+| C-]      |   | quit Recursion,query,replace status |
+ESC x set-variable RETURN case-fold-search RETURN nil RETURN  # no case
+** regexp
+| ESC C-s RETURN | re-search-forward       |
+| ESC C-r RETURN | re-search-backward      |
+| ESC C-s        | isearch-forward-regexp  |
+| ESC C-r        | isearch-backward-regexp |
+|                | query-relace-regexp     |
+|                | replace-regexp          | 
+** Ispell
+| ESC $     | ispell-word          | check cur location word |
+|           | ispell-reglon        | check text work         |
+|           | ispell-buffer        | check buffer work       |
+|           | ispell-message       | check email text        |
+| C-u ESC $ | ispell-continue      | restart run             |
+|           | ispell-kill-ispell   | kill ispell             |
+| ESC TAB   | ispell-complete-word | text auto completion    | 
+** abbrev
+|           | abbrev-mode               | on        |
+| C-x a -   | inverse-add-global-abbrev | global    |
+| C-x a i g |                           | global    |
+| C-x a i l | inverse-add-mode-adrev    | local     |
+|           | unexpund-abbrev           | undo      |
+|           | write-abbrev-file         | save file |
+|           | edit-abbrevs              |           |
+|           | list-abbrevs              | view      |
+|           | kill-all-abbrevs          | off       |
+* buffer and window
+** window
+| C-x 2 | split-window-vertically   |
+| C-x 3 | split-window-borttontally |
+| C-x > | scroll-right              |
+| C-x < | scroll-left               |
+
+** buffer
+| C-x b   | switch-to-buffer  |
+| C-x C-b | list-buffer       |
+| C-x k   | kill-buffer       |
+|         | kill-some-buffer  |
+|         | rename-buffer     |
+| C-x s   | save-some-buffers | 
+  
+| C-x n | next-buffer                         |
+| SPACE | next-buffer                         |
+| C-p   | per-buffer                          |
+| d     | add del tag 'x' run                 |
+| k     | add del tag 'x' run                 |
+| s     | add save tag                        |
+| n     | add opt tag                         |
+| x     | add run tag                         |
+| DEL   | del buffer tag                      |
+| ~     | buffer add unchange tag             |
+| %     | readonly                            |
+| 1     | max                                 |
+| 2     | self and next buffer to same window |
+| f     | change buffer window                |
+| o     | move to other window                |
+| m     | buffer add visble tag               |
+| v     | show 'm' command tag                |
+| q     | exit buffer list                    | 
+** bookmark
+| C-x r b | bookmark-jump      |
+|         | bookmark-delete    |
+| C-x r l | bookmark-menu-list |
+| d       | bookmark-delete    |
+| r       | bookmark-rename    |
+| s       | bookmark-save      |
+| f       | show tag           |
+| m       | add show tag       |
+| v       | add visble tag     |
+| t       | change tab status  |
+| w       | show file location |
+| x       | del d tag          |
+| u       | del per tag        |
+| DEL     | cancel tag opt     |
+| q       | exit bookmark list |
+|         | bookmark-insert    |
+|         | bookmark-write     |
+|         | bookmark-load      |
+** window block
+| C-x 5 o | other-frame                    |
+| C-x 5 0 | delete-frame                   |
+| C-x 5 2 | makr-frame                     |
+| C-x 5 r | find-file-read-only-oher-frame |
+| C-x 5 f | find-file-other-frame          |
+| C-x 5 b | swith-to-buffer-other-frame    | 
+
+* emacs work
+** shell
+| C-c C-c | comint-interrupt-subjob    |
+| C-d     | comint-delchr-or-maybe-eof |
+| C-c C-d | comint-send-eof            |
+| C-c C-u | comint-kill-input          |
+| C-c C-z | comint-stop-subjob         |
+| ESC p   | comint-previous-input      |
+| ESC n   | comint-send-input          |
+| RETURN  | comint-send-input          |
+| TAB     | comint-dynamic-complete    |
+| C-c C-o | comint-kill-output         |
+| C-c C-r | comint-show-output         |
+| C-c C-e | somint-show-maximum-output |
+| C-c C-p | comint-previous-prompt     |
+| C-c C-n | comint-next-prompt         |
+** Dired
+| C-x d   | dired                        |
+| C       | Dired-do-copy                |
+| d       | dired-flag-file-deletion     |
+| D       | dired-to-delete              |
+| e       | dired-find-file              |
+| f       | dired-advertisd-find-file    |
+| g       | rever-buffer                 |
+| G       | dired-do-chgrp               |
+| k       | dired-do-kill-lines          |
+| m       | dired-mark                   |
+| n       | dired-next-line              |
+| o       | dired-find-file-other-window |
+| C-o     | dired-display-file           |
+| P       | dired-do-print               |
+| q       | dired-quit                   |
+| Q       | dired-do-query-replace       |
+| R       | dired-do-rename              |
+| u       | dired-unmark                 |
+| v       | dired-view-file              |
+| x       | dired-do-flagged-delete      |
+| Z       | dired-do-compress            |
+| ESC DEL | dired-unmark-all-files       |
+| ~       | dired-flag-backup-files      |
+| *       | dired-mark-executables       |
+| #       | dired-flag-auto-save-files   |
+| `       | dired-clean-directory        |
+| /       | dired-mark-directories       |
+| =       | dired-diff                   |
+| ESC =   | dired-bakup-diff             |
+| !       | dired-do-shell-command       |
+| ESC )   | dired-next-mark-file         |
+| ESC (   | dired-prev-marked-file       |
+| %d      | dired-flag-files-regexp      |
+| %m      | dired-mark-files-regexp      |
+| +       | dired-creat-directory        |
+| >       | dired-next-dirline           |
+| <       | dired-prev-dirline           |
+| S       | dired-sort-toggle-or-edit    | 
+** print
+| ESC x print-buffer               |
+| ESC x print-region               |
+| ESC x lpr-buffer                 |
+| ESC x lpr-region                 |
+| ESC x dired-do-print             |
+| ESC x ps-print-buffer-with-faces | 
+** time
+| display-time |
+| calendar     |
+** calendar
+| .     | calendar-goto-today         |
+| C-f   | calendar-forward-day        |
+| C-b   | calendar-backward-day       |
+| C-n   | calendar-forward-week       |
+| C-p   | calendar-backward-week      |
+| ESC } | calendar-forward-month      |
+| ESC { | calendar-backward-month     |
+| C-x ] | calendar-forward-year       |
+| C-x [ | calendar-backward-year      |
+| C-a   | calendar-gedinning-of-week  |
+| C-e   | calendar-end-of-week        |
+| ESC a | calendar-beginning-of-month |
+| ESC e | calendar-end-of-month       |
+| ESC < | calendar-beginning-of-year  |
+| ESC > | calendar-beginning-of-year  |
+| C-u n | nuiversal-argument          |
+| g d   | calendar-goto-date          |
+| o     | calendar-other-month        |
+| C-x < | scroll-calendar-left        |
+| C-x > | scroll-calendar-right       |
+| SPACE | scroll-other-window         |
+* mail
+** mail send
+| C-x m       | mail               |
+| C-x 4 m     | mail-other-window  |
+| C-x 5 m     | mail-other-frame   |
+| C-c C-f C-t | mail-to            |
+| C-c C-f C-c | mail-cc            |
+| C-c C-f C-b | mail-bcc           |
+| C-c C-f C-f | mail-fcc           |
+| C-c C-f C-r | mail-reply-to      |
+| C-c C-f C-s | mail-subject       |
+| C-c C-t     | mail-text          |
+| C-c C-w     | mail-signature     |
+| C-c C-c     | mail-send-and-exit |
+| C-c C-s     | mail-send          |
+|             | defind-mail-alias  |
+|             | mail-dont-send     | 
+** mail read  
+| SPACE | scroll-up                        |
+| DEL   | scroll-down                      |
+| .     | rmail-beginning-of-message       |
+| n     | rmail-next-undeleted-message     |
+| p     | rmail-previour-undeleted-message |
+| <     | rmail-first-message              |
+| >     | rmail-last-message               |
+| j     | rmail-show-message               | 
+** del mail
+| d     | rmail-delete-forward            |
+| C-d   | rmail-delete-backward           |
+| ESC n | rmail-next-message              |
+| ESC p | rmail-previous-message          |
+| u     | rmail-undelete-previour-message |
+| x     | rmail-expunge                   |
+| s     | rmail-expunge-and-save          |
+** save mail
+| o filename RETURN   | rmail-output-to-rmail-file |
+| C-o filename RETURN | rmail-output               |
+| i filename RETURN   | rmail-input                |
+|                     | unrmail                    | 
+** gnus
+|         | gnus                                 |
+| SPACE   | gnus-group-read-group                |
+| j       | gnus-group-jump-to-group             |
+| n       | gnus-group-next-unread-group         |
+| p       | gnus-group-prev-unread-group         |
+| N       | gnus-group-next-group                |
+| P       | gnus-group-prev-group                |
+| <       | beginning-of-buffer                  |
+| >       | end-of-buffer                        |
+| u       | gnus-group-unsubseribe-current-group |
+| U       | gnus-group-unsubscribe-group         |
+| c       | gnus-group-catchup-current           |
+| C       | gnus-group-catchup-current-all       |
+| A k     | gnus-group-list-killed               |
+| I       | gnus-group-list-groups               |
+| L       | gnus-group-list-all-groups           |
+| g       | gnus-group-get-new-news              |
+| R       | gnus-group-restart                   |
+| b       | gnus-group-check-bogus-groups        |
+| a       | gnus-group-post-news                 |
+| C-x C-t | gnus-group-transpose-groups          |
+| s       | gnus-group-save-newrc                |
+| z       | gnus-group-suspend                   |
+| q       | gnus-group-exit                      |
+| Q       | gnus-group-quit                      |
+| V       | gnus-version                         |
+*** summary
+| SPACE   | gnus-summary-next-page                   |   |   |   |   |
+| DEL     | gnus-summary-prev-page                   |   |   |   |   |
+| RETURN  | gnus-summary-scroll-up                   |   |   |   |   |
+| .       | gnus-summary-first-unread-article        |   |   |   |   |
+| <       | gnus-summary-beginning-of-article        |   |   |   |   |
+| >       | gnus-summary-end-of-article              |   |   |   |   |
+| n       | gnus-summary-next-unread-artcle          |   |   |   |   |
+| N       | gnus-summary-next-article                |   |   |   |   |
+| p       | gnus-summary-prev-unread-article         |   |   |   |   |
+| P       | gnus-summary-prev-article                |   |   |   |   |
+| l       | gnus-summary-goto-last-article           |   |   |   |   |
+| H f     | gnus-summary-fetch-faq                   |   |   |   |   |
+| ESC C-t | gnus-summary-toggle-thread               |   |   |   |   |
+| ESC C-k | gnus-summary-kill-thread                 |   |   |   |   |
+| ESC C-d | gnus-summary-down-thread                 |   |   |   |   |
+| ESC C-u | gnus-summary-up-thread                   |   |   |   |   |
+| ESC C-f | gnus-summary-next-thread                 |   |   |   |   |
+| ESC C-b | gnus-summary-prev-thread                 |   |   |   |   |
+| ESC C-h | gnus-summary-hide-thread                 |   |   |   |   |
+| ESC C-s | gnus-summary-showthread                  |   |   |   |   |
+| q       | gnus-summary-exit                        |   |   |   |   |
+| Q       | gnus-summary-exit                        |   |   |   |   |
+| c       | gnus-summary-catchup-and-exit            |   |   |   |   |
+| u       | gnus-summary-tick-article-forward        |   |   |   |   |
+| U       | gnus-summary-tic-article-backward        |   |   |   |   |
+| C-o     | gnus-summary-save-article-mail           |   |   |   |   |
+| o       | gnus-summary-save-article                |   |   |   |   |
+| d       | gnus-summary-mark-as-read-backward       |   |   |   |   |
+| D       | gnus-summary-mark-as-read-backward       |   |   |   |   |
+| j       | guns-summary-goto-subject                |   |   |   |   |
+| ESC n   | gnus-summary-next-unread-subject         |   |   |   |   |
+| ESC p   | gnus-summary-prev-unread-subject         |   |   |   |   |
+| ESC C-n | gnus-summary-next-save-subject           |   |   |   |   |
+| ESC C-p | gnus-summary-prev-save-subject           |   |   |   |   |
+| m       | gnus-summary-mail-other-window           |   |   |   |   |
+| C-c C-f | gnus-summary-mail-forward                |   |   |   |   |
+| =       | guns-summary-expand-window               |   |   |   |   |
+| g       | gnus-summary-show-article                |   |   |   |   |
+| s       | gnus-summary-isearch-article             |   |   |   |   |
+| ESC s   | gnus-summary-search-article-forward      |   |   |   |   |
+| ESC r   | gnus-summary-search-article-backward     |   |   |   |   |
+| t       | gnus-summary-toggle-header               |   |   |   |   |
+| w       | gnus-summary-stop-page-breaking          |   |   |   |   |
+| x       | gnus-summary-remove-lines-marked-as-read |   |   |   |   |
+| C-c TAB | gnus-info-find-node                      |   |   |   |   |
+| C-c C-r | gnus-summary-caesar-message              |   |   |   |   |
+| C-x C-s | gnus-summary-reselect-current-group      |   |   |   |   |
+| ESC t   | gnus-summary-toggle-mime                 |   |   |   |   |
+| ESC U   | gnus-summary-clear-mark-backward         |   |   |   |   |
+| ESC u   | gnus-summary-clear-mark-forward          |   |   |   |   |
+| C-t     | gnus-summary-toggle-truncation           |   |   |   |   |
+| &       | gnus-summary-execute-command             |   |   |   |   |
+|         | gnus-summary-pipe-output                 |   |   |   |   |
+| C-d     | gnus-summary-rmail-digest                |   |   |   |   | 
+*** filter
+| C-k         | gnus-summary-kill-same-subject            |
+| k           | gnus-summary-kill-same-subject-and-select |
+| ESC k       | gnus-summary-edit-local-kill              |
+| ESC K       | gnus-summary-edit-global-kill             |
+| C-c C-k C-a | gnus-kill-file-kill-by-author             |
+| C-c C-k C-s | gnus-kill-file-kill-by-subject            |
+| C-c C-c     | gnus-kill-file-exit                       |
+*** post article
+| a           | gnus-summary-post-news              |
+| r           | gnus-summary-reply                  |
+| R           | gnus-summary-reply-with-original    |
+| f           | gnus-summary-followup               |
+| F           | gnus-summary-followup-with-original |
+| C-c C-f C-n | news-reply-newsgroups               |
+| C-c C-f C-f | news-reply-followup-to              |
+| C-c C-f C-k | news-reply-keywords                 |
+| C-c C-f C-d | news-reply-distribution             |
+| C-c C-f C-a | news-reply-summary                  |
+| C-c C-y     | news-reply-yank-original            |
+| C-c C-q     | mail-fill-yanked-message            |
+| C-c C-r     | gnus-summary-caesar-message         |
+| C-c C-c     | news-inesw                          |
+| C           | gnus-summary-cancel-article         | 
+* net tools
+** telnet
+|         | tlenet                      |
+| C-d     | comint-delchar-or-maybe-eof |
+| RETURN  | telnet-send-input           |
+| C-c C-c | telnet-interrupt-subjob     |
+| C-c C-q | send-process-next-char      |
+| C-c C-d | comint-send-eof             |
+| C-c C-r | comint-show-output          |
+| ESC C-l | comint-show-output          |
+| C-c C-e | comint-show-maximum-output  |
+| C-c C-o | comint-kill-output          |
+| C-c C-z | telnet-c-z                  |
+| C-c C-w | backward-kill-word          |
+| C-c C-u | comint-kill-input           |
+| ESC n   | comint-next-input           |
+| ESC P   | comint-previous-input       | 
+** w3
+|            | w3-follow-URL-at-point           |
+|            | w3                               |
+| C-o        | w3-fetch                         |
+| SPACE      | scroll-up                        |
+| DEL        | scroll-down                      |
+| RETURN     | w3-follow-link                   |
+| <          | w3-start-of-document             |
+| <          | w3-end-of-document               |
+| TAB/n      | w3-forward-link                  |
+| b          | w3-back-link                     |
+| m          | w3-complete-link                 |
+| I          | w3-goto-last-buffer              |
+| B          | w3-backward-in-history           |
+| F          | w3-forward-in-history            |
+| C-c C-b    | w3-show-history-list             |
+| a          | w3-hotlist-add-document          |
+| A          | w3-hotlist-add-document-at-point |
+| d          | w3-hotlist-delete                |
+| H          | w3-show-hotlist                  |
+| b          | w3-use-hotlist                   |
+|            | w3-rename-hotlist-entry          |
+| ESC RETURN | w3-follow-inlined-image          |
+| v          | url-view-url                     |
+| V          | w3-view-this-url                 |
+| k/C-k      | w3-save-url                      |
+| K          | w3-save-this-url                 |
+| s          | w3-source-document               |
+| S          | w3-source-document-point         |
+| o          | w3-optn-local                    |
+| U          | w3-use-lines                     |
+| ?          | w3-help                          |
+| Q/u        | w3-leave-buffer                  |
+| q          | w3-quit                          |
+| g/r        | w3-reload-document               |
+| l          | w3-goto-last-buffer              |
+| P          | w3-print-url-under-point         |
+| p          | w3-submit-bug                    |
+| C-c C-v    | w3-version                       |
+| ESC s      | w3-search                        |
+| ESC m      | w3-mail-current-document         |
+| ESC M      | w3-mail-document-under-point     |
+| ESC TAB    | w3-insert-this-url               |
+|            | w3-import-netscape-bookmarks     | 

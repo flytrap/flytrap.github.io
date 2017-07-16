@@ -1,0 +1,39 @@
+#+TITLE: proxychains 实现终端代理
+#+DATE: <2016-11-29 Tue 00:15>
+#+TAGS: proxychains, 命令行代理
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+
+* proxychains
+** desc
+小夥伴都知道在瀏覽器中配置代理，在各種軟件中配置代理，可是終端呢？
+很簡單，就這麼幹，這篇文章就是爲你解決這個問題的。
+** proxychains install
+#+begin_src bash
+pacman -Syu proxychains  # arch
+apt-get install proxychains  # debian, ubuntu
+yum/dnf install proxychains  # redhat, centos, fedora
+#+end_src
+非root用戶，自動前面追加sudo
+裝不了？沒關系，檢查自己的源。
+
+#+BEGIN_HTML
+<!--more-->
+#+END_HTML
+
+** proxychains setting
+#+begin_src bash
+vim + /etc/proxychains.conf
+
+[ProxyList]
+http   0.0.0.0 80
+socks4 0.0.0.0 4444
+socks5 0.0.0.0 5555
+# 只要一行，選擇自己的代理類型，修改之.
+格式:代理類型 ip 端口
+#+end_src
+** proxychains use
+#+begin_src bash
+proxychains command  # proxychains 後面跟上你的命令就行咯.
+#+end_src

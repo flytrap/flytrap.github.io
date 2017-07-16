@@ -1,0 +1,124 @@
+#+TITLE:python 代码跳转
+#+DATE: <2017-01-11 Wed 21:20>
+#+TAGS: python, elpy
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+
+** summary
+這裏使用的插件是elpy，代碼跳轉使用的是jedi
+問題：No definition found
+代碼結構:
+#+begin_src shell
+╰─➤  tree elpy_q 
+elpy_q
+├── __init__.py
+├── __main__.py
+├── sub
+│   ├── __init__.py
+│   └── sub.py
+└── sub2
+    ├── __init__.py
+    └── sub2.py
+
+2 directories, 6 files
+#+end_src
+** code
+*** __main__.py
+#+begin_src python
+   1│from sub2.sub2 import test2
+   2│
+   3│
+   4│test2()
+#+end_src
+*** sub.py
+#+begin_src python
+   1│import os
+   2│
+   3│
+   4│def test():
+   5│    print('sub: ' + os.getcwd())
+#+end_src
+*** sub2.py
+#+begin_src python
+   1│from sub.sub import test
+   2│
+   3│
+   4│def test2():
+   5│    print('sub2 call sub')
+   6│    test()
+#+end_src
+在文件sub2中跳轉到test位置,提示:
+No definition found .
+但是呢，sub1中明明是有的。
+
+#+BEGIN_HTML
+<!--more-->
+#+END_HTML
+
+** analysis
+#+begin_src elisp
+1707│(defun elpy-goto-definition ()
+1708│  "Go to the definition of the symbol at point, if found."
+1709│  (interactive)
+1710│  (let ((location (elpy-rpc-get-definition)))
+1711│    (if location
+1712│        (elpy-goto-location (car location) (cadr location))
+1713│      (error "No definition found"))))
+#+end_src
+#+begin_src elisp
+2721│(defun elpy-rpc--get-rpc-buffer ()                                                                                                              
+2722│  "Return the RPC buffer associated with the current buffer,                                                                                    
+2723│creating one if necessary."                                                                                                                     
+2724│  (when (not (elpy-rpc--process-buffer-p elpy-rpc--buffer))                                                                                     
+2725│    (setq elpy-rpc--buffer                                                                                                                      
+2726│          (or (elpy-rpc--find-buffer (elpy-library-root)                                                                                        
+2727│                                     elpy-rpc-python-command)                                                                                   
+2728│              (elpy-rpc--open (elpy-library-root)                                                                                               
+2729│                              elpy-rpc-python-command))))
+#+end_src
+#+begin_src elisp
+1226│(defun elpy-library-root ()                                                                                                                     
+1227│  "Return the root of the Python package chain of the current buffer.                                                                           
+1228│                                                                                                                                                
+1229│That is, if you have /foo/package/module.py, it will return /foo,                                                                               
+1230│so that import package.module will pick up module.py."                                                                                          
+1231│  (locate-dominating-file default-directory                                                                                                     
+1232│                          (lambda (dir)                                                                                                         
+1233│                            (not (file-exists-p                                                                                                 
+1234│                                  (format "%s/__init__.py"                                                                                      
+1235│                                          dir))))))
+#+end_src
+最後終於找到了elpy-library-root這個函數。
+代碼都快讀完了都沒有發現啥問題,不知道讀到這裏的聰明的你有沒有看出啥來。
+#+begin_src python
+  27│    def __init__(self, project_root):                                                                                                           
+  28│        self.project_root = project_root
+  29│        self.completions = {}                                                                                                                   
+  30│        sys.path.append(project_root)
+#+end_src
+甚至在這裏把項目的路徑根都保存出來啦。
+發現一個問題，出現的這個路徑是有問題的，總是我項目的父路徑，爲什麼呢？
+#+begin_src elisp
+  27│    def __init__(self, project_root):                                                                                                           
+  28│        self.project_root = project_root
+  29│        self.completions = {}                                                                                                                   
+  30│        sys.path.append(project_root)
+#+end_src
+甚至在這裏把項目的路徑根都保存出來啦。
+發現一個問題，出現的這個路徑是有問題的，總是我項目的父路徑，爲什麼呢？
+重點來了。
+#+begin_src elisp
+(locate-dominating-file default-directory
+                          (lambda (dir)
+                            (not (file-exists-p
+                                  (format "%s/__init__.py"
+                                          dir))))))
+#+end_src
+這個方法是用來幹嘛的？看半天沒看明白，後來才明白，是根據第二個參數向上級目錄遍歷，
+直到找到滿足條件的目錄，然後把他的父目錄返回，就是我項目的父目錄。
+我們看到這個匿名函數是幹嘛的？
+是檢查該目錄下有沒有"__init__.py"文件，思考一下，作者爲啥這麼寫呢。
+其實想想也挺簡單的，檢查這是不是一個包嘛，如果是包，就默認去找上級沒有"__init__.py".
+** Reflection
+代碼不規範，主函數怎麼能定義在包裏呢？

@@ -1,0 +1,26 @@
+#+TITLE: 关于py2和py3区别的一些记录
+#+DATE: <2016-11-27 Sun 12:36>
+#+TAGS: python
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+
+* python2 and python3 lib different points
+** Summary
+記錄一些遇到的不同的包的位置。
+其實說白了python3所做的事情就是把這些包分了一下類，把原來的零散的包，歸納到了一起。
+** urllib
+*** python2
+#+begin_src python
+urllib.
+urllib2.
+#+end_src
+
+#+BEGIN_HTML
+<!--more-->
+#+END_HTML
+
+*** python3
+#+begin_src python
+urllib.
+#+end_src

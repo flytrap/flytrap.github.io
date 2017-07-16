@@ -1,0 +1,36 @@
+#+TITLE: pep8 pycodestyle 检查
+#+DATE: <2017-01-02 Mon 22:12>
+#+TAGS: python, pep8
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* pep8(pycodestyle)
+** Summary
+doc:Python style guide checker
+用於檢查python代碼是否符合pep8標準,
+該項目目前更名爲pycodestyle.
+** install
+#+begin_src python
+pip install pep8
+#+end_src
+** directory tree
+#+begin_src shell
+ls pep8*
+
+pep8.py
+
+pep8-1.7.0.dist-info
+#+end_src
+可以看到只有這一個文件.
+
+#+BEGIN_HTML
+<!--more-->
+#+END_HTML
+
+** usage
+#+begin_src shell
+python -m pep8 python_file_name.py
+python_file_name.py:101:6: E225 missing whitespace around operator
+--show-source  # 顯示代碼
+#+end_src
+這是最簡單的用法。當然還有很多選項，詳情請參考官方文檔，這裏只是聲明這個模塊的存在。

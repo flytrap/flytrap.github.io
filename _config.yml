@@ -3,16 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-author: John Doe
+title: 俗子
+subtitle: 无意之中是真意，随心而行
+description: 野生程序员一枚，传统文化和前沿科技的忠实拥护者,二者并不矛盾
+author: 俗子
 language:
 timezone:
+keywords: "django,后端,python,linux,程序员,形意,易,中医"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://blog.flytrap.top
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -54,8 +55,16 @@ index_generator:
   
 # Category & Tag
 default_category: uncategorized
-category_map:
-tag_map:
+category_map: categories
+tag_map: tags
+
+# Archives
+## 2: Enable pagination
+## 1: Disable pagination
+## 0: Fully Disable
+archive: 1
+category: 1
+tag: 1
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -72,9 +81,46 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: yilia
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repository: git@github.com:flytrap/flytrap.github.io.git
+  branch: master
+
+  
+jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: false
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: true
+      tags: true
+      
+org:
+  emacs: 'D:\tools\emacs\bin\emacs.exe'
+  # emacs: /bin/emacs
+  common: |
+          #+OPTIONS: toc:nil
+          #+BIND: org-html-postamble \"Last Updated %C.</br>Render by <a href='https://github.com/CodeFalling/hexo-renderer-org'>hexo-renderer-org</a> with %c\"
+  cachedir: './hexo-org-cache/'
+  
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:

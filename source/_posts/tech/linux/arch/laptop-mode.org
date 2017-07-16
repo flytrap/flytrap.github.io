@@ -1,0 +1,41 @@
+#+TITLE: laptop-mode 安装
+#+DATE: <2017-02-26 Sun 23:16>
+#+TAGS: linux, laptop
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+
+* laptop-mode
+** summary
+Laptop Mode Tools 是一个 Linux 系统下的笔记本电源管理软件
+** install 
+#+begin_src shell
+yaourt -Ss laptop-mode
+yaourt -Syu laptop-mode-tools
+#+end_src
+** startup laptop-mode
+#+begin_src shell
+systemctl start laptop-mode
+systemctl enable laptop-mode
+#+end_src
+
+#+BEGIN_HTML
+<!--more-->
+#+END_HTML
+
+** setting
+*** set brightness
+editor /etc/laptop-mode/conf.d/lcd-brightness.conf
+#+begin_src bash
+CONTROL_BRIGHTNESS=1
+
+BATT_BRIGHTNESS_COMMAND="echo 100"
+LM_AC_BRIGHTNESS_COMMAND="echo 100"
+NOLM_AC_BRIGHTNESS_COMMAND="echo 100"
+BRIGHTNESS_OUTPUT="/sys/class/backlight/intel_backlight/brightness"
+#+end_src
+*** set network
+editor /etc/laptop-mode/conf.d/ethernet.conf
+#+begin_src bash
+ETHERNET_DEVICES="enp0s25"  # set network device
+#+end_src
