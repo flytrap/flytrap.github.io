@@ -111,7 +111,8 @@ jsonContent:
       tags: true
       
 org:
-  emacs: 'D:\tools\emacs\bin\emacs.exe'
+  emacs: "/usr/local/bin/emacs"
+  # emacs: 'D:\tools\emacs\bin\emacs.exe'
   # emacs: /bin/emacs
   common: |
           #+OPTIONS: toc:nil
