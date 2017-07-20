@@ -1,0 +1,49 @@
+#+TITLE: Docler 常用命令, 运行使用postgresql
+#+DATE: <2017-07-19>
+#+TAGS: docker,linux,postgresql
+#+CATEGORIES: tech
+
+* docker postgresql 使用
+** Summary
+docker的常用命令介绍，以及使用docker运行postgresql数据库
+
+** docker install
+略 ...
+
+** pull docker images
+#+begin_src bash
+docker search postgresql
+# info
+# NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+# postgres                          The PostgreSQL object-relational database ...   3773      [OK]
+# 选择一个最多的
+docker pull postgres  # 拉取远程镜像
+#+end_src
+
+#+begin_src html
+<!--more-->
+#+end_src
+
+** run docker
+#+begin_src bash
+docker run --name ps_taiga -e POSTGRES_PASSWORD=taiga -e POSTGRES_USER=taiga -v /Users/admin/code/media/data/postgresql:/var/lib/postgresql --restart always -d -p 5432:5432 postgres
+
+# --name docker别名
+# -e 修改环境变量 POSTGRES_PASSWORD, 数据库密码，POSTGRES_USER 账号明
+# -d demo
+# -p 端口映射 (本地: docker容器)
+# -v 磁盘映射
+# --restart always 随docker一起启动
+# 需要说明的是这里的磁盘/var/lib/postgresql/data目录，数据默认是放在data里面的
+
+psql -h 127.0.0.1 -U taiga  #  进去试着创建一个数据库试试
+#+end_src
+
+** 一些常用命令
+
+#+begin_src bash
+docker images  ＃ 显示本地镜像列表
+docker stop ps_taiga  # 停止运行容器
+docker start ps_taiga  # 启动容器
+docker exec -it ps_taiga /bin/bash  # 交互模式运行容器的bash, 做一些操作
+#+end_src

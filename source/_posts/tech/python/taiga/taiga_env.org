@@ -1,0 +1,55 @@
+#+TITLE: taiga开发环境搭建
+#+DATE: <2017-07-19 >
+#+TAGS: python,django,taiga, 开源
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* taiga env
+** Summary
+Taiga 是一个开源的项目管理工具，专注于解决管理工具的易用性、简洁性问题。
+学习django DRF框架使用，taiga二次开发.
+
+** install python3 环境
+Taiga 是使用python3写的，不兼容python2
+#+begin_src base
+brew install python3  # mac 安装最新python3
+apt-get install -y python3  # debian系列
+dnf -y install python3  # 红帽系列
+arch  默认就是python3 不用装
+
+# 安装虚拟环境virtualenvwrapper
+mkvirtualenv -p /usr/local/bin/python3.6 taiga
+workon taiga
+# 切换到taiga后端代码路径
+pip install -r requirements.txt  # 安装必须的包 -i 可以指定源
+#+end_src
+
+** 配置数据库
+#+begin_src bash
+cp settings/local.py.example settings/local.py
+
+# 修改数据库连接
+
+python manage.py migrate --noinput  # 生成数据库模型
+python manage.py loaddata initial_user  # 加载默认数据
+python manage.py loaddata initial_project_templates
+python manage.py compilemessages  # 编译语言包(国际化)
+python manage.py collectstatic --noinput  # 收集静态文件
+# python manage.py sample_data  # 加载点儿数据,方便调试, 数据比较多，会比较慢
+
+#+end_src
+
+** 配置文件修改
+#+begin_src bash
+cp settings/local.py.example settings/local.py
+＃ 修改数据库配置
+MEDIA_URL = "http://localhost:9000/media/"  ＃ 端口不对，记得修改
+STATIC_URL = "http://localhost:9000/static/"
+还有发送邮件的邮箱服务器，消息队列redis，rabbitmq 等服务配置
+CELERY_ENABLED = True  # 启动celery服务
+#+end_src
+
+** 运行项目
+#+begin_src bash
+python manage.py runserver
+#+end_src
