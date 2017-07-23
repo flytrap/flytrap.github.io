@@ -1,5 +1,5 @@
 #+TITLE: Docler 常用命令, 运行使用postgresql
-#+DATE: <2017-07-19>
+#+DATE: <2017-07-22>
 #+TAGS: docker,linux,postgresql
 #+CATEGORIES: tech
 
@@ -20,9 +20,9 @@ docker search postgresql
 docker pull postgres  # 拉取远程镜像
 #+end_src
 
-#+begin_src html
+#+begin_html
 <!--more-->
-#+end_src
+#+end_html
 
 ** run docker
 #+begin_src bash

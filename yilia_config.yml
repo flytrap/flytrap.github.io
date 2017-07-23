@@ -65,8 +65,8 @@ top: true
 
 # Miscellaneous
 baidu_analytics: '7dff3925ec6f4cb7cfcb1b21c3c82ece'
-google_analytics: ''
-favicon: /assets/favicon.png
+google_analytics: 'UA-103034600-1'
+favicon: /assets/favicon.ico
 
 #你的头像url
 avatar: /assets/img/flytrap.jpg

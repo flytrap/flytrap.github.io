@@ -1,6 +1,9 @@
 title: 关于不需要权限访问的接口，错误token，报401的解释
 date: 2017-06-25 20:10:33
-tags: django, python, token
+tags:
+  - django
+  - python
+  - token
 layout: post
 categories: tech
 ---

@@ -1,5 +1,5 @@
 #+TITLE: taiga开发环境搭建
-#+DATE: <2017-07-19 >
+#+DATE: <2017-07-22>
 #+TAGS: python,django,taiga, 开源
 #+LAYOUT: post
 #+CATEGORIES: tech
@@ -23,6 +23,10 @@ workon taiga
 # 切换到taiga后端代码路径
 pip install -r requirements.txt  # 安装必须的包 -i 可以指定源
 #+end_src
+
+#+begin_html
+<!--more-->
+#+end_html
 
 ** 配置数据库
 #+begin_src bash
