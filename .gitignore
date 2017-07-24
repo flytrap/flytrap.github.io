@@ -6,3 +6,5 @@ node_modules/
 hexo-org-cache/
 public/
 .deploy*/
+*.org~
+
