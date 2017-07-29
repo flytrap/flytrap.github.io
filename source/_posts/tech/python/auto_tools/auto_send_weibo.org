@@ -1,0 +1,154 @@
+#+TITLE: python脚本自动发微博                                                                           
+#+date: <2017-07-29>                                                                                       
+#+tags: python,selenium, webdriver, 微博,sina,新浪, 自动化
+#+layout: post                                                                                             
+#+categories: tech 
+
+* Summary
+原则是能让机器做的事情，就不要自己做了，简化一切，计算机就是拿来给我们偷懒的。
+发微博，还要打开浏览器，你out了，几十行代码搞定的事情。
+
+** selenium
+
+模拟浏览器行为，让程序控制浏览器，看着就爽
+装一个
+#+begin_src bash
+pip install selenium
+#+end_src
+
+对了，啰嗦一句，好像是要装chromedriver来着，我用的arch linux 装chromium的时候就已经带了这东西,chromium 应该都是自带的。
+windows咋弄，自己去度娘吧，我太长时间没用过win了，懒得折腾（win的环境真的无力吐槽）
+
+理论上应该是下载下来就一个文件，直接就可以用的。
+
+#+begin_html
+<!--more-->
+#+end_html
+
+** 测试selenium
+#+begin_src python
+from selenium import webdriver
+driver = webdriver.Chrome()  # 这里面可以加一个selenium的路径，如果你的环境变量里没有这个东西
+driver.get('http://www.baidu.com')  # 看到自己打开一个浏览器，并且访问了百度，那就没问题了
+#+end_src
+
+报错了？那就慢慢找原因哈，不着急. 要不google　一下
+
+** 登录发送代码
+#+begin_src python
+import time
+from selenium import webdriver
+
+
+class BaseLogin(object):
+    index_url = ''
+
+    def __init__(self, username, password):
+        self.driver = webdriver.Chrome()
+        self.username = username
+        self.password = password
+        self.driver.get(self.index_url)
+        self.login()
+
+    def login(self):
+        raise Exception('Must login function')
+
+    def input_user_and_pass(self):
+        self.driver.find_element_by_name('loginname').send_keys(self.username)
+        self.driver.find_element_by_name('password').send_keys(self.password)
+
+
+class SinaLogin(BaseLogin):
+    index_url = 'http://www.sina.com.cn/'
+
+    def login(self):
+        if self.check_login():
+            return
+        self.driver.find_element_by_link_text('登录').click()
+
+        self.input_user_and_pass()
+
+        remember = self.driver.find_element_by_name('remember')
+        if remember.is_selected():
+            remember.click()
+        self.driver.find_element_by_class_name('login_btn').click()
+        login_error_tips = self.driver.find_element_by_class_name('login_error_tips')
+        if login_error_tips.text:
+            raise LoginException(login_error_tips.text)
+        time.sleep(2)
+        if not self.check_login():
+            self.login()
+
+    def check_login(self):
+        self.driver.refresh()
+        time.sleep(2)
+        name = self.driver.find_element_by_id('SI_Top_Nick_Name')
+        if name.text:
+            print('login ok')
+            return True
+        return False
+
+    def to_weibo(self):
+        self.driver.find_element_by_id('SI_Top_Weibo').find_element_by_class_name('tn-tab').click()
+
+    def switch_window(self, num=0, window=None):
+        if num < len(self.driver.current_window_handle):
+            if window is None:
+                window = self.driver.window_handles[num]
+            self.driver.switch_to.window(window)
+            print('switch to: {}'.format(self.driver.title))
+            return True
+        return False
+
+    def send_wb(self, text):
+        if not self.check_login():
+            return
+        for window in self.driver.window_handles:
+            if 'weibo.com' not in self.driver.current_url:
+                if self.switch_window(window=window):
+                    time.sleep(2)
+                    continue
+                return
+            break
+        text_body = self.driver.find_element_by_xpath('//*[@id="v6_pl_content_publishertop"]/div/div[2]/textarea')
+        text_body.clear()
+        text_body.send_keys(text)
+
+        send_bt = self.driver.find_element_by_xpath('//*[@id="v6_pl_content_publishertop"]/div/div[3]/div[1]/a')
+        send_bt.click()  # 发布
+
+#+end_src
+
+** 测试代码
+#+begin_src python
+class TestSinaLoin(TestCase):
+    def __init__(self, *args, **kwargs):
+        super(TestSinaLoin, self).__init__(*args, **kwargs)
+        self.username = SINA_USERNAME
+        self.password = SINA_PASSWORD
+
+    def test_sina_login(self):
+        sina_login = SinaLogin(self.username, self.password)
+        self.assertTrue(sina_login.check_login())
+        del sina_login
+
+    def test_sina_send_weibo(self):
+        sina_login = SinaLogin(self.username, self.password)
+        sina_login.send_wb('weibo send ok')
+        del sina_login
+
+#+end_src
+
+** 登录
+其实看代码就很简单了，没有什么复杂性，就是先找到用户名和密码输入的地方，让后填充。
+然后找到登录按钮，点击，就登录了，其中添加了一些检查登录是否成功的代码。
+
+** 发微博
+我的登录操作都是在新浪首页操作的，当然你也可以在微博那边操作
+涉及到了页签切换，没有太多技术含量。
+
+** 代码下载
+代码我放github了，想要的，去拿吧，不过我这里写了一个基类，后续可能会添加一些其他的代码及操作在里面。
+敬请关注.
+后续或许会其他社交网站的登录代码.
+[[https://github.com/flytrap/my_spider][代码]]

@@ -37,6 +37,11 @@ docker run --name ps_taiga -e POSTGRES_PASSWORD=taiga -e POSTGRES_USER=taiga -v 
 # 需要说明的是这里的磁盘/var/lib/postgresql/data目录，数据默认是放在data里面的
 
 psql -h 127.0.0.1 -U taiga  #  进去试着创建一个数据库试试
+
+＃redis docker
+docker run -p 6379:6379 --name flytrap_redis --restart always -d redis
+
+
 #+end_src
 
 ** 一些常用命令

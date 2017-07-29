@@ -1,0 +1,48 @@
+#+TITLE: arch linux 修改pip源
+#+date: <2017-07-24>
+#+tags: arch,linux,pip,python
+#+layout: post
+#+categories: tech
+
+* Summary
+arch linux 系统配置文件是综合一起放在~/config目录里的,ｈｏｍｅ路径看起来就没有那么乱
+
+** 创建pip.conf
+#+begin_src base
+
+mkdir -p ~/config/pip
+
+vim ~/config/pip/pip.conf
+
+#+end_src
+#+begin_html
+<!--more-->
+#+end_html
+
+** 添加源
+#+begin_src config
+[global]
+index-url = https://pypi.douban.com/simple
+
+#+end_src
+
+這裏使用的是豆瓣的源，當然你也可以使用其他的
+
+** 臨時換源
+#+begin_src bash
+pip install xxx -i https://pypi.douban.com/simple
+
+#+end_src
+
+** 指定文件安裝
+一般安裝包都會有一個requirements.txt文件，裏面就是python依賴包的列表
+#+begin_src bash
+pip install -r requirements.txt
+
+#+end_src
+
+** 搜索指定python包
+#+begin_src bash
+pip search xxx
+
+#+end_src
