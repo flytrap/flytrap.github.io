@@ -1,0 +1,62 @@
+#+TITLE: ssh key config 分离git工作环境                                                                           
+#+date: <2017-09-16>                                                                                       
+#+tags: ssh,ssh_config,ssh环境,git
+#+layout: post                                                                                             
+#+categories: tech 
+
+* 分离自己的工作环境
+
+** Summary
+工作代码和自己写的一些代码总会混合在一起，公用一个安全key，无法完全分离自己的代码环境和工作的代码环境。
+分离的最好办法就是使用不同的ssh-key, 代码哪怕同一个仓库也是可以分开的。
+
+** 添加多个ssh-key
+我们的ssh-key，默认路径是~/.ssh
+ssh-keygen 命令是用来生成秘钥的，刚装系统大多都没有生成，都是自己生成的。
+#+begin_src bash
+ssh-keygen -t rsa -f ~/.ssh/id_rsa_new
+-t 指定加密方式
+-f 指定秘钥生成路径及名字(公钥私钥对),默认会覆盖
+#+end_src
+
+#+begin_html
+<!--more-->
+#+end_html
+
+** 通过config文件对域名进行映射
+config 路径： ~/.ssh/config
+格式如下（现在用到的字段就这么多，更多字段请参考文档）：
+#+begin_src ini
+Host 别名
+    HostName 主机名
+    Port 端口
+    User 用户名
+    PubkeyAuthentication yes　 #允许 Public Key(必须)
+    IdentityFile 密钥(私钥)文件的路径
+#+end_src
+整个文件就像这样
+#+begin_src ini
+Host github
+    HostName github.com
+    User git
+    PubkeyAuthentication yes
+    IdentityFile ~/.ssh/github
+Host work
+    HostName review.cyanogenmod.org
+    User git
+    PubkeyAuthentication yes
+    IdentityFile ~/.ssh/work
+Host *
+    Pubkeyauthentication no
+#+end_src
+举个栗子:
+比如说要克隆github的代码:
+#+begin_src bash
+git clone https://github.com/flytrap/flytrap.github.io.git
+git clone https://github/flytrap/flytrap.github.io.git
+#+end_src
+这样应该很明显看出区别吧，相当于是把github.com这个域名简化(映射)为github了，我现在只需要简化后的就可以了，更重要的是，我下面指定了使用的私钥.
+当然，聪明的你肯定已经先把对应的公钥放到github了吧。(域名一样也是可以的哦，相当于是只是指定了私钥而已)
+
+最后两行是说，匹配不到就用默认的，不影响你不想动的秘钥，是不是很爽？快试试吧。
+
