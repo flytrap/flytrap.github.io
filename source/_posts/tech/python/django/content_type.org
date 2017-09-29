@@ -1,0 +1,55 @@
+#+TITLE: django content type
+#+DATE: <2017-10-15>
+#+TAGS: django,python,orm
+#+LAYOUT: post
+#+CATEGORIES: live
+
+* Django content_type 精妙之处
+
+** Summary
+有点儿Django经验的人应该都遇到过这种问题：有一个通用的模型，需要根据不同的类型，去关联对应的模型。
+通常的做法是：模型中有个类型的枚举字段，然后再搞个relate_id来存储相关联的模型id，然后通过逻辑，再去获取相关数据.
+其实使用Django 自带的content type来解决这个问题，是非常容易的。
+
+** content type
+这个模型很简单，但是很好的一个东西
+#+begin_python
+@python_2_unicode_compatible
+class ContentType(models.Model):
+    app_label = models.CharField(max_length=100)
+    model = models.CharField(_('python model class name'), max_length=100)
+#+end_python
+数据库里看看呗
+你可以发现你项目里的所有模型，都在这个里面能找到，就这个就够了。
+
+#+begin_html
+<!--more-->
+#+end_html
+
+** Use
+来看看taiga里是怎么用的？
+
+#+begin_python
+class Like(models.Model):
+    content_type = models.ForeignKey("contenttypes.ContentType")
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey("content_type", "object_id")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False,
+                             related_name="likes", verbose_name=_("user"))
+    created_date = models.DateTimeField(null=False, blank=False, auto_now_add=True,
+                                        verbose_name=_("created date"))
+#+end_python
+创建一条数据:
+#+begin_src python
+obj = Blog.objects.first()
+user = User.objects.first()
+like = Like.objects.create(user=user, content_object=obj)
+#+end_src
+其实这个时候你打开数据库会发现，object_id，已经帮你存好了，content_type 也帮你存好咯。
+用的时候，直接把content_object 取出来就可以用.无关乎类型.
+
+** end
+总结一下，这个东西秒就秒在Django本身就把这些事情帮你做好了，你不需要关心具体喜欢的东西是什么，这是一个通用模型，DRY原则的忠实践行。
+
+
+希望对你有帮助.

@@ -1,8 +1,8 @@
 #+TITLE: arch linux 修改pip源
-#+date: <2017-07-24>
-#+tags: arch,linux,pip,python
-#+layout: post
-#+categories: tech
+#+DATE: <2017-07-24>
+#+TAGS: arch,linux,pip,python
+#+LAYOUT: post
+#+CATEGORIES: tech
 
 * Summary
 arch linux 系统配置文件是综合一起放在~/config目录里的,ｈｏｍｅ路径看起来就没有那么乱

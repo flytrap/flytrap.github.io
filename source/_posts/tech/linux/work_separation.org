@@ -1,8 +1,8 @@
 #+TITLE: ssh key config 分离git工作环境                                                                           
-#+date: <2017-09-16>                                                                                       
-#+tags: ssh,ssh_config,ssh环境,git
-#+layout: post                                                                                             
-#+categories: tech 
+#+DATE: <2017-09-16>                                                                                       
+#+TAGS: ssh,ssh_config,ssh环境,git
+#+LAYOUT: post                                                                                             
+#+CATEGORIES: tech 
 
 * 分离自己的工作环境
 

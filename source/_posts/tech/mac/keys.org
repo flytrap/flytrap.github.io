@@ -1,0 +1,35 @@
+#+TITLE: mac keys                                                                           
+#+DATE: <2017-09-29>                                                                                       
+#+TAGS: mac,key
+#+LAYOUT: post                                                                                             
+#+CATEGORIES: tech 
+
+** summary
+mac 快捷键的一些奇淫异巧
+
+*** 1
+| key                       | 用途                 |
+| command + control + space | 使用emoji键盘        |
+| command + space           | spotlight(搜索)      |
+| command + delete          | 放入回收站           |
+| fn + delete               | 反向删除             |
+| control + 👆              | 显示窗口的打开的程序 | 
+
+*** finder  
+| shift + command + g | 文件夹跳转 |
+| command + o         | 打开文件   |
+| command + z         | 撤销       |
+| command + x         | 剪切       |
+| command + c         | 复制       |
+| command + v         | 粘贴       |
+| command + a         | 全选       |
+| command + s         | 保存       |
+| command + f         | 查找       |
+
+
+*** system
+| command + shift + 4           | 截取所选屏幕区域到一个文件 |
+| command + shift + 3           | 截取全部屏幕到文件         |
+| command + shift + control + 3 | 截取全部屏幕到剪贴板       |
+
+

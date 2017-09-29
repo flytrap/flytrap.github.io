@@ -1,8 +1,8 @@
 #+TITLE: python脚本自动发微博                                                                           
-#+date: <2017-07-29>                                                                                       
-#+tags: python,selenium, webdriver, 微博,sina,新浪, 自动化
-#+layout: post                                                                                             
-#+categories: tech 
+#+DATE: <2017-07-29>                                                                                       
+#+TAGS: python,selenium, webdriver, 微博,sina,新浪, 自动化
+#+LAYOUT: post                                                                                             
+#+CATEGORIES: tech 
 
 * Summary
 原则是能让机器做的事情，就不要自己做了，简化一切，计算机就是拿来给我们偷懒的。

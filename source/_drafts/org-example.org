@@ -1,5 +1,5 @@
-#+TITLE: title                                                                           
-#+date: <2017-07-29>                                                                                       
-#+tags: tag1,tag2
-#+layout: post                                                                                             
-#+categories: tech 
+#+TITLE: title
+#+DATE: <2017-07-29>
+#+TAGS: tag1,tag2
+#+LAYOUT: post
+#+CATEGORIES: live
