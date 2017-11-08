@@ -13,12 +13,12 @@
 
 ** content type
 这个模型很简单，但是很好的一个东西
-#+begin_python
+#+begin_src python
 @python_2_unicode_compatible
 class ContentType(models.Model):
     app_label = models.CharField(max_length=100)
     model = models.CharField(_('python model class name'), max_length=100)
-#+end_python
+#+end_src
 数据库里看看呗
 你可以发现你项目里的所有模型，都在这个里面能找到，就这个就够了。
 
@@ -29,7 +29,7 @@ class ContentType(models.Model):
 ** Use
 来看看taiga里是怎么用的？
 
-#+begin_python
+#+begin_src python
 class Like(models.Model):
     content_type = models.ForeignKey("contenttypes.ContentType")
     object_id = models.PositiveIntegerField()
@@ -38,12 +38,16 @@ class Like(models.Model):
                              related_name="likes", verbose_name=_("user"))
     created_date = models.DateTimeField(null=False, blank=False, auto_now_add=True,
                                         verbose_name=_("created date"))
-#+end_python
+#+end_src
 创建一条数据:
 #+begin_src python
 obj = Blog.objects.first()
 user = User.objects.first()
 like = Like.objects.create(user=user, content_object=obj)
+
+# 通过content_type_id 和object_id获取content type对象
+content_type = ContentType.objects.filter(id=content_type_id).first()
+obj = content_type.get_object_for_this_type(pk=object_id)
 #+end_src
 其实这个时候你打开数据库会发现，object_id，已经帮你存好了，content_type 也帮你存好咯。
 用的时候，直接把content_object 取出来就可以用.无关乎类型.
