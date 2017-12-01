@@ -1,0 +1,23 @@
+#+TITLE: 一些mac下软件的使用技巧
+#+DATE: <2017-11-28>
+#+TAGS: mac,os,UltraEdit
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* mac os软件激活方式
+** UltraEdit
+   :LOGBOOK:
+   CLOCK: [2017-11-28 二 10:49]--[2017-11-28 二 11:14] =>  0:25
+   :END:
+修改启动文件。
+打补丁
+#+begin_src bash
+printf '\x31\xC0\xFF\xC0\xC3\x90' | dd seek=$((0x92D370)) conv=notrunc bs=1 of=/Applications/UltraEdit.app/Contents/MacOS/UltraEdit
+#+end_src
+我用的版本是官方最新 16.10.0.22，亲测可用。
+
+** 来自身份不明的开发者
+关闭安全策略（将会绕过mac安全检查，慎重）
+#+begin_src bash
+sudo spctl --master-disable
+#+end_src

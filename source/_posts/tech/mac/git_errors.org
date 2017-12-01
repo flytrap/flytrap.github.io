@@ -1,0 +1,16 @@
+#+TITLE: error: RPC failed; curl 18 transfer closed with outstanding read data remaining
+#+DATE: <2017-11-08>
+#+TAGS: git,mac,error
+#+LAYOUT: post
+#+CATEGORIES: live
+
+*  Summary
+  git clone 报错如下: 
+ error: RPC failed; curl 18 transfer closed with outstanding read data remaining
+ 
+
+* Function
+解决方案，设置推送大小限制
+#begin_src base
+git  config --global http.postBuffer 524288000  # 500M应该足够了
+#end_src
