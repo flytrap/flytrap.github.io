@@ -52,3 +52,13 @@ docker stop ps_taiga  # 停止运行容器
 docker start ps_taiga  # 启动容器
 docker exec -it ps_taiga /bin/bash  # 交互模式运行容器的bash, 做一些操作
 #+end_src
+
+* 例子
+** 安装mysql
+开机自动启动 --restart always
+设置root密码 -e MYSQL\_ROOT\_PASSWORD=root  # _需要转义
+#+begin_bash
+docker search mysql
+docker pull mysql
+docker run --name mysql1 -p 3306:3306 -e MYSQL\_ROOT\_PASSWORD=root -v /home/flytrap/data/mysql:/var/lib/mysql --restart always -d mysql
+#+end_bash
