@@ -1,0 +1,74 @@
+#+TITLE: ManyToManyField 双向关联
+#+DATE: <2018-01-07>
+#+TAGS: python,django,ManyToManyField,单向,双向,数据关联
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+*  Django ManyToManyField 字段数据关联
+
+** 表结构
+先看一段代码
+#+begin_src python
+class People(models.Model):
+    user = models.ForeignKey(User, verbose_name='系统关联', on_delete=False, null=True, blank=True)
+    birth_death = models.CharField('生卒', max_length=32, default='')
+    name = models.CharField('姓名', max_length=64)
+    address = models.CharField('地址', max_length=256, default='')
+    desc = models.TextField('介绍', null=True, blank=True)
+    childes = models.ManyToManyField('self', verbose_name='后辈')
+    class Meta:
+        verbose_name = '门人'
+#+end_src
+** 讨论的主要字段就一个childes
+多对多数据，像多对多这个属性，在关系型数据库中的应用应该还是比较多的,平时使用应该比较少使用多对多自己的情况。
+然而我这里用到了，遇到一些问题，供大家参考
+*** 测试一下
+#+begin_src python
+p1 = People.objects.create(name='p1')
+p2 = People.objects.create(name='p2')
+p2.childes.add(p1)
+p2.childes.all()  # <QuerySet [<People: People object (1)>]> ....... 1
+p1.childes.all()  # <QuerySet [<People: People object (2)>]> ....... 2
+#+end_src
+#+begin_html
+<!--more-->
+#+end_html
+看到....1的位置，发现我们成功添加一条数据到p2中，嗯，没毛病
+继续往下看，p1的数据，我们并没有往p1中添加数据，然而，这里却多了一条数据，这就是毛病了。
+
+*** 看看数据库
+| id | from_people_id | to_people_id |
+|  1 |              2 |            1 |
+|  2 |              1 |            2 |
+看到问题了吧？
+
+*** 看看官方文档
+#+begin_src code
+ManyToManyField.symmetrical¶
+Only used in the definition of ManyToManyFields on self. Consider the following model:
+
+from django.db import models
+
+class Person(models.Model):
+    friends = models.ManyToManyField("self")
+When Django processes this model, it identifies that it has a ManyToManyField on itself, and as a result, it doesn’t add a person_set attribute to the Person class. Instead, the ManyToManyField is assumed to be symmetrical – that is, if I am your friend, then you are my friend.
+
+If you do not want symmetry in many-to-many relationships with self, set symmetrical to False. This will force Django to add the descriptor for the reverse relationship, allowing ManyToManyField relationships to be non-symmetrical.
+#+end_src
+对了，看官应该看到了“symmetrical”对称的数据，布尔值
+
+
+**  修改后的代码
+#+begin_src python
+childes = models.ManyToManyField('self', symmetrical=False, verbose_name='后辈')
+#+end_src python
+
+*** 测一下
+#+begin_src python
+p1.childes.all()  # <QuerySet []> 
+#+end_src
+没有数据了，只有一边数据了, 对，这就是我们要的结果
+
+**  总结
+ManyToManyField 字段，选项symmetrical 默认为True，双向关联，导致数据产生逆向关联。
+ps: 有问题，找官方文档最靠谱

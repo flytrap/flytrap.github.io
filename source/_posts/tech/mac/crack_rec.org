@@ -16,6 +16,24 @@ printf '\x31\xC0\xFF\xC0\xC3\x90' | dd seek=$((0x92D370)) conv=notrunc bs=1 of=/
 #+end_src
 我用的版本是官方最新 16.10.0.22，亲测可用。
 
+
+#+begin_html
+<!--more-->
+#+end_html
+** Axure RP 8
+
+激活码：
+
+被授权人(Licensee)：
+#+begin_src bash
+University of Science and Technology of China (CLASSROOM)
+#+end_src
+
+授权秘钥(Key)：
+#+begin_src bash
+DTXRAnPn1P65Rt0xB4eTQ+4bF5IUF0gu0X9XBEUhM4QxY0DRFJxYEmgh4nyh7RtL
+#+end_src
+
 ** 来自身份不明的开发者
 关闭安全策略（将会绕过mac安全检查，慎重）
 #+begin_src bash
