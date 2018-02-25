@@ -24,3 +24,27 @@ urllib2.
 #+begin_src python
 urllib.
 #+end_src
+
+** HTTPServer
+*** python2
+#+begin_src python2
+python2 -m SimpleHTTPServer
+#+end_src
+
+*** python3
+#+begin_src python3
+python3 -m http.server
+#+end_src
+
+* 语法语义的不同
+** 字典特性
+*** python2
+无序
+*** python3
+有序，不需要单独导入有序字典包
+
+** 遍历删除元素
+*** python2 
+可迭代可修改对象，循环过程中允许删除
+*** python3 
+可迭代对象，迭代过程中不允许删除操作，增加了安全性，同时也变得不python了

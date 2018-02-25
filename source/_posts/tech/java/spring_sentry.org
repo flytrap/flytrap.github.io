@@ -1,0 +1,124 @@
+#+TITLE: spring boot 添加sentry
+#+DATE: <2017-12-13>
+#+TAGS: spring,sentry
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* spring boot 添加sentry
+** 官方spring 方案
+#+begin_src url
+https://docs.sentry.io/clients/java/modules/spring/
+#+end_src
+没成功: Couldn't find a suitable DSN，应该是没有配置对，没有找到成功使用案例
+
+配置如下:
+pom.xml
+#+begin_src xml
+<dependency>
+    <groupId>io.sentry</groupId>
+    <artifactId>sentry-spring</artifactId>
+    <version>1.6.3</version>
+</dependency>
+#+end_src
+config
+#+begin_src java
+@Bean
+public HandlerExceptionResolver sentryExceptionResolver() {
+    return new io.sentry.spring.SentryExceptionResolver();
+}
+
+@Bean
+public ServletContextInitializer sentryServletContextInitializer() {
+    return new io.sentry.spring.SentryServletContextInitializer();
+}
+#+end_src 
+application.properties
+#+begin_src properties
+dsn=http://cbbc57cc8f7975750:2d9@sentry.io/24
+#+end_src
+提供出来，以供参考，有知道的记得告诉我一声,谢谢.
+
+#+begin_html
+<!--more-->
+#+end_html>
+** raven-logback 亲测可用
+pom.xml
+#+begin_src xml
+<dependency>
+    <groupId>com.getsentry.raven</groupId>
+    <artifactId>raven-logback</artifactId>
+    <version>8.0.3</version>
+</dependency>
+#+end_src
+logback.xml
+#+begin_src xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <appender name="SENTRY" class="com.getsentry.raven.logback.SentryAppender">
+        <dsn>http://cbbc57cc8f7975750:41a8850708e5dc1159@sentry.io/24</dsn>
+        <tags>tag1:cpa,tag2:admin</tags>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="SENTRY"/>
+    </root>
+</configuration>
+#+end_src
+统一封装异常处理
+#+begin_src java
+import com.getsentry.raven.DefaultRavenFactory;
+import com.getsentry.raven.Raven;
+import com.getsentry.raven.dsn.Dsn;
+import lombok.extern.log4j.Log4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+
+@Log4j
+@ControllerAdvice
+public class GlobalExceptionHandler {
+    @Value("${dsn}")
+    String dsnUrl;
+
+    @ExceptionHandler(value = Exception.class)
+    @ResponseBody
+    public Result defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
+        sendSentry(e);
+        // 统计结果类
+        Result result = new Result();
+        return result.setStatus("error").setMessage(e.getMessage());
+    }
+    
+    /**
+     * 异常发送至sentry
+     * @param e
+     */
+    private void sendSentry(Exception e) {
+        Dsn dsn = new Dsn(dsnUrl);
+        Raven raven = (new DefaultRavenFactory()).createRavenInstance(dsn);
+
+        Throwable throwable = new Throwable(e.getMessage(), e.getCause());
+        throwable.setStackTrace(e.getStackTrace());
+        raven.sendException(throwable);
+    }
+}
+#+end_src
+就这三个地方，其中dsn是在配置文件中的变量，以访问sentry
+*** 应用
+#+begin_src java
+import lombok.extern.log4j.Log4j;
+@Log4j
+public class Test{
+    public void test(){
+        log.error("pp");
+    }
+}
+#+end_src
