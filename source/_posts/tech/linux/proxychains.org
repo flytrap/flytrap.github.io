@@ -25,14 +25,15 @@ yum/dnf install proxychains  # redhat, centos, fedora
 ** proxychains setting
 #+begin_src bash
 vim + /etc/proxychains.conf
-
+#+end_src
+#+begin_src ini
 [ProxyList]
 http   0.0.0.0 80
 socks4 0.0.0.0 4444
 socks5 0.0.0.0 5555
+#+end_src
 # 只要一行，選擇自己的代理類型，修改之.
 格式:代理類型 ip 端口
-#+end_src
 ** proxychains use
 #+begin_src bash
 proxychains command  # proxychains 後面跟上你的命令就行咯.

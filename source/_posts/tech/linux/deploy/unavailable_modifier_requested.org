@@ -1,0 +1,44 @@
+#+TITLE: -- unavailable modifier requested: 0 --  解决方案
+#+DATE: <2018-03-09>
+#+TAGS: nginx,uwsgi,django
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* uwsgi 遇到比较多的一个问题
+
+** 错误信息
+#+begin_src bash
+*** Operational MODE: single process ***
+*** no app loaded. going in full dynamic mode ***
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 14105)
+spawned uWSGI worker 1 (pid: 14108, cores: 1)
+-- unavailable modifier requested: 0 --
+-- unavailable modifier requested: 0 --
+#+end_src
+以上是当我访问nginx服务的时候，uwsgi给出的错误信息
+每次访问都是一个: "-- unavailable modifier requested: 0 --"
+
+#+begin_html
+<!--more-->
+#+end_html
+
+** 错误分析
+这个其实是因为python映射的问题,加一个插件就好了
+
+** 解决方案
+#+begin_src bash
+apt-get install uwsgi-plugin-python3  # python3
+apt-get install uwsgi-plugin-python   #python2
+#+end_src
+uwsgi 配置文件添加如下代码:
+#+begin_src ini
+plugin = python3  # python3
+plugin = python  # python
+#+end_src
+命令行启动
+#+begin_src bash
+uwsgi --plugin python3 uwsgi.ini  # python3
+uwsgi --plugin python uwsgi.ini  # python2
+#+end_src
+

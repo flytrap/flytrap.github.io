@@ -1,4 +1,4 @@
-#+TITLE: Docler 常用命令, 运行使用postgresql
+#+TITLE: Docker 常用命令, 运行使用postgresql
 #+DATE: <2017-07-22>
 #+TAGS: docker,linux,postgresql
 #+CATEGORIES: tech
@@ -56,6 +56,7 @@ docker exec -it ps_taiga /bin/bash  # 交互模式运行容器的bash, 做一些
 * 例子
 ** 安装mysql
 开机自动启动 --restart always
+
 设置root密码 -e MYSQL\_ROOT\_PASSWORD=root  # _需要转义
 #+begin_src bash
 docker search mysql
