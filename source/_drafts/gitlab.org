@@ -1,0 +1,9 @@
+#+TITLE: gitlab 服务搭建
+#+DATE: <2018-03-14>
+#+TAGS: gitlab,docker,linux,link
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* gitlab 服务搭建
+
+
