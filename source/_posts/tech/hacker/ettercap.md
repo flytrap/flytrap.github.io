@@ -183,6 +183,13 @@ if (ip.proto == TCP && tcp.src != 80 && tcp.dst != 80) {
 - 正则匹配数据包中的用户名密码，然后存储下来，对应的网站也存储下来。
 - 不同协议，正则不同，替换包中数据，插入js，执行脚本。杀伤力自行脑补。
 
+使用过滤脚本
+
+``` bash
+-> etterfilter test.filter -o test.ef    ## 编译(filter文件是源文件，ef是目标文件)
+-> ettercap -F test.ef  ## 引用
+```
+
 ### 文档
 ``` bash
 -> man etterfilter
