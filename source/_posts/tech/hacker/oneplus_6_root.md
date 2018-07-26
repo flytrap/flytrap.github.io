@@ -1,3 +1,17 @@
+---
+title: 一加6 获取root权限
+author: flytrap
+date: 2018-07-08 09:45:35
+
+categories:
+- tech
+tags:
+- hacker
+- oneplus
+- 安全
+
+---
+
 # 一加6 获取root权限
 
 ## 下载相关文件
@@ -32,6 +46,7 @@ fastboot oem unlock   # 选择unlock the  bootloader ->确认
 ``` bash
 adb reboot bootloader  # 进入到BootLoader
 fastboot boot twrp-3.2.2-0-enchilada.img  # 从twrp启动
-## 点击install  选择/sdcard/下的zip包安装, 有两个(twrp-installer-enchilada-3.2.2-0.zip)是更改系统recovery， (Magisk-v16.0.zip)是root管理包
+## 点击install  选择/sdcard/下的zip包安装, 有两个(twrp-installer-enchilada-3.2.2-0.zip)是更改系统recovery， (Magisk-v16.0.zip)是root管理包, 安装完重启
+## 重启就可以看到root管理工具了
 adb reboot recovery  # 进入twrp
 ```
