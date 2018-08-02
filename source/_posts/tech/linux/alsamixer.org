@@ -1,0 +1,46 @@
+#+TITLE: alsamixer 控制音量
+#+DATE: <2018-07-29>
+#+TAGS: alasmixer,amixer,linux,arch,i3
+#+LAYOUT: post
+#+CATEGORIES: live
+
+* alsamixer
+  
+** alsamixer 终端交互式设置音量
+#+begin_src bash
+F6 选择网卡
+F2 显示系统信息，可以看到系统中已有网卡信息
+Esc 后退
+
+M 静音状态切换
+Q,W,E 增大 左,右,通道 的音量
+Z,X,C 减小 左,右,通道 的音量
+#+end_src
+
+** amixer 命令行控制系统声音
+#+begin_src bash
+cat /proc/asound/cards  # 查看系统声卡
+#+end_src
+输出如下
+#+begin_src bash
+0 [HDMI           ]: HDA-Intel - HDA Intel HDMI
+1 [PCH            ]: HDA-Intel - HDA Intel PCH
+#+end_src
+设置声音
+#+begin_src bash
+amixer -c 1 -q set Master 2dB+ unmute
+#+end_src
+
+#+begin_src bash
+-c 制定声卡id, 默认为0
+-q 安静模式，不输出结果
+#+end_src
+
+
+** i3wm 快捷键配置
+
+#+begin_src bash
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 1 -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 1 -q set Master 2dB- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -c 1 -q set Master toggle set Headphone toggle
+#+end_src
