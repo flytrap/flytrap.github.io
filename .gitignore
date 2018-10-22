@@ -9,4 +9,5 @@ public/
 *.org~
 *#
 #*
+package-lock.json
 

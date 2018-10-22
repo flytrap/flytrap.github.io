@@ -1,0 +1,18 @@
+#+TITLE: 子域名信息收集工具
+#+DATE: <2018-08-27>
+#+TAGS: dns,sub
+#+LAYOUT: post
+#+CATEGORIES: live
+
+** virustotal
+https://www.virustotal.com
+
+
+** DNSdumpster
+https://dnsdumpster.com/
+
+** Sublist3r
+这个应该是最好用的
+比较全面
+
+
