@@ -1,0 +1,173 @@
+#+TITLE: redis拾遗-性能指标
+#+DATE: <2018-10-23>
+#+TAGS: redis,info
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* redis 性能指标(info命令使用)
+
+** Summary
+Info 指令显示的信息量非常大,可以分为9大块:
+- Server 服务器运行的环境参数
+- Clients 客户端相关信息
+- Memory 服务器运行内存统计数据
+- Persistence 持久化信息
+- Stats 通用统计数据
+- Replication 主从复制相关信息
+- CPU CPU 使用情况
+- Cluster 集群信息
+- KeySpace 键值对统计数量信息...
+
+#+begin_html
+<!--more-->
+#+end_html
+
+** 基本使用
+#+begin_src bash
+// 慢日志相关
+>slowlog [get|len|reset]
+#+end_src
+
+#+begin_src bash
+// 显示所有信息
+>info
+#+end_src
+#+begin_src bash
+// 内存相关信息,依次类推,9个模块都可以
+>info memory 
+\# Memory
+used_memory:888952
+used_memory_human:868.12K
+used_memory_rss:5832704
+used_memory_rss_human:5.56M
+used_memory_peak:1031608
+used_memory_peak_human:1007.43K
+used_memory_peak_perc:86.17%
+used_memory_overhead:842206
+used_memory_startup:790648
+used_memory_dataset:46746
+used_memory_dataset_perc:47.55%
+total_system_memory:8049872896
+total_system_memory_human:7.50G
+used_memory_lua:37888
+used_memory_lua_human:37.00K
+maxmemory:0
+maxmemory_human:0B
+maxmemory_policy:noeviction
+mem_fragmentation_ratio:6.56
+mem_allocator:jemalloc-5.1.0
+active_defrag_running:0
+lazyfree_pending_objects:0
+#+end_src
+
+#+begin_src bash
+>info stats
+\# Stats
+total_connections_received:10
+total_commands_processed:147
+instantaneous_ops_per_sec:0
+total_net_input_bytes:15473
+total_net_output_bytes:22212
+instantaneous_input_kbps:0.00
+instantaneous_output_kbps:0.00
+rejected_connections:0
+sync_full:0
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:0
+expired_stale_perc:0.00
+expired_time_cap_reached_count:0
+evicted_keys:0
+keyspace_hits:53
+keyspace_misses:15
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:511
+migrate_cached_sockets:0
+slave_expires_tracked_keys:0
+active_defrag_hits:0
+active_defrag_misses:0
+active_defrag_key_hits:0
+active_defrag_key_misses:0
+#+end_src
+
+** 一些重要的指标
+主要看两部分:(memory和stats)
+详细数据,上面已经给出
+*** Clients
+| 参数              | 解释                       |
+| connected_clients | 连接的客户端数量           |
+| blocked_clients   | 等待阻塞命令的客户端的数量 |
+
+
+*** memory
+
+| 参数                    | 解释                 |
+| used_memory             | 内存使用率           |
+| used_memory_human       | 人性化显示           |
+| used_memory_rss         | 已分配的内存总量     |
+| mem_fragmentation_ratio | 内存碎片率           |
+| used_memory_peak        | Redis 的内存消耗峰值 |
+
+*** stats
+
+| 参数                       | 解释                                     |
+| total_connections_received | 服务器已接受的连接请求数量               |
+| total_commands_processed   | 命令处理数                               |
+| instantaneous_ops_per_sec  | 当前qps,每日秒执行命令数                 |
+| instantaneous_input_kbps   | redis网络入口kps                         |
+| instantaneous_output_kbps  | redis网络出口kps                         |
+| rejected_connections       | 最大客户端数量限制而被拒绝的连接请求数量 |
+| expired_keys               | 过期而被自动删除的键数量                 |
+| evicted_keys               | 最大内存容量限制而被驱逐的键数量         |
+| keyspace_hits              | 查找键成功的次数                         |
+| keyspace_misses            | 查找键失败的次数                         |
+
+** 性能测试
+ 一些主要命令的测试
+#+begin_src bash
+>redis-benchmark -q
+
+PING_INLINE: 87412.59 requests per second
+PING_BULK: 87489.06 requests per second
+SET: 80000.00 requests per second
+GET: 82508.25 requests per second
+INCR: 89686.10 requests per second
+LPUSH: 88731.15 requests per second
+RPUSH: 81499.59 requests per second
+LPOP: 87489.06 requests per second
+RPOP: 86058.52 requests per second
+SADD: 90009.01 requests per second
+HSET: 80000.00 requests per second
+SPOP: 86281.27 requests per second
+LPUSH (needed to benchmark LRANGE): 86880.97 requests per second
+LRANGE_100 (first 100 elements): 53850.30 requests per second
+LRANGE_300 (first 300 elements): 20399.84 requests per second
+LRANGE_500 (first 450 elements): 14577.26 requests per second
+LRANGE_600 (first 600 elements): 11630.61 requests per second
+MSET (10 keys): 78308.54 requests per second
+#+end_src
+
+指定命令,添加管道
+#+begin_src bash
+>redis-benchmark -t get -q -P 100
+GET: 1388889.00 requests per second
+#+end_src
+
+| 选项       | 描述                                          |    默认值 |
+| -h         | 指定服务器主机名                              | 127.0.0.1 |
+| -p         | 指定服务器端口                                |      6379 |
+| -s         | 指定服务器                                    |    socket |
+| -c         | 指定并发连接数                                |        50 |
+| -n         | 指定请求数                                    |     10000 |
+| -d         | 以字节的形式指定SET/GET 值的数据大小          |         2 |
+| -k         | 1=keep alive 0=reconnect                      |         1 |
+| -r         | SET/GET/INCR 使用随机 key, SADD 使用随机值    |           |
+| -P         | 通过管道传输 <numreq> 请求                    |         1 |
+| -q         | 强制退出 redis。仅显示 query/sec 值           |           |
+| --csv      | 以 CSV 格式输出                               |           |
+| -l         | 生成循环，永久执行测试                        |           |
+| -t         | 仅运行以逗号分隔的测试命令列表。              |           |
+| 	-I | 	Idle 模式,仅打开 N 个 idle 连接并等待 |           |
+
+

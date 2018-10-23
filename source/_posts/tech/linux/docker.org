@@ -13,10 +13,10 @@ docker的常用命令介绍，以及使用docker运行postgresql数据库
 ** pull docker images
 #+begin_src bash
 docker search postgresql
-# info
-# NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
-# postgres                          The PostgreSQL object-relational database ...   3773      [OK]
-# 选择一个最多的
+info
+NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+postgres                          The PostgreSQL object-relational database ...   3773      [OK]
+// 选择一个最多的
 docker pull postgres  # 拉取远程镜像
 #+end_src
 
