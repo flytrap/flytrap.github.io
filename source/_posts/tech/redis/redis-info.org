@@ -127,7 +127,6 @@ active_defrag_key_misses:0
  一些主要命令的测试
 #+begin_src bash
 >redis-benchmark -q
-
 PING_INLINE: 87412.59 requests per second
 PING_BULK: 87489.06 requests per second
 SET: 80000.00 requests per second
