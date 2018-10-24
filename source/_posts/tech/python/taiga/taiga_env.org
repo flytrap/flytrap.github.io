@@ -11,16 +11,21 @@ Taiga 是一个开源的项目管理工具，专注于解决管理工具的易�
 
 ** install python3 环境
 Taiga 是使用python3写的，不兼容python2
-#+begin_src base
+#+begin_src bash
 brew install python3  # mac 安装最新python3
 apt-get install -y python3  # debian系列
 dnf -y install python3  # 红帽系列
-arch  默认就是python3 不用装
+#+end_src
+arch不需要, 默认就是python3
 
-# 安装虚拟环境virtualenvwrapper
+#+begin_src bash
+// 安装虚拟环境virtualenvwrapper
 mkvirtualenv -p /usr/local/bin/python3.6 taiga
 workon taiga
-# 切换到taiga后端代码路径
+// 后端代码拉取
+git clone https://github.com/flytrap/taiga-back.git
+git checkout weekly  # 最新分支
+// 切换到taiga后端代码路径
 pip install -r requirements.txt  # 安装必须的包 -i 可以指定源
 #+end_src
 
@@ -29,29 +34,43 @@ pip install -r requirements.txt  # 安装必须的包 -i 可以指定源
 #+end_html
 
 ** 配置数据库
-#+begin_src bash
+#+begin_src python
+// 修改数据库连接
 cp settings/local.py.example settings/local.py
-
-# 修改数据库连接
-
-python manage.py migrate --noinput  # 生成数据库模型
-python manage.py loaddata initial_user  # 加载默认数据
+// 升级数据库表结构
+python manage.py migrate --noinput
+// 加载默认数据
+python manage.py loaddata initial_user
 python manage.py loaddata initial_project_templates
-python manage.py compilemessages  # 编译语言包(国际化)
-python manage.py collectstatic --noinput  # 收集静态文件
-# python manage.py sample_data  # 加载点儿数据,方便调试, 数据比较多，会比较慢
-
+// 编译语言包(国际化)
+python manage.py compilemessages
+// 收集静态文件
+python manage.py collectstatic --noinput
+// 加载点儿数据,方便调试, 数据比较多,会比较慢
+python manage.py sample_data
 #+end_src
 
 ** 配置文件修改
 #+begin_src bash
+// 修改数据库配置
 cp settings/local.py.example settings/local.py
-＃ 修改数据库配置
-MEDIA_URL = "http://localhost:9000/media/"  ＃ 端口不对，记得修改
+// 端口不对，记得修改
+MEDIA_URL = "http://localhost:9000/media/"
 STATIC_URL = "http://localhost:9000/static/"
-还有发送邮件的邮箱服务器，消息队列redis，rabbitmq 等服务配置
+// 还有发送邮件的邮箱服务器，消息队列redis，rabbitmq 等服务配置
 CELERY_ENABLED = True  # 启动celery服务
 #+end_src
+
+** 前端开发环境运行
+#+begin_src bash
+git clone https://github.com/flytrap/taiga-front.git
+git checkout weekly
+npm install -g gulp
+npm install
+gulp
+#+end_src
+编译好的taiga前端代码参考:
+[[https://github.com/flytrap/taiga-front-dist][编译好的taiga前端代码参考]]
 
 ** 运行项目
 #+begin_src bash
