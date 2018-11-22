@@ -1,0 +1,76 @@
+#+TITLE: ssh port forward
+#+DATE: <2018-11-22>
+#+TAGS: ssh,port,forward,hacker
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* Summary
+通过公网连接不同的局域网，使其就像同一个局域网内部访问一般。
+
+** 一些额外参数
+#+begin_src bash
+-f  通常和-N连用，不登录到远程主机,就是后台执行的意思
+-N 不执行脚本或命令，通常与-f连用
+-g 在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接
+-q quiet模式，忽视大部分的警告和诊断信息
+-T 禁用tty分配
+-n 重定向stdin为/dev/null，用于配合-f后台任务
+#+end_src
+
+** 建立专门的linux账号用户用于端口转发(考虑安全性)
+不让该账户执行命令
+#+begin_src bash
+useradd -m tunnel
+passwd tunnel
+chsh -s /bin/false tunnel
+#+end_src
+
+** 绑定本地端口(-D)(socket5代理)
+转发本地端口流量至指定主机
+
+#+begin_src bash
+ssh -D 8888 user@host
+#+end_src
+
+这样所有来到本地8888端口的流量都有发送到host主机,就是远程主机
+应用场景：数据过滤，限制指定主机上网，代理，等等.
+#+begin_html
+<!--more-->
+#+end_html
+** 本地端口转发(-L)
+两个不同的局域网通信,对，两台要通信的机器都没有公网ip，只能借助以中间人(拥有公网ip的机制)进行通信.
+
+#+begin_src bash
+-L 本地网卡地址:本地端口:目标地址:目标端口
+ssh -L 2121:host2:21 user@host3
+#+end_src
+访问本地2121 就相当于访问host2的21端口
+对于确定的两个内网环境，这是一个挺不错的选择.
+** 远程端口转发(-R)
+
+#+begin_src bash
+-R 远程网卡地址:远程端口:目标地址:目标端口
+ssh -qTfNn -R 4567:localhost:3456 user@remote_host
+#+end_src
+
+将目标地址机器的目标端口映射到远程机器的远程端口上
+
+通过不确定的主机去访问确定的主机
+
+场景：反弹式后门瞬间通畅, 在家里连接工作电脑.
+
+
+这里说明一下，第一个地址是可以忽略的
+** 遇到的一些问题
+*** 远程主机的端口监听的是127.0.0.1
+解决方法
+#+begin_src bash
+vim /etc/ssh/sshd_config
+#+end_src
+#+begin_src ini
+GatewayPorts yes
+#+end_src
+找到GatewayPorts这个选项，并改为yes,默认是注释的.
+然后重启sshd服务
+
+重试一下ssh连接看.

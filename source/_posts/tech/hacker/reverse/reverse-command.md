@@ -1,3 +1,12 @@
+title: 逆向工具
+date: 2018-10-20 20:10:33
+tags:
+  - hacker
+  - reverse
+layout: post
+categories: tech
+---
+
 ## 逆向工具命令：
 - ldd: 依赖链接库查看(mac 参考otool  -L)
 - objdump: 依赖libbfd, 提取各种信息
