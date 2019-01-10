@@ -2,7 +2,7 @@
 #+DATE: <2018-08-27>
 #+TAGS: dns,sub
 #+LAYOUT: post
-#+CATEGORIES: live
+#+CATEGORIES: tech
 
 ** virustotal
 https://www.virustotal.com
@@ -15,4 +15,12 @@ https://dnsdumpster.com/
 这个应该是最好用的
 比较全面
 
-
+** 暴力破解
+#+begin_src bash
+fierce -dnsserver 8.8.8.8 -dns sina.com.cn -wordlist a.txt
+dnsdict6 -d4 -t 16 -x sina.com
+dnsenum -f dnsbig.txt -dnsserver 8.8.8.8 sina.com -o sina.xml 
+dnsmap sina.com -w dns.txt
+dnsrecon -d sina.com --lifetime 10 -t brt -D dnsbig.txt 
+dnsrecon -t std -d sina.com
+#+end_src
