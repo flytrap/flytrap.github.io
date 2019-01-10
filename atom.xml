@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>俗子</title>
+  
+  <subtitle>无意之中是真意，随心而行</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.flytrap.top/"/>
+  <updated>2019-01-10T09:13:21.399Z</updated>
+  <id>http://blog.flytrap.top/</id>
+  
+  <author>
+    <name>俗子</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>域名信息收集工具</title>
+    <link href="http://blog.flytrap.top/2019/01/10/tech/hacker/dns/"/>
+    <id>http://blog.flytrap.top/2019/01/10/tech/hacker/dns/</id>
+    <published>2019-01-09T16:00:00.000Z</published>
+    <updated>2019-01-10T09:13:21.399Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 class=&quot;section-number-2&quot;&gt;nslookup&lt;/h2&gt;&lt;p&gt;非交互模式
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nslookup www.baidu.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;nslookup -&lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt;=ns www.baidu.com 8.8.8.8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;&lt;p&gt;交互模式
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nslookup&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;www.baidu.com  &lt;span class=&quot;comment&quot;&gt;# 查询指定域名&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;server 8.8.8.8  &lt;span class=&quot;comment&quot;&gt;# 设置dns服务器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;span class=&quot;built_in&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt;=ns  &lt;span class=&quot;comment&quot;&gt;# 设置记录类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;&lt;p&gt;整个查询过程一般会有多个步骤，从根一级级查询回来，回来的记录可能还是一个域名，继续查询，最终得到ip。
+当然，这个过程自动完成，想看细节，最好抓包去看。
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="dns" scheme="http://blog.flytrap.top/tags/dns/"/>
+    
+      <category term="nslookup" scheme="http://blog.flytrap.top/tags/nslookup/"/>
+    
+      <category term="dig" scheme="http://blog.flytrap.top/tags/dig/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ssh port forward</title>
+    <link href="http://blog.flytrap.top/2018/11/22/tech/linux/ssh/ssh_port_forward/"/>
+    <id>http://blog.flytrap.top/2018/11/22/tech/linux/ssh/ssh_port_forward/</id>
+    <published>2018-11-21T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.659Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;Summary&lt;/h1&gt;&lt;p&gt;通过公网连接不同的局域网，使其就像同一个局域网内部访问一般。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;一些额外参数&lt;/h2&gt;&lt;p&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-f  通常和-N连用，不登录到远程主机,就是后台执行的意思&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-N 不执行脚本或命令，通常与-f连用&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-g 在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-q quiet模式，忽视大部分的警告和诊断信息&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-T 禁用tty分配&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-n 重定向stdin为/dev/null，用于配合-f后台任务&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;建立专门的linux账号用户用于端口转发(考虑安全性)&lt;/h2&gt;&lt;p&gt;不让该账户执行命令
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;useradd -m tunnel&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;passwd tunnel&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chsh -s /bin/&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt; tunnel&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;绑定本地端口(-D)(socket5代理)&lt;/h2&gt;&lt;p&gt;转发本地端口流量至指定主机&lt;/p&gt;&lt;p&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ssh -D 8888 user@host&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;&lt;p&gt;这样所有来到本地8888端口的流量都有发送到host主机,就是远程主机
+应用场景：数据过滤，限制指定主机上网，代理，等等.
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="hacker" scheme="http://blog.flytrap.top/tags/hacker/"/>
+    
+      <category term="ssh" scheme="http://blog.flytrap.top/tags/ssh/"/>
+    
+      <category term="port" scheme="http://blog.flytrap.top/tags/port/"/>
+    
+      <category term="forward" scheme="http://blog.flytrap.top/tags/forward/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis拾遗-性能指标</title>
+    <link href="http://blog.flytrap.top/2018/10/23/tech/redis/redis-info/"/>
+    <id>http://blog.flytrap.top/2018/10/23/tech/redis/redis-info/</id>
+    <published>2018-10-22T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.663Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;redis 性能指标(info命令使用)&lt;/h1&gt;&lt;p&gt;
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;Summary&lt;/h2&gt;&lt;p&gt;Info 指令显示的信息量非常大,可以分为9大块:
+&lt;ul&gt;
+&lt;li&gt;Server 服务器运行的环境参数&lt;/li&gt;
+&lt;li&gt;Clients 客户端相关信息&lt;/li&gt;
+&lt;li&gt;Memory 服务器运行内存统计数据&lt;/li&gt;
+&lt;li&gt;Persistence 持久化信息&lt;/li&gt;
+&lt;li&gt;Stats 通用统计数据&lt;/li&gt;
+&lt;li&gt;Replication 主从复制相关信息&lt;/li&gt;
+&lt;li&gt;CPU CPU 使用情况&lt;/li&gt;
+&lt;li&gt;Cluster 集群信息&lt;/li&gt;
+&lt;li&gt;KeySpace 键值对统计数量信息...&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="redis" scheme="http://blog.flytrap.top/tags/redis/"/>
+    
+      <category term="info" scheme="http://blog.flytrap.top/tags/info/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>逆向工具</title>
+    <link href="http://blog.flytrap.top/2018/10/20/tech/hacker/reverse/reverse-command/"/>
+    <id>http://blog.flytrap.top/2018/10/20/tech/hacker/reverse/reverse-command/</id>
+    <published>2018-10-20T12:10:33.000Z</published>
+    <updated>2019-01-10T07:46:26.658Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;逆向工具命令：&quot;&gt;&lt;a href=&quot;#逆向工具命令：&quot; class=&quot;headerlink&quot; title=&quot;逆向工具命令：&quot;&gt;&lt;/a&gt;逆向工具命令：&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;ldd: 依赖链接库查看(mac 参考otool  -L)&lt;/li&gt;
+&lt;li&gt;objdu
+      
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="hacker" scheme="http://blog.flytrap.top/tags/hacker/"/>
+    
+      <category term="reverse" scheme="http://blog.flytrap.top/tags/reverse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>子域名信息收集工具</title>
+    <link href="http://blog.flytrap.top/2018/08/27/tech/hacker/sub_dns_tools/"/>
+    <id>http://blog.flytrap.top/2018/08/27/tech/hacker/sub_dns_tools/</id>
+    <published>2018-08-26T16:00:00.000Z</published>
+    <updated>2019-01-10T09:57:02.311Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 class=&quot;section-number-2&quot;&gt;virustotal&lt;/h2&gt;&lt;p&gt;https://www.virustotal.com&lt;/p&gt;&lt;p&gt;
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;DNSdumpster&lt;/h2&gt;&lt;p&gt;https:&lt;
+      
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="dns" scheme="http://blog.flytrap.top/tags/dns/"/>
+    
+      <category term="sub" scheme="http://blog.flytrap.top/tags/sub/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>alsamixer 控制音量</title>
+    <link href="http://blog.flytrap.top/2018/07/29/tech/linux/alsamixer/"/>
+    <id>http://blog.flytrap.top/2018/07/29/tech/linux/alsamixer/</id>
+    <published>2018-07-28T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.658Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 class=&quot;section-number-1&quot;&gt;alsamixer&lt;/h1&gt;&lt;p&gt;  
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;alsamixer 终端交互式设置音量&lt;/h2&gt;&lt;p&gt;&lt;figure class=&quot;highlight bash&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
+    
+    
+      <category term="linux" scheme="http://blog.flytrap.top/tags/linux/"/>
+    
+      <category term="alasmixer" scheme="http://blog.flytrap.top/tags/alasmixer/"/>
+    
+      <category term="amixer" scheme="http://blog.flytrap.top/tags/amixer/"/>
+    
+      <category term="arch" scheme="http://blog.flytrap.top/tags/arch/"/>
+    
+      <category term="i3" scheme="http://blog.flytrap.top/tags/i3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一加6 获取root权限</title>
+    <link href="http://blog.flytrap.top/2018/07/08/tech/hacker/oneplus_6_root/"/>
+    <id>http://blog.flytrap.top/2018/07/08/tech/hacker/oneplus_6_root/</id>
+    <published>2018-07-08T01:45:35.000Z</published>
+    <updated>2019-01-10T07:46:26.657Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;一加6-获取root权限&quot;&gt;&lt;a href=&quot;#一加6-获取root权限&quot; class=&quot;headerlink&quot; title=&quot;一加6 获取root权限&quot;&gt;&lt;/a&gt;一加6 获取root权限&lt;/h1&gt;&lt;h2 id=&quot;下载相关文件&quot;&gt;&lt;a href=&quot;#下载相关文件&quot;
+      
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="hacker" scheme="http://blog.flytrap.top/tags/hacker/"/>
+    
+      <category term="oneplus" scheme="http://blog.flytrap.top/tags/oneplus/"/>
+    
+      <category term="安全" scheme="http://blog.flytrap.top/tags/%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安全工具系列之ettercap</title>
+    <link href="http://blog.flytrap.top/2018/06/10/tech/hacker/ettercap/"/>
+    <id>http://blog.flytrap.top/2018/06/10/tech/hacker/ettercap/</id>
+    <published>2018-06-10T01:45:35.000Z</published>
+    <updated>2019-01-10T07:46:26.657Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;简单介绍一下，挺早就想写一下这一系列比较好用的工具了，只是太懒了。&lt;br&gt;现在抽周末，慢慢地完成这一想法吧，算是一个系列.&lt;br&gt;主要以一些功能介绍，是常用命令为主，原理层面的话，可能不会特别深。毕竟还是需要比较专业的术语来说明，就太复杂了。&lt;/p&gt;
+&lt;p&gt;回到正题，就从内网渗透神器ettercap开始吧，最近用到了这个工具。也是我众多喜爱工具中感觉比较好用的一款。&lt;/p&gt;
+&lt;p&gt;简单介绍一下ettercap这款工具，内网渗透，这款工具用好了，差不多内网你就可以横着走了。&lt;/p&gt;
+&lt;p&gt;什么叫内网？通俗一点，就是局域网，连的同一个路由器。这样说我觉得挺通俗了，如果觉得不好，欢迎随意批评订正。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="hacker" scheme="http://blog.flytrap.top/tags/hacker/"/>
+    
+      <category term="安全" scheme="http://blog.flytrap.top/tags/%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="linux" scheme="http://blog.flytrap.top/tags/linux/"/>
+    
+      <category term="ettercap" scheme="http://blog.flytrap.top/tags/ettercap/"/>
+    
+      <category term="内网" scheme="http://blog.flytrap.top/tags/%E5%86%85%E7%BD%91/"/>
+    
+      <category term="渗透测试" scheme="http://blog.flytrap.top/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="kali" scheme="http://blog.flytrap.top/tags/kali/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Microsoft Office MIME types for HTTP Content Streaming</title>
+    <link href="http://blog.flytrap.top/2018/06/09/tech/front/msword_content_type/"/>
+    <id>http://blog.flytrap.top/2018/06/09/tech/front/msword_content_type/</id>
+    <published>2018-06-08T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.657Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 class=&quot;section-number-1&quot;&gt;Microsoft Office MIME types for HTTP Content Streaming&lt;/h1&gt;&lt;p&gt;
+microsoft file stream &#39;Content-Type&#39;&lt;/p&gt;&lt;p&gt;&lt;figu
+      
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="msword" scheme="http://blog.flytrap.top/tags/msword/"/>
+    
+      <category term="office" scheme="http://blog.flytrap.top/tags/office/"/>
+    
+      <category term="conten_type" scheme="http://blog.flytrap.top/tags/conten-type/"/>
+    
+      <category term="doc" scheme="http://blog.flytrap.top/tags/doc/"/>
+    
+      <category term="docx" scheme="http://blog.flytrap.top/tags/docx/"/>
+    
+      <category term="xls" scheme="http://blog.flytrap.top/tags/xls/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>-- unavailable modifier requested: 0 --  解决方案</title>
+    <link href="http://blog.flytrap.top/2018/03/09/tech/linux/deploy/unavailable_modifier_requested/"/>
+    <id>http://blog.flytrap.top/2018/03/09/tech/linux/deploy/unavailable_modifier_requested/</id>
+    <published>2018-03-08T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.659Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;uwsgi 遇到比较多的一个问题&lt;/h1&gt;&lt;p&gt;
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;错误信息&lt;/h2&gt;&lt;p&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;*** Operational MODE: single process ***&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*** no app loaded. going &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; full dynamic mode ***&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*** uWSGI is running &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; multiple interpreter mode ***&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;spawned uWSGI master process (pid: 14105)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;spawned uWSGI worker 1 (pid: 14108, cores: 1)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-- unavailable modifier requested: 0 --&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-- unavailable modifier requested: 0 --&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+以上是当我访问nginx服务的时候，uwsgi给出的错误信息
+每次访问都是一个: &quot;-- unavailable modifier requested: 0 --&quot;&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="django" scheme="http://blog.flytrap.top/tags/django/"/>
+    
+      <category term="nginx" scheme="http://blog.flytrap.top/tags/nginx/"/>
+    
+      <category term="uwsgi" scheme="http://blog.flytrap.top/tags/uwsgi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>flytrap 2017</title>
+    <link href="http://blog.flytrap.top/2018/02/20/live/summary-2017/"/>
+    <id>http://blog.flytrap.top/2018/02/20/live/summary-2017/</id>
+    <published>2018-02-19T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.655Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;恍惚2017&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;读了几本不错的书&lt;/h2&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;技术类:&lt;/h3&gt;&lt;p&gt;&lt;ul&gt;
+&lt;li&gt;程序员的生存之道&lt;/li&gt;
+&lt;li&gt;领域驱动开发&lt;/li&gt;
+&lt;li&gt;Django 设计模式与最佳实践&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;人物/历史:&lt;/h3&gt;&lt;p&gt;&lt;ul&gt;
+&lt;li&gt;逝去的武林&lt;/li&gt;
+&lt;li&gt;未来简史&lt;/li&gt;
+&lt;li&gt;三体&lt;/li&gt;
+&lt;li&gt;庄子&lt;/li&gt;
+&lt;li&gt;武人琴音&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;总结一下&lt;/h3&gt;&lt;p&gt;感觉阅读量明显减少(虽然读过的肯定远不止这些，感觉比较重要的也就这么多了)，今年一定补回来.
+ 
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;新的语言&lt;/h2&gt;&lt;p&gt;&lt;ul&gt;
+&lt;li&gt;swift --可以说基本入门吧，搞个简单的app应该问题不大，看了不少开源的项目.&lt;/li&gt;
+&lt;li&gt;typescript -- 前端，学习了angularjs框架，做了个比较丑的前端页面，一直想着优化来着，太懒了，今年一定做.&lt;/li&gt;
+&lt;li&gt;java（spring) 用spring 做了两个web项目，算是曾经学过的用上了吧&lt;/li&gt;
+&lt;li&gt;python3 这个其实不算新语言，不过使用python3新启了几个项目，感觉项目感强了不少，3的变化还是不少，先写这儿吧&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
+    
+    
+      <category term="coder" scheme="http://blog.flytrap.top/tags/coder/"/>
+    
+      <category term="read" scheme="http://blog.flytrap.top/tags/read/"/>
+    
+      <category term="book" scheme="http://blog.flytrap.top/tags/book/"/>
+    
+      <category term="生活" scheme="http://blog.flytrap.top/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+      <category term="形意" scheme="http://blog.flytrap.top/tags/%E5%BD%A2%E6%84%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ManyToManyField 双向关联</title>
+    <link href="http://blog.flytrap.top/2018/01/07/tech/python/django/manytomany/"/>
+    <id>http://blog.flytrap.top/2018/01/07/tech/python/django/manytomany/</id>
+    <published>2018-01-06T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.661Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt; Django ManyToManyField 字段数据关联&lt;/h1&gt;&lt;p&gt;
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;表结构&lt;/h2&gt;&lt;p&gt;先看一段代码
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(models.Model)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    user = models.ForeignKey(User, verbose_name=&lt;span class=&quot;string&quot;&gt;&#39;系统关联&#39;&lt;/span&gt;, on_delete=&lt;span class=&quot;keyword&quot;&gt;False&lt;/span&gt;, null=&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;, blank=&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    birth_death = models.CharField(&lt;span class=&quot;string&quot;&gt;&#39;生卒&#39;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;32&lt;/span&gt;, default=&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    name = models.CharField(&lt;span class=&quot;string&quot;&gt;&#39;姓名&#39;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;64&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    address = models.CharField(&lt;span class=&quot;string&quot;&gt;&#39;地址&#39;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;256&lt;/span&gt;, default=&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    desc = models.TextField(&lt;span class=&quot;string&quot;&gt;&#39;介绍&#39;&lt;/span&gt;, null=&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;, blank=&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    childes = models.ManyToManyField(&lt;span class=&quot;string&quot;&gt;&#39;self&#39;&lt;/span&gt;, verbose_name=&lt;span class=&quot;string&quot;&gt;&#39;后辈&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Meta&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        verbose_name = &lt;span class=&quot;string&quot;&gt;&#39;门人&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;讨论的主要字段就一个childes&lt;/h2&gt;&lt;p&gt;多对多数据，像多对多这个属性，在关系型数据库中的应用应该还是比较多的,平时使用应该比较少使用多对多自己的情况。
+然而我这里用到了，遇到一些问题，供大家参考
+&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;测试一下&lt;/h3&gt;&lt;p&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;p1 = People.objects.create(name=&lt;span class=&quot;string&quot;&gt;&#39;p1&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2 = People.objects.create(name=&lt;span class=&quot;string&quot;&gt;&#39;p2&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.childes.add(p1)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.childes.all()  &lt;span class=&quot;comment&quot;&gt;# &amp;lt;QuerySet [&amp;lt;People: People object (1)&amp;gt;]&amp;gt; ....... 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p1.childes.all()  &lt;span class=&quot;comment&quot;&gt;# &amp;lt;QuerySet [&amp;lt;People: People object (2)&amp;gt;]&amp;gt; ....... 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="django" scheme="http://blog.flytrap.top/tags/django/"/>
+    
+      <category term="python" scheme="http://blog.flytrap.top/tags/python/"/>
+    
+      <category term="ManyToManyField" scheme="http://blog.flytrap.top/tags/ManyToManyField/"/>
+    
+      <category term="单向" scheme="http://blog.flytrap.top/tags/%E5%8D%95%E5%90%91/"/>
+    
+      <category term="双向" scheme="http://blog.flytrap.top/tags/%E5%8F%8C%E5%90%91/"/>
+    
+      <category term="数据关联" scheme="http://blog.flytrap.top/tags/%E6%95%B0%E6%8D%AE%E5%85%B3%E8%81%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>spring boot 添加sentry</title>
+    <link href="http://blog.flytrap.top/2017/12/13/tech/java/spring_sentry/"/>
+    <id>http://blog.flytrap.top/2017/12/13/tech/java/spring_sentry/</id>
+    <published>2017-12-12T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.658Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;spring boot 添加sentry&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;官方spring 方案&lt;/h2&gt;&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;https://docs.sentry.io/clients/java/modules/spring/&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+没成功: Couldn&#39;t find a suitable DSN，应该是没有配置对，没有找到成功使用案例&lt;/p&gt;&lt;p&gt;配置如下:
+pom.xml
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;io.sentry&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;sentry-spring&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;1.6.3&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+config
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Bean&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; HandlerExceptionResolver &lt;span class=&quot;title&quot;&gt;sentryExceptionResolver&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; io.sentry.spring.SentryExceptionResolver();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;@Bean&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; ServletContextInitializer &lt;span class=&quot;title&quot;&gt;sentryServletContextInitializer&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; io.sentry.spring.SentryServletContextInitializer();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+application.properties
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;dsn=http://cbbc57cc8f7975750:2d9@sentry.io/24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+提供出来，以供参考，有知道的记得告诉我一声,谢谢.&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="spring" scheme="http://blog.flytrap.top/tags/spring/"/>
+    
+      <category term="sentry" scheme="http://blog.flytrap.top/tags/sentry/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>形意-劈拳</title>
+    <link href="http://blog.flytrap.top/2017/12/10/live/pi/"/>
+    <id>http://blog.flytrap.top/2017/12/10/live/pi/</id>
+    <published>2017-12-09T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.655Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;劈拳&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;古谱&lt;/h2&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;形意拳谱&lt;/h3&gt;&lt;p&gt;劈拳性属金，是阴阳连环成一气之起落也，气之一静，故形象太极。&lt;/p&gt;&lt;p&gt;气之一动而生物，其名为横，横属土，土生万物，故内包四拳，其五行循环之理。&lt;/p&gt;&lt;p&gt;土生金，故先练劈拳，上下运用，有劈物之意，其形像斧，故名劈拳。&lt;/p&gt;&lt;p&gt;所诸身内则为肺，劲顺则气合，劲拗则肺气乖。&lt;/p&gt;&lt;p&gt;夫人以气为主，气合则体壮，气乖则体弱，故学者不可大意也。&lt;/p&gt;&lt;p&gt;上步初势曰：两手紧握，同变阴拳，左拳落出，肘顺胸前，高不过肩，力垂左肩，右手靠脐，肘至肋边，眼平舌卷，气降丹田。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;劈拳讲义&lt;/h3&gt;&lt;p&gt;劈拳性属金，是阴阳连环一气之起落也。&lt;/p&gt;&lt;p&gt;气之一静，故形象太极；气之一动而生物，其名为横。&lt;/p&gt;&lt;p&gt;横属土，土生万物，故内包四拳。&lt;/p&gt;&lt;p&gt;按其五行循环之理，土生金，故先练劈拳，上下运用，有劈物之意，其形似斧，故名劈拳，所诸身内则为肺，劲顺则肺气和，劲谬则肺气乖。&lt;/p&gt;&lt;p&gt;夫人以气为主，气和则体壮，气乖则体弱，故学者不可大意也。&lt;/p&gt;&lt;p&gt;上步初势曰：两手紧握，同变阴拳，左拳落出，肘顺胸前，高不过肩，力垂左肩；右手靠脐，肘至肋边，眼平舌卷，气降丹田。&lt;/p&gt;&lt;p&gt;换步歌：左足既开，右足大进，手足齐落，推挽两迅，左足斜跟，右足仍顺，指开心齐，后手肋近，手足与鼻，列成直阵。&lt;/p&gt;&lt;p&gt;转身歌：起势钻，落势翻，行如槐虫，起如挑担，若遇人多，三摇两旋，正是转身之谓也。&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
+    
+    
+      <category term="形意" scheme="http://blog.flytrap.top/tags/%E5%BD%A2%E6%84%8F/"/>
+    
+      <category term="劈拳" scheme="http://blog.flytrap.top/tags/%E5%8A%88%E6%8B%B3/"/>
+    
+      <category term="劈" scheme="http://blog.flytrap.top/tags/%E5%8A%88/"/>
+    
+      <category term="肺" scheme="http://blog.flytrap.top/tags/%E8%82%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一些mac下软件的使用技巧</title>
+    <link href="http://blog.flytrap.top/2017/11/28/tech/mac/crack_rec/"/>
+    <id>http://blog.flytrap.top/2017/11/28/tech/mac/crack_rec/</id>
+    <published>2017-11-27T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.660Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;mac os软件激活方式&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;UltraEdit&lt;/h2&gt;&lt;p&gt;修改启动文件。
+打补丁
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;\x31\xC0\xFF\xC0\xC3\x90&#39;&lt;/span&gt; | dd seek=$((0x92D370)) conv=notrunc bs=1 of=/Applications/UltraEdit.app/Contents/MacOS/UltraEdit&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+我用的版本是官方最新 16.10.0.22，亲测可用。&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="mac" scheme="http://blog.flytrap.top/tags/mac/"/>
+    
+      <category term="os" scheme="http://blog.flytrap.top/tags/os/"/>
+    
+      <category term="UltraEdit" scheme="http://blog.flytrap.top/tags/UltraEdit/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中体西用-今解</title>
+    <link href="http://blog.flytrap.top/2017/11/26/live/using/"/>
+    <id>http://blog.flytrap.top/2017/11/26/live/using/</id>
+    <published>2017-11-25T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.656Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;中学为体，西学为用-古学今用&lt;/h1&gt;&lt;p&gt;  当年洋务运动时张之洞提出“中体西用,想要在不改变国基的基础上，师以夷技以制夷，终以失败告终，以国家计，兹事体大，难以运转，事终难成。
+  时过境迁，细似之，其必有可取之道。“修身治家齐天下”，古之治国之道，吾辈不敢苟同，查吾今日之道路，却有异曲同工之妙。
+  
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;体用之道&lt;/h2&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;体者&lt;/h3&gt;&lt;p&gt;   根本也，立身之本，终世践行，不可偏废也，所谓本事是也。
+&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;用者&lt;/h3&gt;&lt;p&gt;   生存之道，活命之源也，顺合时势，以求安身立命，所谓技能，技术，能力，乃外在表现而。
+&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;入世&lt;/h3&gt;&lt;p&gt;   二者不可偏废，无体则人如行尸，空有皮囊一副，枉来人事，信仰全无，空守根本（原则），不懂变通，终难得一席之地，难活于世也。
+   世人多本末难辨，以用为体，斯为苟活于世，而空乏本质，大道难明。
+&lt;/p&gt;&lt;h4 class=&quot;section-number-4&quot;&gt;example：传统武术&lt;/h4&gt;&lt;p&gt;   空有花架，而无内涵者多，明人观之，空有架势，华而不实者多。哗众取宠，重架而不重功，老来一场空。&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
+    
+    
+      <category term="形意" scheme="http://blog.flytrap.top/tags/%E5%BD%A2%E6%84%8F/"/>
+    
+      <category term="国术" scheme="http://blog.flytrap.top/tags/%E5%9B%BD%E6%9C%AF/"/>
+    
+      <category term="国学" scheme="http://blog.flytrap.top/tags/%E5%9B%BD%E5%AD%A6/"/>
+    
+      <category term="武术" scheme="http://blog.flytrap.top/tags/%E6%AD%A6%E6%9C%AF/"/>
+    
+      <category term="中医" scheme="http://blog.flytrap.top/tags/%E4%B8%AD%E5%8C%BB/"/>
+    
+      <category term="传统" scheme="http://blog.flytrap.top/tags/%E4%BC%A0%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>error: RPC failed; curl 18 transfer closed with outstanding read data remaining</title>
+    <link href="http://blog.flytrap.top/2017/11/08/tech/mac/git_errors/"/>
+    <id>http://blog.flytrap.top/2017/11/08/tech/mac/git_errors/</id>
+    <published>2017-11-07T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.660Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 class=&quot;section-number-1&quot;&gt; Summary&lt;/h1&gt;&lt;p&gt;  git clone 报错如下: 
+ error: RPC failed; curl 18 transfer closed with outstanding read data remai
+      
+    
+    </summary>
+    
+      <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
+    
+    
+      <category term="git" scheme="http://blog.flytrap.top/tags/git/"/>
+    
+      <category term="mac" scheme="http://blog.flytrap.top/tags/mac/"/>
+    
+      <category term="error" scheme="http://blog.flytrap.top/tags/error/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>django content type</title>
+    <link href="http://blog.flytrap.top/2017/10/15/tech/python/django/content_type/"/>
+    <id>http://blog.flytrap.top/2017/10/15/tech/python/django/content_type/</id>
+    <published>2017-10-14T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.661Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;Django content_type 精妙之处&lt;/h1&gt;&lt;p&gt;
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;Summary&lt;/h2&gt;&lt;p&gt;有点儿Django经验的人应该都遇到过这种问题：有一个通用的模型，需要根据不同的类型，去关联对应的模型。
+通常的做法是：模型中有个类型的枚举字段，然后再搞个relate_id来存储相关联的模型id，然后通过逻辑，再去获取相关数据.
+其实使用Django 自带的content type来解决这个问题，是非常容易的。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;content type&lt;/h2&gt;&lt;p&gt;这个模型很简单，但是很好的一个东西
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@python_2_unicode_compatible&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ContentType&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(models.Model)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    app_label = models.CharField(max_length=&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    model = models.CharField(_(&lt;span class=&quot;string&quot;&gt;&#39;python model class name&#39;&lt;/span&gt;), max_length=&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+数据库里看看呗
+你可以发现你项目里的所有模型，都在这个里面能找到，就这个就够了。&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
+    
+    
+      <category term="django" scheme="http://blog.flytrap.top/tags/django/"/>
+    
+      <category term="python" scheme="http://blog.flytrap.top/tags/python/"/>
+    
+      <category term="orm" scheme="http://blog.flytrap.top/tags/orm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一天时间安排</title>
+    <link href="http://blog.flytrap.top/2017/09/29/live/days/"/>
+    <id>http://blog.flytrap.top/2017/09/29/live/days/</id>
+    <published>2017-09-28T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.655Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;一天的安排&lt;/h1&gt;&lt;p&gt;
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;Summary&lt;/h2&gt;&lt;p&gt;一天时间排序，规律生活每一天, 习惯了就不存在什么坚持不坚持，不需要思考，就该这么做.&lt;/p&gt;&lt;p&gt;习惯去做一件事，没有痛苦，只是随心而行，乐在其中.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;workday&lt;/h2&gt;&lt;p&gt;
+&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;1 2 4&lt;/h3&gt;&lt;p&gt;
+&lt;table&gt;
+&lt;thead&gt;&lt;tr&gt;&lt;th&gt;      7:00 &lt;/th&gt;&lt;th&gt;   7:30-8:30 &lt;/th&gt;&lt;th&gt;            8:40-9:30 &lt;/th&gt;&lt;th&gt; 9:30-20:30 &lt;/th&gt;&lt;th&gt;         20:40-21:20 &lt;/th&gt;&lt;th&gt;       22:00-23:00 &lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tr&gt;&lt;td&gt;-----------+-------------+----------------------+------------+---------------------+-------------------&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt; 起床-洗漱 &lt;/td&gt;&lt;td&gt; 练拳-读经典 &lt;/td&gt;&lt;td&gt; 地铁-听新闻,经典启发 &lt;/td&gt;&lt;td&gt;   正常上班 &lt;/td&gt;&lt;td&gt; 地铁-读英语，背单词 &lt;/td&gt;&lt;td&gt; 练拳-思考，静下来 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;/p&gt;&lt;p&gt;
+&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;3 5&lt;/h3&gt;&lt;p&gt;
+&lt;table&gt;
+&lt;thead&gt;&lt;tr&gt;&lt;th&gt;      7:00 &lt;/th&gt;&lt;th&gt;   7:30-8:30 &lt;/th&gt;&lt;th&gt;            8:40-9:30 &lt;/th&gt;&lt;th&gt; 9:30-18:30 &lt;/th&gt;&lt;th&gt;         19:00-19:40 &lt;/th&gt;&lt;th&gt;          20:00-21:50              &lt;/th&gt;&lt;th&gt;       22:00-23:00 &lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tr&gt;&lt;td&gt;-----------+-------------+----------------------+------------+---------------------+-----------------------------------+-------------------&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt; 起床-洗漱 &lt;/td&gt;&lt;td&gt; 练拳-读经典 &lt;/td&gt;&lt;td&gt; 地铁-听新闻,经典启发 &lt;/td&gt;&lt;td&gt;   正常上班 &lt;/td&gt;&lt;td&gt; 地铁-读英语，背单词 &lt;/td&gt;&lt;td&gt; 吃饭,书,github,写点乱七八糟的东西 &lt;/td&gt;&lt;td&gt; 练拳-思考，静下来 &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
+    
+    
+      <category term="day" scheme="http://blog.flytrap.top/tags/day/"/>
+    
+      <category term="时间管理" scheme="http://blog.flytrap.top/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac keys</title>
+    <link href="http://blog.flytrap.top/2017/09/29/tech/mac/keys/"/>
+    <id>http://blog.flytrap.top/2017/09/29/tech/mac/keys/</id>
+    <published>2017-09-28T16:00:00.000Z</published>
+    <updated>2019-01-10T07:46:26.660Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 class=&quot;section-number-2&quot;&gt;summary&lt;/h2&gt;&lt;p&gt;mac 快捷键的一些奇淫异巧&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;1&lt;/h3&gt;&lt;p&gt;&lt;table&gt;
+&lt;thead&gt;&lt;tr&gt;&lt;th&gt; key      
+      
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="mac" scheme="http://blog.flytrap.top/tags/mac/"/>
+    
+      <category term="key" scheme="http://blog.flytrap.top/tags/key/"/>
+    
+  </entry>
+  
+</feed>
