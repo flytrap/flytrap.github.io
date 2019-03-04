@@ -534,9 +534,9 @@ application.properties
       <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
     
     
-      <category term="mac" scheme="http://blog.flytrap.top/tags/mac/"/>
-    
       <category term="git" scheme="http://blog.flytrap.top/tags/git/"/>
+    
+      <category term="mac" scheme="http://blog.flytrap.top/tags/mac/"/>
     
       <category term="error" scheme="http://blog.flytrap.top/tags/error/"/>
     
