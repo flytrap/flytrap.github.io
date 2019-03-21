@@ -185,6 +185,323 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-tech/python/django/content_type" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/15/tech/python/django/content_type/">django content type</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/15/tech/python/django/content_type/" class="archive-article-date">
+  	<time datetime="2017-10-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 class="section-number-1">Django content_type 精妙之处</h1><p>
+</p><h2 class="section-number-2">Summary</h2><p>有点儿Django经验的人应该都遇到过这种问题：有一个通用的模型，需要根据不同的类型，去关联对应的模型。
+通常的做法是：模型中有个类型的枚举字段，然后再搞个relate_id来存储相关联的模型id，然后通过逻辑，再去获取相关数据.
+其实使用Django 自带的content type来解决这个问题，是非常容易的。</p><p></p><h2 class="section-number-2">content type</h2><p>这个模型很简单，但是很好的一个东西
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@python_2_unicode_compatible</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContentType</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    app_label = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    model = models.CharField(_(<span class="string">'python model class name'</span>), max_length=<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+数据库里看看呗
+你可以发现你项目里的所有模型，都在这个里面能找到，就这个就够了。</p><p>
+        
+          <a class="article-more-a" href="/2017/10/15/tech/python/django/content_type/#more">more >></a>
+        
+      
+
+      
+    </p></div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">orm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/live//" class="article-tag-list-link color5">live</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/15/tech/python/django/content_type/">查看全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-tech/mac/keys" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/29/tech/mac/keys/">mac keys</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/29/tech/mac/keys/" class="archive-article-date">
+  	<time datetime="2017-09-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 class="section-number-2">summary</h2><p>mac 快捷键的一些奇淫异巧</p><p></p><h3 class="section-number-3">1</h3><p><table>
+<thead><tr><th> key                       </th><th> 用途                 </th></tr></thead>
+<tr><td> command + control + space </td><td> 使用emoji键盘        </td></tr>
+<tr><td> command + space           </td><td> spotlight(搜索)      </td></tr>
+<tr><td> command + delete          </td><td> 放入回收站           </td></tr>
+<tr><td> fn + delete               </td><td> 反向删除             </td></tr>
+<tr><td> control + 👆              </td><td> 显示窗口的打开的程序 </td><td> </td></tr>
+</table></p><p></p><h3 class="section-number-3">finder</h3><p><table>
+<thead><tr><th> key                 </th><th> 用途       </th></tr></thead>
+<tr><td> shift + command + g </td><td> 文件夹跳转 </td></tr>
+<tr><td> command + o         </td><td> 打开文件   </td></tr>
+<tr><td> command + z         </td><td> 撤销       </td></tr>
+<tr><td> command + x         </td><td> 剪切       </td></tr>
+<tr><td> command + c         </td><td> 复制       </td></tr>
+<tr><td> command + v         </td><td> 粘贴       </td></tr>
+<tr><td> command + a         </td><td> 全选       </td></tr>
+<tr><td> command + s         </td><td> 保存       </td></tr>
+<tr><td> command + f         </td><td> 查找       </td></tr>
+</table></p><p>
+</p><h3 class="section-number-3">system</h3><p><table>
+<thead><tr><th> key                           </th><th> 用途                       </th></tr></thead>
+<tr><td> command + shift + 4           </td><td> 截取所选屏幕区域到一个文件 </td></tr>
+<tr><td> command + shift + 3           </td><td> 截取全部屏幕到文件         </td></tr>
+<tr><td> command + shift + control + 3 </td><td> 截取全部屏幕到剪贴板       </td></tr>
+</table></p><p></p><p></p>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">key</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/29/tech/mac/keys/">查看全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-live/days" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/29/live/days/">一天时间安排</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/29/live/days/" class="archive-article-date">
+  	<time datetime="2017-09-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 class="section-number-1">一天的安排</h1><p>
+</p><h2 class="section-number-2">Summary</h2><p>一天时间排序，规律生活每一天, 习惯了就不存在什么坚持不坚持，不需要思考，就该这么做.</p><p>习惯去做一件事，没有痛苦，只是随心而行，乐在其中.</p><p></p><h2 class="section-number-2">workday</h2><p>
+</p><h3 class="section-number-3">1 2 4</h3><p>
+<table>
+<thead><tr><th>      7:00 </th><th>   7:30-8:30 </th><th>            8:40-9:30 </th><th> 9:30-20:30 </th><th>         20:40-21:20 </th><th>       22:00-23:00 </th></tr></thead>
+<tr><td>-----------+-------------+----------------------+------------+---------------------+-------------------</td></tr>
+<tr><td> 起床-洗漱 </td><td> 练拳-读经典 </td><td> 地铁-听新闻,经典启发 </td><td>   正常上班 </td><td> 地铁-读英语，背单词 </td><td> 练拳-思考，静下来 </td></tr>
+</table></p><p>
+</p><h3 class="section-number-3">3 5</h3><p>
+<table>
+<thead><tr><th>      7:00 </th><th>   7:30-8:30 </th><th>            8:40-9:30 </th><th> 9:30-18:30 </th><th>         19:00-19:40 </th><th>          20:00-21:50              </th><th>       22:00-23:00 </th></tr></thead>
+<tr><td>-----------+-------------+----------------------+------------+---------------------+-----------------------------------+-------------------</td></tr>
+<tr><td> 起床-洗漱 </td><td> 练拳-读经典 </td><td> 地铁-听新闻,经典启发 </td><td>   正常上班 </td><td> 地铁-读英语，背单词 </td><td> 吃饭,书,github,写点乱七八糟的东西 </td><td> 练拳-思考，静下来 </td></tr>
+</table></p><p>
+        
+          <a class="article-more-a" href="/2017/09/29/live/days/#more">more >></a>
+        
+      
+
+      
+    </p></div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">day</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">时间管理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/live//" class="article-tag-list-link color5">live</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/29/live/days/">查看全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-tech/linux/work_separation" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -225,6 +542,10 @@ ssh-keygen 命令是用来生成秘钥的，刚装系统大多都没有生成，
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
         		</li>
       		 
@@ -234,10 +555,6 @@ ssh-keygen 命令是用来生成秘钥的，刚装系统大多都没有生成，
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ssh环境</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
@@ -602,6 +919,101 @@ windows咋弄，自己去度娘吧，我太长时间没用过win了，懒得折�
 
 
   
+    <article id="post-tech/linux/docker" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/22/tech/linux/docker/">Docker 常用命令, 运行使用postgresql</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/22/tech/linux/docker/" class="archive-article-date">
+  	<time datetime="2017-07-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 class="section-number-1">docker postgresql 使用</h1><p></p><h2 class="section-number-2">Summary</h2><p>docker的常用命令介绍，以及使用docker运行postgresql数据库</p><p></p><h2 class="section-number-2">docker install</h2><p>略 ...</p><p></p><h2 class="section-number-2">pull docker images</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker search postgresql</span><br><span class="line">info</span><br><span class="line">NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">postgres                          The PostgreSQL object-relational database ...   3773      [OK]</span><br><span class="line">// 选择一个最多的</span><br><span class="line">docker pull postgres  <span class="comment"># 拉取远程镜像</span></span><br></pre></td></tr></table></figure></p><p>
+        
+          <a class="article-more-a" href="/2017/07/22/tech/linux/docker/#more">more >></a>
+        
+      
+
+      
+    </p></div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">postgresql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/22/tech/linux/docker/">查看全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-tech/python/taiga/taiga_env" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -675,101 +1087,6 @@ arch不需要, 默认就是python3</p><p><figure class="highlight bash"><table><
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/07/22/tech/python/taiga/taiga_env/">查看全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-tech/linux/docker" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/22/tech/linux/docker/">Docker 常用命令, 运行使用postgresql</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/22/tech/linux/docker/" class="archive-article-date">
-  	<time datetime="2017-07-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 class="section-number-1">docker postgresql 使用</h1><p></p><h2 class="section-number-2">Summary</h2><p>docker的常用命令介绍，以及使用docker运行postgresql数据库</p><p></p><h2 class="section-number-2">docker install</h2><p>略 ...</p><p></p><h2 class="section-number-2">pull docker images</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker search postgresql</span><br><span class="line">info</span><br><span class="line">NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">postgres                          The PostgreSQL object-relational database ...   3773      [OK]</span><br><span class="line">// 选择一个最多的</span><br><span class="line">docker pull postgres  <span class="comment"># 拉取远程镜像</span></span><br></pre></td></tr></table></figure></p><p>
-        
-          <a class="article-more-a" href="/2017/07/22/tech/linux/docker/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">postgresql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/22/tech/linux/docker/">查看全文 >></a>
         </p>
       
 
@@ -883,322 +1200,9 @@ arch不需要, 默认就是python3</p><p><figure class="highlight bash"><table><
 
 
   
-    <article id="post-tech/python/django/django_401" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/25/tech/python/django/django_401/">关于不需要权限访问的接口，错误token，报401的解释</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/25/tech/python/django/django_401/" class="archive-article-date">
-  	<time datetime="2017-06-25T12:10:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述:<br>不需要权限接口，传入错误token，没有权限访问。</p>
-<p>错误抛出位置(DRF框架)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">perform_authentication</span><span class="params">(self, request)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Perform authentication on the incoming request.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Note that if you override this and simply 'pass', then authentication</span></span><br><span class="line"><span class="string">        will instead be performed lazily, the first time either</span></span><br><span class="line"><span class="string">        `request.user` or `request.auth` is accessed.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        request.user</span><br></pre></td></tr></table></figure>
-<p>获取用户信息</p>
-        
-          <a class="article-more-a" href="/2017/06/25/tech/python/django/django_401/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">token</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/25/tech/python/django/django_401/">查看全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-tech/linux/arch/laptop-mode" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/26/tech/linux/arch/laptop-mode/">laptop-mode 安装</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/26/tech/linux/arch/laptop-mode/" class="archive-article-date">
-  	<time datetime="2017-02-26T15:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 class="section-number-1">laptop-mode</h1><p></p><h2 class="section-number-2">summary</h2><p>Laptop Mode Tools 是一个 Linux 系统下的笔记本电源管理软件
-</p><h2 class="section-number-2">install</h2><p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Ss laptop-mode</span><br><span class="line">yaourt -Syu laptop-mode-tools</span><br></pre></td></tr></table></figure>
-</p><h2 class="section-number-2">startup laptop-mode</h2><p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start laptop-mode</span><br><span class="line">systemctl enable laptop-mode</span><br></pre></td></tr></table></figure></p><p>
-        
-          <a class="article-more-a" href="/2017/02/26/tech/linux/arch/laptop-mode/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">laptop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/26/tech/linux/arch/laptop-mode/">查看全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-live/summary-2016" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/live/summary-2016/">flytrap 2016</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/04/live/summary-2016/" class="archive-article-date">
-  	<time datetime="2017-02-04T09:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 class="section-number-1">虚度2016</h1><p></p><h2 class="section-number-2">读了几本不错的书</h2><p></p><h3 class="section-number-3">技术类:</h3><p><ul>
-<li>代码整洁之道</li>
-<li>python源码剖析</li>
-<li>http权威指南</li>
-<li>sqlite权威指南</li>
-<li>python渗透测试</li>
-<li>Linux 内核技术手册</li>
-- 
-</ul></p><p></p><h3 class="section-number-3">人物/历史:</h3><p><ul>
-<li>卑鄙圣人曹操</li>
-<li>人类简史</li>
-<li>孙子兵法</li>
-<li>掘金黑客</li>
- 
-</ul>
-</p><h2 class="section-number-2">新的语言</h2><p><ul>
-<li>command lisp （这个值得研究）</li>
-<li>elisp (为了emacs嘛，这个是必须的, 算是离不开了)</li>
-<li>java (spark 工作需要，虽然写了没多久，算是入门吧)</li>
-</ul></p><p>
-        
-          <a class="article-more-a" href="/2017/02/04/live/summary-2016/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">coder</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">orgmode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">read</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">book</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/live//" class="article-tag-list-link color5">live</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/04/live/summary-2016/">查看全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -1361,31 +1365,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">桩</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">day</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">时间管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">形意</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">劈拳</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">劈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">肺</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1409,6 +1393,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">形意</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">劈拳</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">劈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">肺</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">国术</a>
               </li>
              
@@ -1426,6 +1426,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">传统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">桩</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1465,6 +1469,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">os</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">UltraEdit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
@@ -1473,7 +1497,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sub</a>
+                <a href="javascript:void(0)" class="js-tag color4">key</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1493,11 +1517,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">error</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1521,38 +1553,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">os</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">UltraEdit</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">error</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">key</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pip</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">pep8</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -1561,7 +1561,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+                <a href="javascript:void(0)" class="js-tag color4">pip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">pep8</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1589,7 +1593,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">orm</a>
+                <a href="javascript:void(0)" class="js-tag color2">server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1617,6 +1625,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">orm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ManyToManyField</a>
               </li>
              
@@ -1633,7 +1645,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">deploy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">login</a>
               </li>
              
               <li class="article-tag-list-item">

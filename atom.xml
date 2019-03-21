@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.flytrap.top/"/>
-  <updated>2019-01-10T09:13:21.399Z</updated>
+  <updated>2019-03-14T04:14:07.828Z</updated>
   <id>http://blog.flytrap.top/</id>
   
   <author>
@@ -15,6 +15,86 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql记录</title>
+    <link href="http://blog.flytrap.top/2019/03/14/tech/linux/ssh/mysql/"/>
+    <id>http://blog.flytrap.top/2019/03/14/tech/linux/ssh/mysql/</id>
+    <published>2019-03-13T16:00:00.000Z</published>
+    <updated>2019-03-14T04:14:07.828Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 class=&quot;section-number-2&quot;&gt;配置相关&lt;/h2&gt;&lt;p&gt;&lt;ul&gt;
+&lt;li&gt;监听公网ip，修改端口&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vim /etc/mysql/my.cnf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;port=3389&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;bind&lt;/span&gt;-address=&lt;span class=&quot;string&quot;&gt;&#39;0.0.0.0&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="linux" scheme="http://blog.flytrap.top/tags/linux/"/>
+    
+      <category term="server" scheme="http://blog.flytrap.top/tags/server/"/>
+    
+      <category term="mysql" scheme="http://blog.flytrap.top/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx 日常</title>
+    <link href="http://blog.flytrap.top/2019/03/13/tech/linux/deploy/nginx/"/>
+    <id>http://blog.flytrap.top/2019/03/13/tech/linux/deploy/nginx/</id>
+    <published>2019-03-12T16:00:00.000Z</published>
+    <updated>2019-03-14T04:13:16.075Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 class=&quot;section-number-2&quot;&gt;遇到的一些问题&lt;/h2&gt;&lt;p&gt;&lt;ul&gt;
+&lt;li&gt;大文件无法上传&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;server{&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    client_max_body_size   30m;  &lt;span class=&quot;comment&quot;&gt;# 默认是1m&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;}&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="linux" scheme="http://blog.flytrap.top/tags/linux/"/>
+    
+      <category term="nginx" scheme="http://blog.flytrap.top/tags/nginx/"/>
+    
+      <category term="deploy" scheme="http://blog.flytrap.top/tags/deploy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>服务器ssh登录配置</title>
+    <link href="http://blog.flytrap.top/2019/03/13/tech/linux/ssh/ssh_login/"/>
+    <id>http://blog.flytrap.top/2019/03/13/tech/linux/ssh/ssh_login/</id>
+    <published>2019-03-12T16:00:00.000Z</published>
+    <updated>2019-03-13T09:18:42.448Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;服务器ssh登录配置&lt;/h1&gt;&lt;p&gt;
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;Summary&lt;/h2&gt;&lt;p&gt;服务器的安全问题，务必要认真对待。
+安全策略:
+&lt;ul&gt;
+&lt;li&gt;不允许root登录&lt;/li&gt;
+&lt;li&gt;不允许密码登录,key&lt;/li&gt;
+&lt;li&gt;修改ssh监听端口&lt;/li&gt;
+&lt;li&gt;只允许指定ip 访问,就是白名单&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;配置文件&lt;/h2&gt;&lt;p&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vim /etc/ssh/sshd_config&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Port 22  &lt;span class=&quot;comment&quot;&gt;# 取消注释，修改监听端口&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;StrictModes yes  &lt;span class=&quot;comment&quot;&gt;# 用户权限鉴定的,建议设置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;RSAAuthentication yes  &lt;span class=&quot;comment&quot;&gt;# RSA 公钥鉴定&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;PubkeyAuthentication yes  &lt;span class=&quot;comment&quot;&gt;# 允许key的方式登录&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;PermitRootLogin no  &lt;span class=&quot;comment&quot;&gt;# 不允许root登录&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;PasswordAuthentication no  &lt;span class=&quot;comment&quot;&gt;# 不允许密码登录&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;vim ~/.ssh/authorized_keys  &lt;span class=&quot;comment&quot;&gt;# 这个文件每一行代表一个公共key&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chmod 600 ~/.ssh/authorized_keys&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chmod 700 ~/.ssh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl restart sshd&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;&lt;p&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="ssh" scheme="http://blog.flytrap.top/tags/ssh/"/>
+    
+      <category term="login" scheme="http://blog.flytrap.top/tags/login/"/>
+    
+  </entry>
   
   <entry>
     <title>域名信息收集工具</title>
@@ -347,8 +427,6 @@ microsoft file stream &#39;Content-Type&#39;&lt;/p&gt;&lt;p&gt;&lt;figu
       <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
     
     
-      <category term="形意" scheme="http://blog.flytrap.top/tags/%E5%BD%A2%E6%84%8F/"/>
-    
       <category term="coder" scheme="http://blog.flytrap.top/tags/coder/"/>
     
       <category term="read" scheme="http://blog.flytrap.top/tags/read/"/>
@@ -356,6 +434,8 @@ microsoft file stream &#39;Content-Type&#39;&lt;/p&gt;&lt;p&gt;&lt;figu
       <category term="book" scheme="http://blog.flytrap.top/tags/book/"/>
     
       <category term="生活" scheme="http://blog.flytrap.top/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+      <category term="形意" scheme="http://blog.flytrap.top/tags/%E5%BD%A2%E6%84%8F/"/>
     
   </entry>
   
@@ -534,102 +614,11 @@ application.properties
       <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
     
     
+      <category term="mac" scheme="http://blog.flytrap.top/tags/mac/"/>
+    
       <category term="git" scheme="http://blog.flytrap.top/tags/git/"/>
     
-      <category term="mac" scheme="http://blog.flytrap.top/tags/mac/"/>
-    
       <category term="error" scheme="http://blog.flytrap.top/tags/error/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>django content type</title>
-    <link href="http://blog.flytrap.top/2017/10/15/tech/python/django/content_type/"/>
-    <id>http://blog.flytrap.top/2017/10/15/tech/python/django/content_type/</id>
-    <published>2017-10-14T16:00:00.000Z</published>
-    <updated>2019-01-10T07:46:26.661Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 class=&quot;section-number-1&quot;&gt;Django content_type 精妙之处&lt;/h1&gt;&lt;p&gt;
-&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;Summary&lt;/h2&gt;&lt;p&gt;有点儿Django经验的人应该都遇到过这种问题：有一个通用的模型，需要根据不同的类型，去关联对应的模型。
-通常的做法是：模型中有个类型的枚举字段，然后再搞个relate_id来存储相关联的模型id，然后通过逻辑，再去获取相关数据.
-其实使用Django 自带的content type来解决这个问题，是非常容易的。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;content type&lt;/h2&gt;&lt;p&gt;这个模型很简单，但是很好的一个东西
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@python_2_unicode_compatible&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ContentType&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(models.Model)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    app_label = models.CharField(max_length=&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    model = models.CharField(_(&lt;span class=&quot;string&quot;&gt;&#39;python model class name&#39;&lt;/span&gt;), max_length=&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-数据库里看看呗
-你可以发现你项目里的所有模型，都在这个里面能找到，就这个就够了。&lt;/p&gt;&lt;p&gt;
-    
-    </summary>
-    
-      <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
-    
-    
-      <category term="django" scheme="http://blog.flytrap.top/tags/django/"/>
-    
-      <category term="python" scheme="http://blog.flytrap.top/tags/python/"/>
-    
-      <category term="orm" scheme="http://blog.flytrap.top/tags/orm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一天时间安排</title>
-    <link href="http://blog.flytrap.top/2017/09/29/live/days/"/>
-    <id>http://blog.flytrap.top/2017/09/29/live/days/</id>
-    <published>2017-09-28T16:00:00.000Z</published>
-    <updated>2019-01-10T07:46:26.655Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 class=&quot;section-number-1&quot;&gt;一天的安排&lt;/h1&gt;&lt;p&gt;
-&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;Summary&lt;/h2&gt;&lt;p&gt;一天时间排序，规律生活每一天, 习惯了就不存在什么坚持不坚持，不需要思考，就该这么做.&lt;/p&gt;&lt;p&gt;习惯去做一件事，没有痛苦，只是随心而行，乐在其中.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;workday&lt;/h2&gt;&lt;p&gt;
-&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;1 2 4&lt;/h3&gt;&lt;p&gt;
-&lt;table&gt;
-&lt;thead&gt;&lt;tr&gt;&lt;th&gt;      7:00 &lt;/th&gt;&lt;th&gt;   7:30-8:30 &lt;/th&gt;&lt;th&gt;            8:40-9:30 &lt;/th&gt;&lt;th&gt; 9:30-20:30 &lt;/th&gt;&lt;th&gt;         20:40-21:20 &lt;/th&gt;&lt;th&gt;       22:00-23:00 &lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-&lt;tr&gt;&lt;td&gt;-----------+-------------+----------------------+------------+---------------------+-------------------&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt; 起床-洗漱 &lt;/td&gt;&lt;td&gt; 练拳-读经典 &lt;/td&gt;&lt;td&gt; 地铁-听新闻,经典启发 &lt;/td&gt;&lt;td&gt;   正常上班 &lt;/td&gt;&lt;td&gt; 地铁-读英语，背单词 &lt;/td&gt;&lt;td&gt; 练拳-思考，静下来 &lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;&lt;/p&gt;&lt;p&gt;
-&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;3 5&lt;/h3&gt;&lt;p&gt;
-&lt;table&gt;
-&lt;thead&gt;&lt;tr&gt;&lt;th&gt;      7:00 &lt;/th&gt;&lt;th&gt;   7:30-8:30 &lt;/th&gt;&lt;th&gt;            8:40-9:30 &lt;/th&gt;&lt;th&gt; 9:30-18:30 &lt;/th&gt;&lt;th&gt;         19:00-19:40 &lt;/th&gt;&lt;th&gt;          20:00-21:50              &lt;/th&gt;&lt;th&gt;       22:00-23:00 &lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-&lt;tr&gt;&lt;td&gt;-----------+-------------+----------------------+------------+---------------------+-----------------------------------+-------------------&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt; 起床-洗漱 &lt;/td&gt;&lt;td&gt; 练拳-读经典 &lt;/td&gt;&lt;td&gt; 地铁-听新闻,经典启发 &lt;/td&gt;&lt;td&gt;   正常上班 &lt;/td&gt;&lt;td&gt; 地铁-读英语，背单词 &lt;/td&gt;&lt;td&gt; 吃饭,书,github,写点乱七八糟的东西 &lt;/td&gt;&lt;td&gt; 练拳-思考，静下来 &lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;&lt;/p&gt;&lt;p&gt;
-    
-    </summary>
-    
-      <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
-    
-    
-      <category term="day" scheme="http://blog.flytrap.top/tags/day/"/>
-    
-      <category term="时间管理" scheme="http://blog.flytrap.top/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mac keys</title>
-    <link href="http://blog.flytrap.top/2017/09/29/tech/mac/keys/"/>
-    <id>http://blog.flytrap.top/2017/09/29/tech/mac/keys/</id>
-    <published>2017-09-28T16:00:00.000Z</published>
-    <updated>2019-01-10T07:46:26.660Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 class=&quot;section-number-2&quot;&gt;summary&lt;/h2&gt;&lt;p&gt;mac 快捷键的一些奇淫异巧&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;1&lt;/h3&gt;&lt;p&gt;&lt;table&gt;
-&lt;thead&gt;&lt;tr&gt;&lt;th&gt; key      
-      
-    
-    </summary>
-    
-      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
-    
-    
-      <category term="mac" scheme="http://blog.flytrap.top/tags/mac/"/>
-    
-      <category term="key" scheme="http://blog.flytrap.top/tags/key/"/>
     
   </entry>
   
