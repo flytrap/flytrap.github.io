@@ -18,8 +18,8 @@
   
   <entry>
     <title>mysql记录</title>
-    <link href="http://blog.flytrap.top/2019/03/14/tech/linux/ssh/mysql/"/>
-    <id>http://blog.flytrap.top/2019/03/14/tech/linux/ssh/mysql/</id>
+    <link href="http://blog.flytrap.top/2019/03/14/tech/linux/mysql/"/>
+    <id>http://blog.flytrap.top/2019/03/14/tech/linux/mysql/</id>
     <published>2019-03-13T16:00:00.000Z</published>
     <updated>2019-03-14T04:14:07.828Z</updated>
     
@@ -427,6 +427,8 @@ microsoft file stream &#39;Content-Type&#39;&lt;/p&gt;&lt;p&gt;&lt;figu
       <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
     
     
+      <category term="形意" scheme="http://blog.flytrap.top/tags/%E5%BD%A2%E6%84%8F/"/>
+    
       <category term="coder" scheme="http://blog.flytrap.top/tags/coder/"/>
     
       <category term="read" scheme="http://blog.flytrap.top/tags/read/"/>
@@ -434,8 +436,6 @@ microsoft file stream &#39;Content-Type&#39;&lt;/p&gt;&lt;p&gt;&lt;figu
       <category term="book" scheme="http://blog.flytrap.top/tags/book/"/>
     
       <category term="生活" scheme="http://blog.flytrap.top/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-      <category term="形意" scheme="http://blog.flytrap.top/tags/%E5%BD%A2%E6%84%8F/"/>
     
   </entry>
   
@@ -614,9 +614,9 @@ application.properties
       <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
     
     
-      <category term="mac" scheme="http://blog.flytrap.top/tags/mac/"/>
-    
       <category term="git" scheme="http://blog.flytrap.top/tags/git/"/>
+    
+      <category term="mac" scheme="http://blog.flytrap.top/tags/mac/"/>
     
       <category term="error" scheme="http://blog.flytrap.top/tags/error/"/>
     
