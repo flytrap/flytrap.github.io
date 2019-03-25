@@ -1,0 +1,87 @@
+#+TITLE: nginx 日常
+#+DATE: <2019-03-13>
+#+TAGS: nginx,linux,deploy
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+
+** 遇到的一些问题
+- 大文件无法上传
+
+#+begin_src bash
+server{
+    client_max_body_size   30m;  # 默认是1m
+    ...
+}
+#+end_src
+
+#+begin_html
+<!--more-->
+#+end_html
+
+** 常用配置
+#+begin_src config
+server {
+    listen 80;
+    server_name hostname.com;
+    location / {
+        if ($request_method = GET) {
+            rewrite  ^ https://$host$request_uri? permanent;  # http强制跳转
+        }
+        return 405;
+    }
+    access_log /var/log/nginx/hostname/hostname.log main;
+}
+server {
+    listen 443;
+    server_name hostname.com;
+    client_max_body_size   10m;
+    ssl on;
+    ssl_certificate      /etc/nginx/ssl/hostname.com.crt;  # ssl证书
+    ssl_certificate_key  /etc/nginx/ssl/hostname.com.key;
+    proxy_set_header   Host                 $http_host;
+    proxy_set_header   X-Forwarded-Proto    $scheme;
+    proxy_set_header   X-Forwarded-For      $remote_addr;
+    proxy_redirect     off;
+    # keepalive + raven.js is a disaster
+    keepalive_timeout 0;
+    location / {
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Host $host;
+        proxy_pass http://localhost:8000;
+        add_header Strict-Transport-Security "max-age=31536000";
+    }
+    access_log /var/log/nginx/hostname/hostname_ssl.log main;
+    error_log /var/log/nginx/hostname/hostname_ssl_error.log;
+}
+#+end_src
+
+** 正则配置
+- 等号（=）:表示完全匹配规则才执行操作
+
+#+begin_src config
+location = / {}
+#+end_src
+- 波浪号（~）:表示执行正则匹配，但区分大小写
+
+#+begin_src config
+location ~ /page/\d{1,3} {}
+#+end_src
+- 波浪号与星号（~*）:表示执行正则匹配，但不 区分大小写
+
+#+begin_src config
+location ~* /\.(jpg|jpeg|gif) {}
+#+end_src
+- 脱字符与波浪号（^~）:表示普通字符匹配，前缀匹配有效，配置生效
+
+#+begin_src config
+location ^~ /images/ {}  # http://{hostname}/images/test
+#+end_src
+- @ :定义一个location，用于处理内部重定向
+
+#+begin_src config
+location @error {
+    proxy_pass http://error;
+}
+error_page 404 @error;
+#+end_src

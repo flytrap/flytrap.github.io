@@ -1,0 +1,56 @@
+#+TITLE: 服务器ssh登录配置
+#+DATE: <2019-03-13>
+#+TAGS: ssh,login
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+* 服务器ssh登录配置
+
+** Summary
+服务器的安全问题，务必要认真对待。
+安全策略:
+- 不允许root登录
+- 不允许密码登录,key
+- 修改ssh监听端口
+- 只允许指定ip 访问,就是白名单
+
+** 配置文件
+#+begin_src bash
+vim /etc/ssh/sshd_config
+# 修改内容如下:
+Port 22  # 取消注释，修改监听端口
+StrictModes yes  # 用户权限鉴定的,建议设置
+RSAAuthentication yes  # RSA 公钥鉴定
+PubkeyAuthentication yes  # 允许key的方式登录
+PermitRootLogin no  # 不允许root登录
+PasswordAuthentication no  # 不允许密码登录
+# 添加ssh 公钥到
+vim ~/.ssh/authorized_keys  # 这个文件每一行代表一个公共key
+chmod 600 ~/.ssh/authorized_keys
+chmod 700 ~/.ssh
+# 重启sshd服务
+systemctl restart sshd
+#+end_src
+
+#+begin_html
+<!--more-->
+#+end_html
+
+** 生成ssh 秘钥对，并添加
+#+begin_src bash
+# 本地生成ssh
+ssh-keygen -t rsa -f ~/.ssh/id_rsa_key
+scp -P 22 ~/.ssh/id_rsa user@hostname:/tmp
+# 进入服务器
+cat /tmp/id_rsa_test >> ~/.ssh/authorized_keys  # 追加key过去
+#+end_src
+
+这样scp命令，ssh命令就可以不输入密码了.
+
+
+** 白名单
+#+begin_src bash
+vim /etc/ssh/sshd_config
+添加AllowUsers字段
+AllowUsers deploy@192.168.1.1 # 用户名deploy ip 192.168.1.1
+#+end_src

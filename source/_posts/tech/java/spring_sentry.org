@@ -103,7 +103,6 @@ public class GlobalExceptionHandler {
     private void sendSentry(Exception e) {
         Dsn dsn = new Dsn(dsnUrl);
         Raven raven = (new DefaultRavenFactory()).createRavenInstance(dsn);
-
         Throwable throwable = new Throwable(e.getMessage(), e.getCause());
         throwable.setStackTrace(e.getStackTrace());
         raven.sendException(throwable);

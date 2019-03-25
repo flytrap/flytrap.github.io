@@ -1,0 +1,48 @@
+#+TITLE: mysql记录
+#+DATE: <2019-03-14>
+#+TAGS: linux,server,mysql
+#+LAYOUT: post
+#+CATEGORIES: tech
+
+
+** 配置相关
+- 监听公网ip，修改端口
+
+#+begin_src bash
+sudo vim /etc/mysql/my.cnf
+# 修改内容如下
+port=3389
+bind-address='0.0.0.0'
+#+end_src
+
+#+begin_html
+<!--more-->
+#+end_html
+
+** 权限相关
+- 创建host
+
+#+begin_src sql
+select user,host from user;
+update user set host='%' where user='root';
+flush privileges;
+#+end_src
+- 授权root用户所有人可以登录
+
+#+begin_src sql
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Password' WITH GRANT OPTION;
+flush privileges;
+#+end_src
+- 允许指定用户(user),ip(192.168.1.1)访问
+
+#+begin_src sql
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'192.168.1.1' IDENTIFIED BY 'mypwd' WITH GRANT OPTION;
+flush privileges;
+#+end_src
+
+** 初始化密码获取
+mysql 5.7 会初始化密码，之前版本没有密码就可以直接登录，5.7必须要用密码了
+#+begin_src bash
+cat /var/log/mysqld.log |grep password  # 一般都是在第一行
+mysql -u root -p  # 输入刚才获取的密码就可以登录了
+#+end_src
