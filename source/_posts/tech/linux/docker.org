@@ -63,3 +63,14 @@ docker search mysql
 docker pull mysql
 docker run --name mysql1 -p 3306:3306 -e MYSQL\_ROOT\_PASSWORD=root -v /home/flytrap/data/mysql:/var/lib/mysql --restart always -d mysql
 #+end_src
+
+* 普通用户添加操作权限
+#+begin_src bash
+docker ps  # 报错
+Got permission denied while trying to connect to the Docker daemon socket ...
+# 添加普通用户权限
+sudo groupadd docker  # 添加docker用户组,已存在，就不会添加，一般安装完docker就已经存在了
+sudo gpasswd -a $USER docker  # 将登陆用户加入到docker用户组中
+newgrp docker  # 更新用户组
+docker ps  # 测试一下
+#+end_src

@@ -4,7 +4,7 @@
 #+LAYOUT: post
 #+CATEGORIES: tech
 
-* linux 通过命令行控制左面显示
+* linux 通过命令行控制桌面显示
 
 ** Summary
 我这里使用的i3wm 窗口管理器.
