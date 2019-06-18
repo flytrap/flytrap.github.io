@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
@@ -185,7 +185,115 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-tech/hacker/ettercap" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-tech/hacker/oneplus_6_root" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/08/tech/hacker/oneplus_6_root/">一加6 获取root权限</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/08/tech/hacker/oneplus_6_root/" class="archive-article-date">
+  	<time datetime="2018-07-08T01:45:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一加6-获取root权限"><a href="#一加6-获取root权限" class="headerlink" title="一加6 获取root权限"></a>一加6 获取root权限</h1><h2 id="下载相关文件"><a href="#下载相关文件" class="headerlink" title="下载相关文件"></a>下载相关文件</h2><ul>
+<li>twrp: <a href="https://twrp.me/" target="_blank" rel="noopener">https://twrp.me/</a></li>
+</ul>
+<p>TeamWin Recovery Project： 全触屏操作的第三方Recovery, 支持多国语言，很强大</p>
+<ul>
+<li>magisk: <a href="https://github.com/topjohnwu/Magisk/releases/" target="_blank" rel="noopener">https://github.com/topjohnwu/Magisk/releases/</a><br>集成 root（MagiskSU）</li>
+</ul>
+<h2 id="推送文件到手机"><a href="#推送文件到手机" class="headerlink" title="推送文件到手机"></a>推送文件到手机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gpg --verify twrp-3.2.2-0-enchilada.img.asc twrp-3.2.2-0-enchilada.img  <span class="comment"># 引导文件校验</span></span><br><span class="line">gpg --verify twrp-installer-enchilada-3.2.2-0.zip.asc twrp-installer-enchilada-3.2.2-0.zip  <span class="comment"># 安装包校验</span></span><br><span class="line">adb push twrp-installer-enchilada-3.2.2-0.zip /sdcard/</span><br><span class="line">adb push Magisk-v16.0.zip /sdcard/</span><br></pre></td></tr></table></figure>
+<h2 id="解锁BootLoader"><a href="#解锁BootLoader" class="headerlink" title="解锁BootLoader"></a>解锁BootLoader</h2><ul>
+<li>此升级方式会清空手机内所有内容，请务必先备份。</li>
+<li>设置 -&gt; 系统 -&gt; 关于手机 -&gt; 高级 -&gt; 连续点击“版本号”7次打开开发者选项</li>
+<li>设置 -&gt; 系统 -&gt; 开发者选项 -&gt;  打开“OEM 解锁” -&gt; 打开”高级重启”</li>
+<li>关机 -&gt; 进入fastboot </li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb reboot bootloader  <span class="comment"># 进入刷机状态</span></span><br><span class="line">fastboot oem unlock   <span class="comment"># 选择unlock the  bootloader -&gt;确认</span></span><br></pre></td></tr></table></figure>
+<h2 id="刷入twrp-Magisk包"><a href="#刷入twrp-Magisk包" class="headerlink" title="刷入twrp, Magisk包"></a>刷入twrp, Magisk包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb reboot bootloader  <span class="comment"># 进入到BootLoader</span></span><br><span class="line">fastboot boot twrp-3.2.2-0-enchilada.img  <span class="comment"># 从twrp启动</span></span><br><span class="line"><span class="comment">## 点击install  选择/sdcard/下的zip包安装, 有两个(twrp-installer-enchilada-3.2.2-0.zip)是更改系统recovery， (Magisk-v16.0.zip)是root管理包, 安装完重启</span></span><br><span class="line"><span class="comment">## 重启就可以看到root管理工具了</span></span><br><span class="line">adb reboot recovery  <span class="comment"># 进入twrp</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hacker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">oneplus</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/08/tech/hacker/oneplus_6_root/">查看全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-tech/hacker/ettercap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -215,7 +323,7 @@ var _hmt = _hmt || [];
       
 
       
-    </p></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -299,7 +407,7 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-tech/front/msword_content_type" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-tech/front/msword_content_type" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -404,7 +512,7 @@ microsoft file stream 'Content-Type'</p><p><figure class="highlight bash"><table
 
 
   
-    <article id="post-tech/linux/deploy/unavailable_modifier_requested" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-tech/linux/deploy/unavailable_modifier_requested" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -434,7 +542,7 @@ microsoft file stream 'Content-Type'</p><p><figure class="highlight bash"><table
       
 
       
-    </p></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -502,7 +610,7 @@ microsoft file stream 'Content-Type'</p><p><figure class="highlight bash"><table
 
 
   
-    <article id="post-live/summary-2017" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-live/summary-2017" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -547,7 +655,7 @@ microsoft file stream 'Content-Type'</p><p><figure class="highlight bash"><table
       
 
       
-    </p></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -623,7 +731,7 @@ microsoft file stream 'Content-Type'</p><p><figure class="highlight bash"><table
 
 
   
-    <article id="post-tech/python/django/manytomany" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-tech/python/django/manytomany" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -645,7 +753,7 @@ microsoft file stream 'Content-Type'</p><p><figure class="highlight bash"><table
       
         <h1 class="section-number-1"> Django ManyToManyField 字段数据关联</h1><p>
 </p><h2 class="section-number-2">表结构</h2><p>先看一段代码
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    user = models.ForeignKey(User, verbose_name=<span class="string">'系统关联'</span>, on_delete=<span class="keyword">False</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>)</span><br><span class="line">    birth_death = models.CharField(<span class="string">'生卒'</span>, max_length=<span class="number">32</span>, default=<span class="string">''</span>)</span><br><span class="line">    name = models.CharField(<span class="string">'姓名'</span>, max_length=<span class="number">64</span>)</span><br><span class="line">    address = models.CharField(<span class="string">'地址'</span>, max_length=<span class="number">256</span>, default=<span class="string">''</span>)</span><br><span class="line">    desc = models.TextField(<span class="string">'介绍'</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>)</span><br><span class="line">    childes = models.ManyToManyField(<span class="string">'self'</span>, verbose_name=<span class="string">'后辈'</span>)</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'门人'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    user = models.ForeignKey(User, verbose_name=<span class="string">'系统关联'</span>, on_delete=<span class="literal">False</span>, null=<span class="literal">True</span>, blank=<span class="literal">True</span>)</span><br><span class="line">    birth_death = models.CharField(<span class="string">'生卒'</span>, max_length=<span class="number">32</span>, default=<span class="string">''</span>)</span><br><span class="line">    name = models.CharField(<span class="string">'姓名'</span>, max_length=<span class="number">64</span>)</span><br><span class="line">    address = models.CharField(<span class="string">'地址'</span>, max_length=<span class="number">256</span>, default=<span class="string">''</span>)</span><br><span class="line">    desc = models.TextField(<span class="string">'介绍'</span>, null=<span class="literal">True</span>, blank=<span class="literal">True</span>)</span><br><span class="line">    childes = models.ManyToManyField(<span class="string">'self'</span>, verbose_name=<span class="string">'后辈'</span>)</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'门人'</span></span><br></pre></td></tr></table></figure>
 </p><h2 class="section-number-2">讨论的主要字段就一个childes</h2><p>多对多数据，像多对多这个属性，在关系型数据库中的应用应该还是比较多的,平时使用应该比较少使用多对多自己的情况。
 然而我这里用到了，遇到一些问题，供大家参考
 </p><h3 class="section-number-3">测试一下</h3><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p1 = People.objects.create(name=<span class="string">'p1'</span>)</span><br><span class="line">p2 = People.objects.create(name=<span class="string">'p2'</span>)</span><br><span class="line">p2.childes.add(p1)</span><br><span class="line">p2.childes.all()  <span class="comment"># &lt;QuerySet [&lt;People: People object (1)&gt;]&gt; ....... 1</span></span><br><span class="line">p1.childes.all()  <span class="comment"># &lt;QuerySet [&lt;People: People object (2)&gt;]&gt; ....... 2</span></span><br></pre></td></tr></table></figure>
@@ -655,7 +763,7 @@ microsoft file stream 'Content-Type'</p><p><figure class="highlight bash"><table
       
 
       
-    </p></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -735,7 +843,7 @@ microsoft file stream 'Content-Type'</p><p><figure class="highlight bash"><table
 
 
   
-    <article id="post-tech/java/spring_sentry" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-tech/java/spring_sentry" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -770,7 +878,7 @@ application.properties
       
 
       
-    </p></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -834,7 +942,7 @@ application.properties
 
 
   
-    <article id="post-live/pi" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-live/pi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -861,7 +969,7 @@ application.properties
       
 
       
-    </p></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -933,7 +1041,7 @@ application.properties
 
 
   
-    <article id="post-tech/mac/crack_rec" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-tech/mac/crack_rec" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -963,7 +1071,7 @@ application.properties
       
 
       
-    </p></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -1031,7 +1139,7 @@ application.properties
 
 
   
-    <article id="post-live/using" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-live/using" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -1065,7 +1173,7 @@ application.properties
       
 
       
-    </p></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -1116,101 +1224,6 @@ application.properties
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/11/26/live/using/">查看全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-tech/mac/git_errors" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/08/tech/mac/git_errors/">error: RPC failed; curl 18 transfer closed with outstanding read data remaining</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/08/tech/mac/git_errors/" class="archive-article-date">
-  	<time datetime="2017-11-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 class="section-number-1"> Summary</h1><p>  git clone 报错如下: 
- error: RPC failed; curl 18 transfer closed with outstanding read data remaining
- </p><p></p><h1 class="section-number-1">Function</h1><p>解决方案，设置推送大小限制
-git  config --global http.postBuffer 524288000  # 500M应该足够了</p><p></p>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">error</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/live//" class="article-tag-list-link color5">live</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/08/tech/mac/git_errors/">查看全文 >></a>
         </p>
       
 
@@ -1509,7 +1522,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+                <a href="javascript:void(0)" class="js-tag color4">sub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1537,15 +1550,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1554,6 +1559,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">proxychains</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">命令行代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1573,11 +1590,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">proxychains</a>
+                <a href="javascript:void(0)" class="js-tag color2">xrandr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">命令行代理</a>
+                <a href="javascript:void(0)" class="js-tag color5">i3wm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1617,6 +1634,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">elpy</a>
               </li>
              
@@ -1633,11 +1654,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
+                <a href="javascript:void(0)" class="js-tag color1">login</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">login</a>
+                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1646,22 +1667,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">forward</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ManyToManyField</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">单向</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">双向</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据关联</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1693,6 +1698,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ManyToManyField</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">单向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">双向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据关联</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -1709,7 +1730,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

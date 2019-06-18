@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
@@ -184,7 +184,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-tech/python/django/django_401" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-tech/python/django/django_401" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -211,9 +211,9 @@ var _hmt = _hmt || [];
 <a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">user</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns the user associated with the current request, as authenticated</span></span><br><span class="line"><span class="string">        by the authentication classes provided to the request.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">'_user'</span>):</span><br><span class="line">            self._authenticate()</span><br><span class="line">        <span class="keyword">return</span> self._user</span><br></pre></td></tr></table></figure>
 <p>没有user，则验证user</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_authenticate</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Attempt to authenticate the request using each authentication instance</span></span><br><span class="line"><span class="string">    in turn.</span></span><br><span class="line"><span class="string">    Returns a three-tuple of (authenticator, user, authtoken).</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">for</span> authenticator <span class="keyword">in</span> self.authenticators:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            user_auth_tuple = authenticator.authenticate(self)</span><br><span class="line">        <span class="keyword">except</span> exceptions.APIException:</span><br><span class="line">            self._not_authenticated()</span><br><span class="line">            <span class="keyword">raise</span>  <span class="comment"># 异常抛出点</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> user_auth_tuple <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            self._authenticator = authenticator</span><br><span class="line">            self.user, self.auth = user_auth_tuple</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    self._not_authenticated()</span><br></pre></td></tr></table></figure>
-<p>获取通过token获取user（有token，才会验证）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">authenticate</span><span class="params">(self, request)</span>:</span></span><br><span class="line">        auth = get_authorization_header(request).split()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> auth <span class="keyword">or</span> auth[<span class="number">0</span>].lower() != self.keyword.lower().encode():</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(auth) == <span class="number">1</span>:</span><br><span class="line">            msg = _(<span class="string">'Invalid token header. No credentials provided.'</span>)</span><br><span class="line">            <span class="keyword">raise</span> exceptions.AuthenticationFailed(msg)</span><br><span class="line">        <span class="keyword">elif</span> len(auth) &gt; <span class="number">2</span>:</span><br><span class="line">            msg = _(<span class="string">'Invalid token header. Token string should not contain spaces.'</span>)</span><br><span class="line">            <span class="keyword">raise</span> exceptions.AuthenticationFailed(msg)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            token = auth[<span class="number">1</span>].decode()</span><br><span class="line">        <span class="keyword">except</span> UnicodeError:</span><br><span class="line">            msg = _(<span class="string">'Invalid token header. Token string should not contain invalid characters.'</span>)</span><br><span class="line">            <span class="keyword">raise</span> exceptions.AuthenticationFailed(msg)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.authenticate_credentials(token)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">authenticate_credentials</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        model = self.get_model()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            token = model.objects.select_related(<span class="string">'user'</span>).get(key=key)</span><br><span class="line">        <span class="keyword">except</span> model.DoesNotExist:</span><br><span class="line">            <span class="keyword">raise</span> exceptions.AuthenticationFailed(_(<span class="string">'Invalid token.'</span>))  <span class="comment"># 异常抛出位置</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> token.user.is_active:</span><br><span class="line">            <span class="keyword">raise</span> exceptions.AuthenticationFailed(_(<span class="string">'User inactive or deleted.'</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (token.user, token)</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_not_authenticated</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Set authenticator, user &amp; authtoken representing an unauthenticated request.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Defaults are None, AnonymousUser &amp; None.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self._authenticator = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> api_settings.UNAUTHENTICATED_USER:</span><br><span class="line">            self.user = api_settings.UNAUTHENTICATED_USER()  <span class="comment"># 得到AnonymousUser</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.user = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> api_settings.UNAUTHENTICATED_TOKEN:</span><br><span class="line">            self.auth = api_settings.UNAUTHENTICATED_TOKEN()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.auth = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_authenticate</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Attempt to authenticate the request using each authentication instance</span></span><br><span class="line"><span class="string">    in turn.</span></span><br><span class="line"><span class="string">    Returns a three-tuple of (authenticator, user, authtoken).</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">for</span> authenticator <span class="keyword">in</span> self.authenticators:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            user_auth_tuple = authenticator.authenticate(self)</span><br><span class="line">        <span class="keyword">except</span> exceptions.APIException:</span><br><span class="line">            self._not_authenticated()</span><br><span class="line">            <span class="keyword">raise</span>  <span class="comment"># 异常抛出点</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> user_auth_tuple <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self._authenticator = authenticator</span><br><span class="line">            self.user, self.auth = user_auth_tuple</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    self._not_authenticated()</span><br></pre></td></tr></table></figure>
+<p>获取通过token获取user（有token，才会验证）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">authenticate</span><span class="params">(self, request)</span>:</span></span><br><span class="line">        auth = get_authorization_header(request).split()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> auth <span class="keyword">or</span> auth[<span class="number">0</span>].lower() != self.keyword.lower().encode():</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(auth) == <span class="number">1</span>:</span><br><span class="line">            msg = _(<span class="string">'Invalid token header. No credentials provided.'</span>)</span><br><span class="line">            <span class="keyword">raise</span> exceptions.AuthenticationFailed(msg)</span><br><span class="line">        <span class="keyword">elif</span> len(auth) &gt; <span class="number">2</span>:</span><br><span class="line">            msg = _(<span class="string">'Invalid token header. Token string should not contain spaces.'</span>)</span><br><span class="line">            <span class="keyword">raise</span> exceptions.AuthenticationFailed(msg)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            token = auth[<span class="number">1</span>].decode()</span><br><span class="line">        <span class="keyword">except</span> UnicodeError:</span><br><span class="line">            msg = _(<span class="string">'Invalid token header. Token string should not contain invalid characters.'</span>)</span><br><span class="line">            <span class="keyword">raise</span> exceptions.AuthenticationFailed(msg)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.authenticate_credentials(token)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">authenticate_credentials</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        model = self.get_model()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            token = model.objects.select_related(<span class="string">'user'</span>).get(key=key)</span><br><span class="line">        <span class="keyword">except</span> model.DoesNotExist:</span><br><span class="line">            <span class="keyword">raise</span> exceptions.AuthenticationFailed(_(<span class="string">'Invalid token.'</span>))  <span class="comment"># 异常抛出位置</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> token.user.is_active:</span><br><span class="line">            <span class="keyword">raise</span> exceptions.AuthenticationFailed(_(<span class="string">'User inactive or deleted.'</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (token.user, token)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_not_authenticated</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Set authenticator, user &amp; authtoken representing an unauthenticated request.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Defaults are None, AnonymousUser &amp; None.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self._authenticator = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> api_settings.UNAUTHENTICATED_USER:</span><br><span class="line">            self.user = api_settings.UNAUTHENTICATED_USER()  <span class="comment"># 得到AnonymousUser</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.user = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> api_settings.UNAUTHENTICATED_TOKEN:</span><br><span class="line">            self.auth = api_settings.UNAUTHENTICATED_TOKEN()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.auth = <span class="literal">None</span></span><br></pre></td></tr></table></figure>
 <p>虽然得到了AnonymousUser， 但是依然抛出了异常</p>
 
       
@@ -673,7 +673,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+                <a href="javascript:void(0)" class="js-tag color4">sub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,15 +701,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -718,6 +710,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">proxychains</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">命令行代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -737,11 +741,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">proxychains</a>
+                <a href="javascript:void(0)" class="js-tag color2">xrandr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">命令行代理</a>
+                <a href="javascript:void(0)" class="js-tag color5">i3wm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -781,6 +785,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">elpy</a>
               </li>
              
@@ -797,11 +805,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
+                <a href="javascript:void(0)" class="js-tag color1">login</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">login</a>
+                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -810,22 +818,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">forward</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ManyToManyField</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">单向</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">双向</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据关联</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -857,6 +849,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ManyToManyField</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">单向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">双向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据关联</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -873,7 +881,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

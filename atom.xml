@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.flytrap.top/"/>
-  <updated>2019-03-14T04:14:07.828Z</updated>
+  <updated>2019-06-18T03:22:28.902Z</updated>
   <id>http://blog.flytrap.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux 多显示器管理</title>
+    <link href="http://blog.flytrap.top/2019/06/02/tech/linux/xrandr/"/>
+    <id>http://blog.flytrap.top/2019/06/02/tech/linux/xrandr/</id>
+    <published>2019-06-01T16:00:00.000Z</published>
+    <updated>2019-06-18T03:22:28.902Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 class=&quot;section-number-1&quot;&gt;linux 通过命令行控制桌面显示&lt;/h1&gt;&lt;p&gt;
+&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;Summary&lt;/h2&gt;&lt;p&gt;我这里使用的i3wm 窗口管理器.
+所以,操作的话,基本是靠命令来完成的
+现在我需要使用多个显示器,就用到了xrandr这个工具&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;可用显示器展示&lt;/h2&gt;&lt;p&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; xrandr&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;eDP-1 connected 1366x768+0+0 (normal left inverted right x axis y axis) 276mm x 155mm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   1366x768      60.11*+&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   1280x720      60.00    59.99    59.86    59.74  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   1024x768      60.04    60.00  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   960x720       60.00  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   928x696       60.05  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   896x672       60.01  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   1024x576      59.95    59.96    59.90    59.82  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   960x600       59.93    60.00  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   960x540       59.96    59.99    59.63    59.82  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   800x600       60.00    60.32    56.25  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   840x525       60.01    59.88  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   864x486       59.92    59.57  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   700x525       59.98  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   800x450       59.95    59.82  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   640x512       60.02  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   700x450       59.96    59.88  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   640x480       60.00    59.94  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   720x405       59.51    58.99  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   684x384       59.88    59.85  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   640x400       59.88    59.98  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   640x360       59.86    59.83    59.84    59.32  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   512x384       60.00  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   512x288       60.00    59.92  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   480x270       59.63    59.82  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   400x300       60.32    56.34  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   432x243       59.92    59.57  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   320x240       60.05  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   360x202       59.51    59.13  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   320x180       59.84    59.32  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DP-1 disconnected primary (normal left inverted right x axis y axis)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;HDMI-1 disconnected (normal left inverted right x axis y axis)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DP-2 connected 1024x768+0+0 (normal left inverted right x axis y axis) 0mm x 0mm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   1024x768      60.00* &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   800x600       60.32    56.25  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   848x480       60.00  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   640x480       59.94  &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+      <category term="linux" scheme="http://blog.flytrap.top/tags/linux/"/>
+    
+      <category term="xrandr" scheme="http://blog.flytrap.top/tags/xrandr/"/>
+    
+      <category term="i3wm" scheme="http://blog.flytrap.top/tags/i3wm/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql记录</title>
@@ -450,7 +477,7 @@ microsoft file stream &#39;Content-Type&#39;&lt;/p&gt;&lt;p&gt;&lt;figu
     
       &lt;h1 class=&quot;section-number-1&quot;&gt; Django ManyToManyField 字段数据关联&lt;/h1&gt;&lt;p&gt;
 &lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;表结构&lt;/h2&gt;&lt;p&gt;先看一段代码
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(models.Model)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    user = models.ForeignKey(User, verbose_name=&lt;span class=&quot;string&quot;&gt;&#39;系统关联&#39;&lt;/span&gt;, on_delete=&lt;span class=&quot;keyword&quot;&gt;False&lt;/span&gt;, null=&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;, blank=&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    birth_death = models.CharField(&lt;span class=&quot;string&quot;&gt;&#39;生卒&#39;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;32&lt;/span&gt;, default=&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    name = models.CharField(&lt;span class=&quot;string&quot;&gt;&#39;姓名&#39;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;64&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    address = models.CharField(&lt;span class=&quot;string&quot;&gt;&#39;地址&#39;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;256&lt;/span&gt;, default=&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    desc = models.TextField(&lt;span class=&quot;string&quot;&gt;&#39;介绍&#39;&lt;/span&gt;, null=&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;, blank=&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    childes = models.ManyToManyField(&lt;span class=&quot;string&quot;&gt;&#39;self&#39;&lt;/span&gt;, verbose_name=&lt;span class=&quot;string&quot;&gt;&#39;后辈&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Meta&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        verbose_name = &lt;span class=&quot;string&quot;&gt;&#39;门人&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;People&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(models.Model)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    user = models.ForeignKey(User, verbose_name=&lt;span class=&quot;string&quot;&gt;&#39;系统关联&#39;&lt;/span&gt;, on_delete=&lt;span class=&quot;literal&quot;&gt;False&lt;/span&gt;, null=&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;, blank=&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    birth_death = models.CharField(&lt;span class=&quot;string&quot;&gt;&#39;生卒&#39;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;32&lt;/span&gt;, default=&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    name = models.CharField(&lt;span class=&quot;string&quot;&gt;&#39;姓名&#39;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;64&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    address = models.CharField(&lt;span class=&quot;string&quot;&gt;&#39;地址&#39;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;256&lt;/span&gt;, default=&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    desc = models.TextField(&lt;span class=&quot;string&quot;&gt;&#39;介绍&#39;&lt;/span&gt;, null=&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;, blank=&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    childes = models.ManyToManyField(&lt;span class=&quot;string&quot;&gt;&#39;self&#39;&lt;/span&gt;, verbose_name=&lt;span class=&quot;string&quot;&gt;&#39;后辈&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Meta&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        verbose_name = &lt;span class=&quot;string&quot;&gt;&#39;门人&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot;&gt;讨论的主要字段就一个childes&lt;/h2&gt;&lt;p&gt;多对多数据，像多对多这个属性，在关系型数据库中的应用应该还是比较多的,平时使用应该比较少使用多对多自己的情况。
 然而我这里用到了，遇到一些问题，供大家参考
 &lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot;&gt;测试一下&lt;/h3&gt;&lt;p&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;p1 = People.objects.create(name=&lt;span class=&quot;string&quot;&gt;&#39;p1&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2 = People.objects.create(name=&lt;span class=&quot;string&quot;&gt;&#39;p2&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.childes.add(p1)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.childes.all()  &lt;span class=&quot;comment&quot;&gt;# &amp;lt;QuerySet [&amp;lt;People: People object (1)&amp;gt;]&amp;gt; ....... 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p1.childes.all()  &lt;span class=&quot;comment&quot;&gt;# &amp;lt;QuerySet [&amp;lt;People: People object (2)&amp;gt;]&amp;gt; ....... 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -591,34 +618,6 @@ application.properties
       <category term="中医" scheme="http://blog.flytrap.top/tags/%E4%B8%AD%E5%8C%BB/"/>
     
       <category term="传统" scheme="http://blog.flytrap.top/tags/%E4%BC%A0%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>error: RPC failed; curl 18 transfer closed with outstanding read data remaining</title>
-    <link href="http://blog.flytrap.top/2017/11/08/tech/mac/git_errors/"/>
-    <id>http://blog.flytrap.top/2017/11/08/tech/mac/git_errors/</id>
-    <published>2017-11-07T16:00:00.000Z</published>
-    <updated>2019-01-10T07:46:26.660Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 class=&quot;section-number-1&quot;&gt; Summary&lt;/h1&gt;&lt;p&gt;  git clone 报错如下: 
- error: RPC failed; curl 18 transfer closed with outstanding read data remai
-      
-    
-    </summary>
-    
-      <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
-    
-    
-      <category term="git" scheme="http://blog.flytrap.top/tags/git/"/>
-    
-      <category term="mac" scheme="http://blog.flytrap.top/tags/mac/"/>
-    
-      <category term="error" scheme="http://blog.flytrap.top/tags/error/"/>
     
   </entry>
   

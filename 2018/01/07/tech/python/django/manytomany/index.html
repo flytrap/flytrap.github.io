@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
@@ -184,7 +184,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-tech/python/django/manytomany" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-tech/python/django/manytomany" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -206,7 +206,7 @@ var _hmt = _hmt || [];
       
         <h1 class="section-number-1"> Django ManyToManyField 字段数据关联</h1><p>
 </p><h2 class="section-number-2">表结构</h2><p>先看一段代码
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    user = models.ForeignKey(User, verbose_name=<span class="string">'系统关联'</span>, on_delete=<span class="keyword">False</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>)</span><br><span class="line">    birth_death = models.CharField(<span class="string">'生卒'</span>, max_length=<span class="number">32</span>, default=<span class="string">''</span>)</span><br><span class="line">    name = models.CharField(<span class="string">'姓名'</span>, max_length=<span class="number">64</span>)</span><br><span class="line">    address = models.CharField(<span class="string">'地址'</span>, max_length=<span class="number">256</span>, default=<span class="string">''</span>)</span><br><span class="line">    desc = models.TextField(<span class="string">'介绍'</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>)</span><br><span class="line">    childes = models.ManyToManyField(<span class="string">'self'</span>, verbose_name=<span class="string">'后辈'</span>)</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'门人'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    user = models.ForeignKey(User, verbose_name=<span class="string">'系统关联'</span>, on_delete=<span class="literal">False</span>, null=<span class="literal">True</span>, blank=<span class="literal">True</span>)</span><br><span class="line">    birth_death = models.CharField(<span class="string">'生卒'</span>, max_length=<span class="number">32</span>, default=<span class="string">''</span>)</span><br><span class="line">    name = models.CharField(<span class="string">'姓名'</span>, max_length=<span class="number">64</span>)</span><br><span class="line">    address = models.CharField(<span class="string">'地址'</span>, max_length=<span class="number">256</span>, default=<span class="string">''</span>)</span><br><span class="line">    desc = models.TextField(<span class="string">'介绍'</span>, null=<span class="literal">True</span>, blank=<span class="literal">True</span>)</span><br><span class="line">    childes = models.ManyToManyField(<span class="string">'self'</span>, verbose_name=<span class="string">'后辈'</span>)</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'门人'</span></span><br></pre></td></tr></table></figure>
 </p><h2 class="section-number-2">讨论的主要字段就一个childes</h2><p>多对多数据，像多对多这个属性，在关系型数据库中的应用应该还是比较多的,平时使用应该比较少使用多对多自己的情况。
 然而我这里用到了，遇到一些问题，供大家参考
 </p><h3 class="section-number-3">测试一下</h3><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p1 = People.objects.create(name=<span class="string">'p1'</span>)</span><br><span class="line">p2 = People.objects.create(name=<span class="string">'p2'</span>)</span><br><span class="line">p2.childes.add(p1)</span><br><span class="line">p2.childes.all()  <span class="comment"># &lt;QuerySet [&lt;People: People object (1)&gt;]&gt; ....... 1</span></span><br><span class="line">p1.childes.all()  <span class="comment"># &lt;QuerySet [&lt;People: People object (2)&gt;]&gt; ....... 2</span></span><br></pre></td></tr></table></figure>
@@ -219,7 +219,7 @@ var _hmt = _hmt || [];
 看到问题了吧？
 </table></p><p></p><h3 class="section-number-3">看看官方文档</h3><p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ManyToManyField.symmetrical¶</span><br><span class="line">Only used in the definition of ManyToManyFields on self. Consider the following model:&lt;/p&gt;&lt;p&gt;from django.db import models&lt;/p&gt;&lt;p&gt;class Person(models.Model):</span><br><span class="line">    friends = models.ManyToManyField(&quot;self&quot;)</span><br><span class="line">When Django processes this model, it identifies that it has a ManyToManyField on itself, and as a result, it doesn’t add a person_set attribute to the Person class. Instead, the ManyToManyField is assumed to be symmetrical – that is, if I am your friend, then you are my friend.&lt;/p&gt;&lt;p&gt;If you do not want symmetry in many-to-many relationships with self, set symmetrical to False. This will force Django to add the descriptor for the reverse relationship, allowing ManyToManyField relationships to be non-symmetrical.</span><br></pre></td></tr></table></figure>
 对了，看官应该看到了“symmetrical”对称的数据，布尔值</p><p>
-</p><h2 class="section-number-2"> 修改后的代码</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">childes = models.ManyToManyField(<span class="string">'self'</span>, symmetrical=<span class="keyword">False</span>, verbose_name=<span class="string">'后辈'</span>)</span><br></pre></td></tr></table></figure>python</p><p></p><h3 class="section-number-3">测一下</h3><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p1.childes.all()  <span class="comment"># &lt;QuerySet []&gt; </span></span><br></pre></td></tr></table></figure>
+</p><h2 class="section-number-2"> 修改后的代码</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">childes = models.ManyToManyField(<span class="string">'self'</span>, symmetrical=<span class="literal">False</span>, verbose_name=<span class="string">'后辈'</span>)</span><br></pre></td></tr></table></figure>python</p><p></p><h3 class="section-number-3">测一下</h3><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p1.childes.all()  <span class="comment"># &lt;QuerySet []&gt; </span></span><br></pre></td></tr></table></figure>
 没有数据了，只有一边数据了, 对，这就是我们要的结果</p><p></p><h2 class="section-number-2"> 总结</h2><p>ManyToManyField 字段，选项symmetrical 默认为True，双向关联，导致数据产生逆向关联。
 ps: 有问题，找官方文档最靠谱</p><p></p>
       
@@ -691,7 +691,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+                <a href="javascript:void(0)" class="js-tag color4">sub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,15 +719,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -736,6 +728,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">proxychains</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">命令行代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -755,11 +759,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">proxychains</a>
+                <a href="javascript:void(0)" class="js-tag color2">xrandr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">命令行代理</a>
+                <a href="javascript:void(0)" class="js-tag color5">i3wm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -799,6 +803,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">elpy</a>
               </li>
              
@@ -815,11 +823,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
+                <a href="javascript:void(0)" class="js-tag color1">login</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">login</a>
+                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -828,22 +836,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">forward</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ManyToManyField</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">单向</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">双向</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据关联</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -875,6 +867,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ManyToManyField</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">单向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">双向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据关联</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -891,7 +899,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

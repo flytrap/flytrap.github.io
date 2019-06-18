@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blog.flytrap.top">
-  <title>mysql记录 | 俗子</title>
+  <title>linux 多显示器管理 | 俗子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="配置相关 监听公网ip，修改端口123sudo vim /etc/mysql/my.cnfport=3389bind-address=&apos;0.0.0.0&apos;">
-<meta name="keywords" content="linux,server,mysql">
+  <meta name="description" content="linux 通过命令行控制桌面显示 Summary我这里使用的i3wm 窗口管理器. 所以,操作的话,基本是靠命令来完成的 现在我需要使用多个显示器,就用到了xrandr这个工具可用显示器展示1234567891011121314151617181920212223242526272829303132333435363738&amp;gt; xrandreDP-1 connected 1366x768+0">
+<meta name="keywords" content="linux,xrandr,i3wm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql记录">
-<meta property="og:url" content="http://blog.flytrap.top/2019/03/14/tech/linux/ssh/mysql/index.html">
+<meta property="og:title" content="linux 多显示器管理">
+<meta property="og:url" content="http://blog.flytrap.top/2019/06/02/tech/linux/xrandr/index.html">
 <meta property="og:site_name" content="俗子">
-<meta property="og:description" content="配置相关 监听公网ip，修改端口123sudo vim /etc/mysql/my.cnfport=3389bind-address=&apos;0.0.0.0&apos;">
+<meta property="og:description" content="linux 通过命令行控制桌面显示 Summary我这里使用的i3wm 窗口管理器. 所以,操作的话,基本是靠命令来完成的 现在我需要使用多个显示器,就用到了xrandr这个工具可用显示器展示1234567891011121314151617181920212223242526272829303132333435363738&amp;gt; xrandreDP-1 connected 1366x768+0">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-14T04:14:07.828Z">
+<meta property="og:updated_time" content="2019-06-18T03:22:28.902Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql记录">
-<meta name="twitter:description" content="配置相关 监听公网ip，修改端口123sudo vim /etc/mysql/my.cnfport=3389bind-address=&apos;0.0.0.0&apos;">
+<meta name="twitter:title" content="linux 多显示器管理">
+<meta name="twitter:description" content="linux 通过命令行控制桌面显示 Summary我这里使用的i3wm 窗口管理器. 所以,操作的话,基本是靠命令来完成的 现在我需要使用多个显示器,就用到了xrandr这个工具可用显示器展示1234567891011121314151617181920212223242526272829303132333435363738&amp;gt; xrandreDP-1 connected 1366x768+0">
   
     <link rel="alternative" href="/atom.xml" title="俗子" type="application/atom+xml">
   
@@ -184,34 +184,40 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-tech/linux/ssh/mysql" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-tech/linux/xrandr" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      mysql记录
+      linux 多显示器管理
     </h1>
   
 
         
-        <a href="/2019/03/14/tech/linux/ssh/mysql/" class="archive-article-date">
-  	<time datetime="2019-03-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-14</time>
+        <a href="/2019/06/02/tech/linux/xrandr/" class="archive-article-date">
+  	<time datetime="2019-06-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 class="section-number-2">配置相关</h2><p><ul>
-<li>监听公网ip，修改端口</li></ul></p><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/my.cnf</span><br><span class="line">port=3389</span><br><span class="line"><span class="built_in">bind</span>-address=<span class="string">'0.0.0.0'</span></span><br></pre></td></tr></table></figure></p><p><a id="more"></a></p><p></p><h2 class="section-number-2">权限相关</h2><p><ul>
-<li>创建host</li></ul></p><p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">user</span>,host <span class="keyword">from</span> <span class="keyword">user</span>;</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> host=<span class="string">'%'</span> <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">'root'</span>;</span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>授权root用户所有人可以登录</li></ul></p><p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'root'</span>@<span class="string">'%'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'Password'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>允许指定用户(user),ip(192.168.1.1)访问</li></ul></p><p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'user'</span>@<span class="string">'192.168.1.1'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'mypwd'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</span><br></pre></td></tr></table></figure></p><p></p><h2 class="section-number-2">初始化密码获取</h2><p>mysql 5.7 会初始化密码，之前版本没有密码就可以直接登录，5.7必须要用密码了
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /var/<span class="built_in">log</span>/mysqld.log |grep password  <span class="comment"># 一般都是在第一行</span></span><br><span class="line">mysql -u root -p  <span class="comment"># 输入刚才获取的密码就可以登录了</span></span><br></pre></td></tr></table></figure></p><p></p>
+        <h1 class="section-number-1">linux 通过命令行控制桌面显示</h1><p>
+</p><h2 class="section-number-2">Summary</h2><p>我这里使用的i3wm 窗口管理器.
+所以,操作的话,基本是靠命令来完成的
+现在我需要使用多个显示器,就用到了xrandr这个工具</p><p></p><h2 class="section-number-2">可用显示器展示</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&gt; xrandr</span><br><span class="line">eDP-1 connected 1366x768+0+0 (normal left inverted right x axis y axis) 276mm x 155mm</span><br><span class="line">   1366x768      60.11*+</span><br><span class="line">   1280x720      60.00    59.99    59.86    59.74  </span><br><span class="line">   1024x768      60.04    60.00  </span><br><span class="line">   960x720       60.00  </span><br><span class="line">   928x696       60.05  </span><br><span class="line">   896x672       60.01  </span><br><span class="line">   1024x576      59.95    59.96    59.90    59.82  </span><br><span class="line">   960x600       59.93    60.00  </span><br><span class="line">   960x540       59.96    59.99    59.63    59.82  </span><br><span class="line">   800x600       60.00    60.32    56.25  </span><br><span class="line">   840x525       60.01    59.88  </span><br><span class="line">   864x486       59.92    59.57  </span><br><span class="line">   700x525       59.98  </span><br><span class="line">   800x450       59.95    59.82  </span><br><span class="line">   640x512       60.02  </span><br><span class="line">   700x450       59.96    59.88  </span><br><span class="line">   640x480       60.00    59.94  </span><br><span class="line">   720x405       59.51    58.99  </span><br><span class="line">   684x384       59.88    59.85  </span><br><span class="line">   640x400       59.88    59.98  </span><br><span class="line">   640x360       59.86    59.83    59.84    59.32  </span><br><span class="line">   512x384       60.00  </span><br><span class="line">   512x288       60.00    59.92  </span><br><span class="line">   480x270       59.63    59.82  </span><br><span class="line">   400x300       60.32    56.34  </span><br><span class="line">   432x243       59.92    59.57  </span><br><span class="line">   320x240       60.05  </span><br><span class="line">   360x202       59.51    59.13  </span><br><span class="line">   320x180       59.84    59.32  </span><br><span class="line">DP-1 disconnected primary (normal left inverted right x axis y axis)</span><br><span class="line">HDMI-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line">DP-2 connected 1024x768+0+0 (normal left inverted right x axis y axis) 0mm x 0mm</span><br><span class="line">   1024x768      60.00* </span><br><span class="line">   800x600       60.32    56.25  </span><br><span class="line">   848x480       60.00  </span><br><span class="line">   640x480       59.94  </span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+可以看到我这里有两个显示器,一个叫eDP-1, 还有一个叫DP-2</p><p>多显示器使用无非两种,一种镜像复制,还有就是扩展</p><p></p><h2 class="section-number-2">镜像</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xrandr --output eDP-1 --output DP-2 --same-as eDP-1 --auto</span><br></pre></td></tr></table></figure>
+解释一下: 意思就是通过eDP-1 复制一个一样的DP-2 分辨率自动最大
+当然也可以制定分辨率</p><p></p><h2 class="section-number-2">扩展</h2><p>一般来说扩展用的比较多一点儿,所以多说几句
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xrandr --output eDP-1 --output DP-2 --right-of eDP-1</span><br></pre></td></tr></table></figure>
+意思是在eDP-1的右边扩展一个显示器DP-2,当然这里也可以指定位置 
+--pos指定坐标,显示器可能不一样大
+--left-of: 左边(上下左右都可以),这里就不一一列举了(man xrandr)</p><p></p><h2 class="section-number-2">最后</h2><p>推荐 i3wm 窗口管理器
+有三点好处: 
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1,启动快,轻量级,可塑性强,非常方便定制.</span><br><span class="line">2,逼格够,看起来就是一个纯命令使用环境,你懂得,所有软件的开启都是命令.</span><br><span class="line">3,使用方便,其他桌面环境(如gnome)可以使用的软件,一个也不少的都可以使用,非常符合,linux命令操作思想</span><br></pre></td></tr></table></figure></p><p></p>
       
 
       
@@ -259,11 +265,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">server</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">xrandr</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">i3wm</a>
         		</li>
       		
 		</ul>
@@ -330,7 +336,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://blog.flytrap.top/2019/03/14/tech/linux/ssh/mysql/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.flytrap.top/2019/06/02/tech/linux/xrandr/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -345,8 +351,8 @@ var _hmt = _hmt || [];
 <nav id="article-nav">
   
   
-    <a href="/2019/03/13/tech/linux/deploy/nginx/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">nginx 日常</div>
+    <a href="/2019/03/14/tech/linux/mysql/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql记录</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -564,6 +570,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">形意</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">劈拳</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">劈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">肺</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">coder</a>
               </li>
              
@@ -581,22 +603,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">形意</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">劈拳</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">劈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">肺</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,22 +666,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">os</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">UltraEdit</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sub</a>
               </li>
              
@@ -685,10 +675,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">sentry</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">key</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,15 +694,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">error</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -744,11 +730,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">info</a>
+                <a href="javascript:void(0)" class="js-tag color2">xrandr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">i3wm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">os</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">UltraEdit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">error</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">key</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,7 +770,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">info</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">elpy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">laptop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -768,11 +794,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
+                <a href="javascript:void(0)" class="js-tag color2">deploy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">laptop</a>
+                <a href="javascript:void(0)" class="js-tag color1">login</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -781,14 +811,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">forward</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -836,15 +858,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">deploy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">login</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -860,7 +874,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

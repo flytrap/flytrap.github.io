@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
@@ -184,7 +184,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-tech/python/some_python_phenomenon" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-tech/python/some_python_phenomenon" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -205,10 +205,10 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 class="section-number-1">loop</h1><p></p><h2 class="section-number-2">code</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;items():<span class="keyword">pass</span></span><br><span class="line">&gt;</span><br><span class="line">&gt;y</span><br><span class="line">&gt;{<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>}</span><br></pre></td></tr></table></figure>
-</p><h2 class="section-number-2">analysis</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;x.iterms()  <span class="comment"># (('a', 1), ('b', 2))</span></span><br><span class="line">&gt;k = <span class="string">'a'</span></span><br><span class="line">&gt;y[<span class="string">'a'</span>] = <span class="number">1</span></span><br><span class="line">&gt;<span class="keyword">pass</span></span><br><span class="line">&gt;k = <span class="string">'b'</span></span><br><span class="line">&gt;y[<span class="string">'b'</span>] = <span class="number">2</span></span><br></pre></td></tr></table></figure></p><p><a id="more"></a></p><p></p><h1 class="section-number-1">bool</h1><p></p><h2 class="section-number-2">code</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="string">"Hello"</span> + <span class="keyword">True</span></span><br><span class="line">&gt;TypeError: Can<span class="string">'t convert '</span>bool<span class="string">' object to str implicitly</span></span><br><span class="line"><span class="string">&gt;"Hello" * True</span></span><br><span class="line"><span class="string">&gt;'</span>Hello<span class="string">'</span></span><br></pre></td></tr></table></figure>
-</p><h2 class="section-number-2">analysis</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;int(<span class="keyword">True</span>)  <span class="comment"># True 真實值爲1，參見python C源碼定義, True就是整型的特殊值.</span></span><br><span class="line">&gt;<span class="number">1</span></span><br></pre></td></tr></table></figure></p><p></p><h1 class="section-number-1">hash</h1><p></p><h2 class="section-number-2">code</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="function"><span class="keyword">def</span> <span class="title">greet</span><span class="params">()</span>:</span> <span class="keyword">return</span></span><br><span class="line">&gt;d = {greet: <span class="number">1</span>}</span><br><span class="line">&gt;d</span><br><span class="line">&gt;{&lt;function __main__.greet&gt;: <span class="number">1</span>}</span><br></pre></td></tr></table></figure>
+</p><h2 class="section-number-2">analysis</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;x.iterms()  <span class="comment"># (('a', 1), ('b', 2))</span></span><br><span class="line">&gt;k = <span class="string">'a'</span></span><br><span class="line">&gt;y[<span class="string">'a'</span>] = <span class="number">1</span></span><br><span class="line">&gt;<span class="keyword">pass</span></span><br><span class="line">&gt;k = <span class="string">'b'</span></span><br><span class="line">&gt;y[<span class="string">'b'</span>] = <span class="number">2</span></span><br></pre></td></tr></table></figure></p><p><a id="more"></a></p><p></p><h1 class="section-number-1">bool</h1><p></p><h2 class="section-number-2">code</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="string">"Hello"</span> + <span class="literal">True</span></span><br><span class="line">&gt;TypeError: Can<span class="string">'t convert '</span>bool<span class="string">' object to str implicitly</span></span><br><span class="line"><span class="string">&gt;"Hello" * True</span></span><br><span class="line"><span class="string">&gt;'</span>Hello<span class="string">'</span></span><br></pre></td></tr></table></figure>
+</p><h2 class="section-number-2">analysis</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;int(<span class="literal">True</span>)  <span class="comment"># True 真實值爲1，參見python C源碼定義, True就是整型的特殊值.</span></span><br><span class="line">&gt;<span class="number">1</span></span><br></pre></td></tr></table></figure></p><p></p><h1 class="section-number-1">hash</h1><p></p><h2 class="section-number-2">code</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="function"><span class="keyword">def</span> <span class="title">greet</span><span class="params">()</span>:</span> <span class="keyword">return</span></span><br><span class="line">&gt;d = {greet: <span class="number">1</span>}</span><br><span class="line">&gt;d</span><br><span class="line">&gt;{&lt;function __main__.greet&gt;: <span class="number">1</span>}</span><br></pre></td></tr></table></figure>
 </p><h2 class="section-number-2">analysis</h2><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;hasattr(greet, <span class="string">'__hash__'</span>)  <span class="comment"># True</span></span><br><span class="line">&gt;greet.__hash__()  <span class="comment"># -9223363285414220592</span></span><br></pre></td></tr></table></figure>
-function 是可哈希的，在其生成的一瞬間，就已經固定不變，包括其中參數的id</p><p></p><h1 class="section-number-1">int</h1><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;x = <span class="number">1</span></span><br><span class="line">&gt;y = <span class="number">1</span></span><br><span class="line">&gt;x <span class="keyword">is</span> y</span><br><span class="line">&gt;<span class="keyword">True</span></span><br><span class="line">&gt;x = <span class="number">999</span></span><br><span class="line">&gt;y = <span class="number">999</span></span><br><span class="line">&gt;x <span class="keyword">is</span> y</span><br><span class="line">&gt;<span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+function 是可哈希的，在其生成的一瞬間，就已經固定不變，包括其中參數的id</p><p></p><h1 class="section-number-1">int</h1><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;x = <span class="number">1</span></span><br><span class="line">&gt;y = <span class="number">1</span></span><br><span class="line">&gt;x <span class="keyword">is</span> y</span><br><span class="line">&gt;<span class="literal">True</span></span><br><span class="line">&gt;x = <span class="number">999</span></span><br><span class="line">&gt;y = <span class="number">999</span></span><br><span class="line">&gt;x <span class="keyword">is</span> y</span><br><span class="line">&gt;<span class="literal">False</span></span><br></pre></td></tr></table></figure>
 </p><h2 class="section-number-2">analysis</h2><p>詭異？
 其實python在初始化的時候就把一部分整型對象生成好了(這個叫小整型對象池)，
 但是不可能所有的都生成，官方會測試出一個最佳值來在源碼中寫死;
@@ -668,7 +668,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+                <a href="javascript:void(0)" class="js-tag color4">sub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,15 +696,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -713,6 +705,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">proxychains</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">命令行代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -732,11 +736,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">proxychains</a>
+                <a href="javascript:void(0)" class="js-tag color2">xrandr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">命令行代理</a>
+                <a href="javascript:void(0)" class="js-tag color5">i3wm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -776,6 +780,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">elpy</a>
               </li>
              
@@ -792,11 +800,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
+                <a href="javascript:void(0)" class="js-tag color1">login</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">login</a>
+                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -805,22 +813,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">forward</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ManyToManyField</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">单向</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">双向</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据关联</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -852,6 +844,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ManyToManyField</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">单向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">双向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据关联</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -868,7 +876,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

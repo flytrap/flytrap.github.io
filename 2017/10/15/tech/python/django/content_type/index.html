@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
@@ -184,7 +184,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-tech/python/django/content_type" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-tech/python/django/content_type" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -210,7 +210,7 @@ var _hmt = _hmt || [];
 其实使用Django 自带的content type来解决这个问题，是非常容易的。</p><p></p><h2 class="section-number-2">content type</h2><p>这个模型很简单，但是很好的一个东西
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@python_2_unicode_compatible</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContentType</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    app_label = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    model = models.CharField(_(<span class="string">'python model class name'</span>), max_length=<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
 数据库里看看呗
-你可以发现你项目里的所有模型，都在这个里面能找到，就这个就够了。</p><p><a id="more"></a></p><p></p><h2 class="section-number-2">Use</h2><p>来看看taiga里是怎么用的？</p><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Like</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    content_type = models.ForeignKey(<span class="string">"contenttypes.ContentType"</span>)</span><br><span class="line">    object_id = models.PositiveIntegerField()</span><br><span class="line">    content_object = GenericForeignKey(<span class="string">"content_type"</span>, <span class="string">"object_id"</span>)</span><br><span class="line">    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=<span class="keyword">False</span>, blank=<span class="keyword">False</span>,</span><br><span class="line">                             related_name=<span class="string">"likes"</span>, verbose_name=_(<span class="string">"user"</span>))</span><br><span class="line">    created_date = models.DateTimeField(null=<span class="keyword">False</span>, blank=<span class="keyword">False</span>, auto_now_add=<span class="keyword">True</span>,</span><br><span class="line">                                        verbose_name=_(<span class="string">"created date"</span>))</span><br></pre></td></tr></table></figure>
+你可以发现你项目里的所有模型，都在这个里面能找到，就这个就够了。</p><p><a id="more"></a></p><p></p><h2 class="section-number-2">Use</h2><p>来看看taiga里是怎么用的？</p><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Like</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    content_type = models.ForeignKey(<span class="string">"contenttypes.ContentType"</span>)</span><br><span class="line">    object_id = models.PositiveIntegerField()</span><br><span class="line">    content_object = GenericForeignKey(<span class="string">"content_type"</span>, <span class="string">"object_id"</span>)</span><br><span class="line">    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=<span class="literal">False</span>, blank=<span class="literal">False</span>,</span><br><span class="line">                             related_name=<span class="string">"likes"</span>, verbose_name=_(<span class="string">"user"</span>))</span><br><span class="line">    created_date = models.DateTimeField(null=<span class="literal">False</span>, blank=<span class="literal">False</span>, auto_now_add=<span class="literal">True</span>,</span><br><span class="line">                                        verbose_name=_(<span class="string">"created date"</span>))</span><br></pre></td></tr></table></figure>
 创建一条数据:
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">obj = Blog.objects.first()</span><br><span class="line">user = User.objects.first()</span><br><span class="line">like = Like.objects.create(user=user, content_object=obj)&lt;/p&gt;&lt;p&gt;content_type = ContentType.objects.filter(id=content_type_id).first()</span><br><span class="line">obj = content_type.get_object_for_this_type(pk=object_id)</span><br></pre></td></tr></table></figure>
 其实这个时候你打开数据库会发现，object<span style="text-decoration:underline">id，已经帮你存好了，content</span>type 也帮你存好咯。
@@ -673,7 +673,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+                <a href="javascript:void(0)" class="js-tag color4">sub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,15 +701,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -718,6 +710,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">proxychains</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">命令行代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -737,11 +741,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">proxychains</a>
+                <a href="javascript:void(0)" class="js-tag color2">xrandr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">命令行代理</a>
+                <a href="javascript:void(0)" class="js-tag color5">i3wm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -781,6 +785,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">elpy</a>
               </li>
              
@@ -797,11 +805,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
+                <a href="javascript:void(0)" class="js-tag color1">login</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">login</a>
+                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -810,22 +818,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">forward</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ManyToManyField</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">单向</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">双向</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据关联</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -857,6 +849,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ManyToManyField</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">单向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">双向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据关联</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -873,7 +881,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:
