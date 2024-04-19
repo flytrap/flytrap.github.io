@@ -6,7 +6,7 @@
   <link href="http://blog.flytrap.top/atom.xml" rel="self"/>
   
   <link href="http://blog.flytrap.top/"/>
-  <updated>2024-04-12T09:14:26.201Z</updated>
+  <updated>2024-04-17T09:16:43.172Z</updated>
   <id>http://blog.flytrap.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>chrony 时间同步</title>
+    <link href="http://blog.flytrap.top/2024/04/17/tech/env/chrony/"/>
+    <id>http://blog.flytrap.top/2024/04/17/tech/env/chrony/</id>
+    <published>2024-04-17T02:04:28.000Z</published>
+    <updated>2024-04-17T09:16:43.172Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Chrony 是一个开源自由的网络时间协议 NTP 的客户端和服务器软软件。它能让计算机保持系统时钟与时钟服务器（NTP）同步，因此让你的计算机保持精确的时间，Chrony 也可以作为服务端软件为其他计算机提供时间同步服务。&lt;/p&gt;
+&lt;p&gt;Chrony 由两个程序组成，分别是 chronyd 和 chronyc&lt;/p&gt;
+&lt;p&gt;chronyd 是一个后台运行的守护进程，用于调整内核中运行的系统时钟和时钟服务器同步。它确定计算机增减时间的比率，并对此进行补偿。&lt;br&gt;chronyc 提供了一个用户界面，用于监控性能并进行多样化的配置。它可以在 chronyd 实例控制的计算机上工作，也可以在一台不同的远程计算机上工作。&lt;/p&gt;
+&lt;p&gt;NTP 是网络时间协议（Network Time Protocol）的简称，通过 udp 123 端口进行网络时钟同步。&lt;br&gt;RHEL7 中默认使用 chrony 作为时间服务器，也支持 NTP，需要额外安装。&lt;br&gt;NTP 与 chrony 不能同时存在，只能用其中一个，并将另一个 mask 掉。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/tags/tech/"/>
+    
+    <category term="chrony" scheme="http://blog.flytrap.top/tags/chrony/"/>
+    
+    <category term="ntp" scheme="http://blog.flytrap.top/tags/ntp/"/>
+    
+    <category term="时间同步" scheme="http://blog.flytrap.top/tags/%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>k8s 问题集锦</title>
@@ -546,40 +574,6 @@ microsoft file stream &#39;Content-Type&#39;&lt;/p&gt;&lt;p&gt;&lt;fig</summary>
     <category term="book" scheme="http://blog.flytrap.top/tags/book/"/>
     
     <category term="生活" scheme="http://blog.flytrap.top/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ManyToManyField 双向关联</title>
-    <link href="http://blog.flytrap.top/2018/01/07/tech/python/django/manytomany/"/>
-    <id>http://blog.flytrap.top/2018/01/07/tech/python/django/manytomany/</id>
-    <published>2018-01-06T16:00:00.000Z</published>
-    <updated>2024-04-12T09:14:24.881Z</updated>
-    
-    
-    <summary type="html">&lt;h1 class=&quot;section-number-1&quot; &gt; Django ManyToManyField 字段数据关联&lt;/h1&gt;&lt;p&gt;
-&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot; &gt;表结构&lt;/h2&gt;&lt;p&gt;先看一段代码
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;People&lt;/span&gt;(models.Model):&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    user = models.ForeignKey(User, verbose_name=&lt;span class=&quot;string&quot;&gt;&amp;#x27;系统关联&amp;#x27;&lt;/span&gt;, on_delete=&lt;span class=&quot;literal&quot;&gt;False&lt;/span&gt;, null=&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;, blank=&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    birth_death = models.CharField(&lt;span class=&quot;string&quot;&gt;&amp;#x27;生卒&amp;#x27;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;32&lt;/span&gt;, default=&lt;span class=&quot;string&quot;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    name = models.CharField(&lt;span class=&quot;string&quot;&gt;&amp;#x27;姓名&amp;#x27;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;64&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    address = models.CharField(&lt;span class=&quot;string&quot;&gt;&amp;#x27;地址&amp;#x27;&lt;/span&gt;, max_length=&lt;span class=&quot;number&quot;&gt;256&lt;/span&gt;, default=&lt;span class=&quot;string&quot;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    desc = models.TextField(&lt;span class=&quot;string&quot;&gt;&amp;#x27;介绍&amp;#x27;&lt;/span&gt;, null=&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;, blank=&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    childes = models.ManyToManyField(&lt;span class=&quot;string&quot;&gt;&amp;#x27;self&amp;#x27;&lt;/span&gt;, verbose_name=&lt;span class=&quot;string&quot;&gt;&amp;#x27;后辈&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Meta&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        verbose_name = &lt;span class=&quot;string&quot;&gt;&amp;#x27;门人&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot; &gt;讨论的主要字段就一个childes&lt;/h2&gt;&lt;p&gt;多对多数据，像多对多这个属性，在关系型数据库中的应用应该还是比较多的,平时使用应该比较少使用多对多自己的情况。
-然而我这里用到了，遇到一些问题，供大家参考
-&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot; &gt;测试一下&lt;/h3&gt;&lt;p&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;p1 = People.objects.create(name=&lt;span class=&quot;string&quot;&gt;&amp;#x27;p1&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2 = People.objects.create(name=&lt;span class=&quot;string&quot;&gt;&amp;#x27;p2&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.childes.add(p1)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p2.childes.&lt;span class=&quot;built_in&quot;&gt;all&lt;/span&gt;()  &lt;span class=&quot;comment&quot;&gt;# &amp;lt;QuerySet [&amp;lt;People: People object (1)&amp;gt;]&amp;gt; ....... 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p1.childes.&lt;span class=&quot;built_in&quot;&gt;all&lt;/span&gt;()  &lt;span class=&quot;comment&quot;&gt;# &amp;lt;QuerySet [&amp;lt;People: People object (2)&amp;gt;]&amp;gt; ....... 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
-    
-    
-    <category term="django" scheme="http://blog.flytrap.top/tags/django/"/>
-    
-    <category term="python" scheme="http://blog.flytrap.top/tags/python/"/>
-    
-    <category term="ManyToManyField" scheme="http://blog.flytrap.top/tags/ManyToManyField/"/>
-    
-    <category term="单向" scheme="http://blog.flytrap.top/tags/%E5%8D%95%E5%90%91/"/>
-    
-    <category term="双向" scheme="http://blog.flytrap.top/tags/%E5%8F%8C%E5%90%91/"/>
-    
-    <category term="数据关联" scheme="http://blog.flytrap.top/tags/%E6%95%B0%E6%8D%AE%E5%85%B3%E8%81%94/"/>
     
   </entry>
   

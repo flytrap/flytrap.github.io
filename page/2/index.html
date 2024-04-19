@@ -155,6 +155,107 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-tech/linux/ssh/ssh_port_forward" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/tech/linux/ssh/ssh_port_forward/">ssh port forward</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/22/tech/linux/ssh/ssh_port_forward/" class="archive-article-date">
+  	<time datetime="2018-11-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 class="section-number-1" >Summary</h1><p>通过公网连接不同的局域网，使其就像同一个局域网内部访问一般。</p><p></p><h2 class="section-number-2" >一些额外参数</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-f  通常和-N连用，不登录到远程主机,就是后台执行的意思</span><br><span class="line">-N 不执行脚本或命令，通常与-f连用</span><br><span class="line">-g 在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接</span><br><span class="line">-q quiet模式，忽视大部分的警告和诊断信息</span><br><span class="line">-T 禁用<span class="built_in">tty</span>分配</span><br><span class="line">-n 重定向stdin为/dev/null，用于配合-f后台任务</span><br></pre></td></tr></table></figure></p><p></p><h2 class="section-number-2" >建立专门的linux账号用户用于端口转发(考虑安全性)</h2><p>不让该账户执行命令
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd -m tunnel</span><br><span class="line">passwd tunnel</span><br><span class="line">chsh -s /bin/false tunnel</span><br></pre></td></tr></table></figure></p><p></p><h2 class="section-number-2" >绑定本地端口(-D)(socket5代理)</h2><p>转发本地端口流量至指定主机</p><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -D 8888 user@host</span><br></pre></td></tr></table></figure></p><p>这样所有来到本地8888端口的流量都有发送到host主机,就是远程主机
+应用场景：数据过滤，限制指定主机上网，代理，等等.
+        
+          <a class="article-more-a" href="/2018/11/22/tech/linux/ssh/ssh_port_forward/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hacker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">port</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">forward</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/22/tech/linux/ssh/ssh_port_forward/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-tech/redis/redis-info" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1110,118 +1211,6 @@ microsoft file stream 'Content-Type'</p><p><figure class="highlight bash"><table
 
 
   
-    <article id="post-tech/python/django/manytomany" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/07/tech/python/django/manytomany/">ManyToManyField 双向关联</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/07/tech/python/django/manytomany/" class="archive-article-date">
-  	<time datetime="2018-01-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 class="section-number-1" > Django ManyToManyField 字段数据关联</h1><p>
-</p><h2 class="section-number-2" >表结构</h2><p>先看一段代码
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">People</span>(models.Model):</span><br><span class="line">    user = models.ForeignKey(User, verbose_name=<span class="string">&#x27;系统关联&#x27;</span>, on_delete=<span class="literal">False</span>, null=<span class="literal">True</span>, blank=<span class="literal">True</span>)</span><br><span class="line">    birth_death = models.CharField(<span class="string">&#x27;生卒&#x27;</span>, max_length=<span class="number">32</span>, default=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    name = models.CharField(<span class="string">&#x27;姓名&#x27;</span>, max_length=<span class="number">64</span>)</span><br><span class="line">    address = models.CharField(<span class="string">&#x27;地址&#x27;</span>, max_length=<span class="number">256</span>, default=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    desc = models.TextField(<span class="string">&#x27;介绍&#x27;</span>, null=<span class="literal">True</span>, blank=<span class="literal">True</span>)</span><br><span class="line">    childes = models.ManyToManyField(<span class="string">&#x27;self&#x27;</span>, verbose_name=<span class="string">&#x27;后辈&#x27;</span>)</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Meta</span>:</span><br><span class="line">        verbose_name = <span class="string">&#x27;门人&#x27;</span></span><br></pre></td></tr></table></figure>
-</p><h2 class="section-number-2" >讨论的主要字段就一个childes</h2><p>多对多数据，像多对多这个属性，在关系型数据库中的应用应该还是比较多的,平时使用应该比较少使用多对多自己的情况。
-然而我这里用到了，遇到一些问题，供大家参考
-</p><h3 class="section-number-3" >测试一下</h3><p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p1 = People.objects.create(name=<span class="string">&#x27;p1&#x27;</span>)</span><br><span class="line">p2 = People.objects.create(name=<span class="string">&#x27;p2&#x27;</span>)</span><br><span class="line">p2.childes.add(p1)</span><br><span class="line">p2.childes.<span class="built_in">all</span>()  <span class="comment"># &lt;QuerySet [&lt;People: People object (1)&gt;]&gt; ....... 1</span></span><br><span class="line">p1.childes.<span class="built_in">all</span>()  <span class="comment"># &lt;QuerySet [&lt;People: People object (2)&gt;]&gt; ....... 2</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/01/07/tech/python/django/manytomany/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ManyToManyField</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">单向</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">双向</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据关联</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/07/tech/python/django/manytomany/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1323,6 +1312,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">chrony</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ntp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">时间同步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
@@ -1403,14 +1404,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">day</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">时间管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
@@ -1420,6 +1413,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tag2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">day</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">时间管理</a>
               </li>
              
               <li class="article-tag-list-item">
