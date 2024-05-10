@@ -6,7 +6,7 @@
   <link href="http://blog.flytrap.top/atom.xml" rel="self"/>
   
   <link href="http://blog.flytrap.top/"/>
-  <updated>2024-05-10T09:03:54.464Z</updated>
+  <updated>2024-05-10T09:05:53.931Z</updated>
   <id>http://blog.flytrap.top/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>SeaFile</title>
+    <title>SeaFile 网盘</title>
     <link href="http://blog.flytrap.top/2024/05/11/tech/env/seafile/"/>
     <id>http://blog.flytrap.top/2024/05/11/tech/env/seafile/</id>
     <published>2024-05-11T02:10:00.000Z</published>
-    <updated>2024-05-10T09:03:54.464Z</updated>
+    <updated>2024-05-10T09:05:53.931Z</updated>
     
     
     <summary type="html">&lt;p&gt;Seafile 是一款开源的企业云盘，注重可靠性和性能，支持全平台客户端。Seafile 内置协同文档 SeaDoc ，让协作撰写、管理和发布文档更便捷。&lt;br&gt;Seafile 提供全面的网盘功能，用户可以在 Seafile 中存储、管理和共享文件。支持多种文件类型。支持全平台客户端，包括 Windows、Mac、Linux、iOS、Android 多种操作系统以及移动设备，可以在任何设备上轻松访问和管理文件，体验更为统一。&lt;br&gt;Seafile 的协作功能超越了简单的文件共享。它支持多人协同在线编辑、文档编辑锁定，同时提供权限管理、版本控制和事件通知等功能，使得团队协作更加流畅、可控和高效。&lt;/p&gt;
@@ -38,14 +38,18 @@
     
     <category term="SeaFile" scheme="http://blog.flytrap.top/tags/SeaFile/"/>
     
+    <category term="网盘" scheme="http://blog.flytrap.top/tags/%E7%BD%91%E7%9B%98/"/>
+    
+    <category term="私有网盘" scheme="http://blog.flytrap.top/tags/%E7%A7%81%E6%9C%89%E7%BD%91%E7%9B%98/"/>
+    
   </entry>
   
   <entry>
-    <title>verdaccio</title>
+    <title>verdaccio 前端私有源</title>
     <link href="http://blog.flytrap.top/2024/05/10/tech/env/verdaccio/"/>
     <id>http://blog.flytrap.top/2024/05/10/tech/env/verdaccio/</id>
     <published>2024-05-10T07:10:00.000Z</published>
-    <updated>2024-05-10T08:02:58.913Z</updated>
+    <updated>2024-05-10T09:05:32.248Z</updated>
     
     
     <summary type="html">&lt;p&gt;我们平时使用 npm publish 进行发布时，上传的仓库默认地址是 npm，公司内部包的管理并不希望发布到公网去，所以需要发布到自己的私有仓库， 之前都是用的 cnpmjs, 由于没有维护了，太老了，所以改用 Verdaccio。 通过 Verdaccio 工具在本地新建一个仓库地址，再把本地的默认上传仓库地址切换到本地仓库地址即可。当 npm install 时没有找到本地的仓库，则 Verdaccio 默认配置中会从 npm 中央仓库下载。&lt;/p&gt;</summary>
@@ -60,6 +64,8 @@
     <category term="docker-compose" scheme="http://blog.flytrap.top/tags/docker-compose/"/>
     
     <category term="verdaccio" scheme="http://blog.flytrap.top/tags/verdaccio/"/>
+    
+    <category term="前端私有源" scheme="http://blog.flytrap.top/tags/%E5%89%8D%E7%AB%AF%E7%A7%81%E6%9C%89%E6%BA%90/"/>
     
   </entry>
   
@@ -169,7 +175,7 @@
     <link href="http://blog.flytrap.top/2024/03/16/tech/env/k8s/"/>
     <id>http://blog.flytrap.top/2024/03/16/tech/env/k8s/</id>
     <published>2024-03-16T02:00:00.000Z</published>
-    <updated>2024-05-10T08:33:57.889Z</updated>
+    <updated>2024-05-10T09:06:09.621Z</updated>
     
     
     <summary type="html">&lt;p&gt;Kubernetes 是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 Kubernetes 拥有一个庞大且快速增长的生态，其服务、支持和工具的使用范围相当广泛。&lt;br&gt;Kubernetes 这个名字源于希腊语，意为“舵手”或“飞行员”。K8s 这个缩写是因为 K 和 s 之间有 8 个字符的关系。 Google 在 2014 年开源了 Kubernetes 项目。 Kubernetes 建立在 Google 大规模运行生产工作负载十几年经验的基础上， 结合了社区中最优秀的想法和实践。&lt;br&gt;&lt;a href=&quot;https://kubernetes.io/&quot;&gt;官网: https://kubernetes.io&lt;/a&gt;&lt;/p&gt;
@@ -185,6 +191,8 @@
     <category term="k8s" scheme="http://blog.flytrap.top/tags/k8s/"/>
     
     <category term="kubernetes" scheme="http://blog.flytrap.top/tags/kubernetes/"/>
+    
+    <category term="集群" scheme="http://blog.flytrap.top/tags/%E9%9B%86%E7%BE%A4/"/>
     
   </entry>
   
