@@ -155,6 +155,203 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-tech/linux/ssh/ssh_login" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/13/tech/linux/ssh/ssh_login/">服务器ssh登录配置</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/13/tech/linux/ssh/ssh_login/" class="archive-article-date">
+  	<time datetime="2019-03-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 class="section-number-1" >服务器ssh登录配置</h1><p>
+</p><h2 class="section-number-2" >Summary</h2><p>服务器的安全问题，务必要认真对待。
+安全策略:
+<ul>
+<li>不允许root登录</li>
+<li>不允许密码登录,key</li>
+<li>修改ssh监听端口</li>
+<li>只允许指定ip 访问,就是白名单</li>
+</ul></p><p></p><h2 class="section-number-2" >配置文件</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line">Port 22  <span class="comment"># 取消注释，修改监听端口</span></span><br><span class="line">StrictModes <span class="built_in">yes</span>  <span class="comment"># 用户权限鉴定的,建议设置</span></span><br><span class="line">RSAAuthentication <span class="built_in">yes</span>  <span class="comment"># RSA 公钥鉴定</span></span><br><span class="line">PubkeyAuthentication <span class="built_in">yes</span>  <span class="comment"># 允许key的方式登录</span></span><br><span class="line">PermitRootLogin no  <span class="comment"># 不允许root登录</span></span><br><span class="line">PasswordAuthentication no  <span class="comment"># 不允许密码登录</span></span><br><span class="line">vim ~/.ssh/authorized_keys  <span class="comment"># 这个文件每一行代表一个公共key</span></span><br><span class="line"><span class="built_in">chmod</span> 600 ~/.ssh/authorized_keys</span><br><span class="line"><span class="built_in">chmod</span> 700 ~/.ssh</span><br><span class="line">systemctl restart sshd</span><br></pre></td></tr></table></figure></p><p>
+        
+          <a class="article-more-a" href="/2019/03/13/tech/linux/ssh/ssh_login/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">login</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/13/tech/linux/ssh/ssh_login/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-tech/hacker/dns" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/10/tech/hacker/dns/">域名信息收集工具</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/10/tech/hacker/dns/" class="archive-article-date">
+  	<time datetime="2019-01-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 class="section-number-2" >nslookup</h2><p>非交互模式
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nslookup www.baidu.com</span><br><span class="line">nslookup -<span class="built_in">type</span>=ns www.baidu.com 8.8.8.8</span><br></pre></td></tr></table></figure></p><p>交互模式
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nslookup</span><br><span class="line">&gt;www.baidu.com  <span class="comment"># 查询指定域名</span></span><br><span class="line">&gt;server 8.8.8.8  <span class="comment"># 设置dns服务器</span></span><br><span class="line">&gt;<span class="built_in">set</span> <span class="built_in">type</span>=ns  <span class="comment"># 设置记录类型</span></span><br></pre></td></tr></table></figure></p><p>整个查询过程一般会有多个步骤，从根一级级查询回来，回来的记录可能还是一个域名，继续查询，最终得到ip。
+当然，这个过程自动完成，想看细节，最好抓包去看。
+        
+          <a class="article-more-a" href="/2019/01/10/tech/hacker/dns/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dns</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">nslookup</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dig</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/10/tech/hacker/dns/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-tech/linux/ssh/ssh_port_forward" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -992,225 +1189,6 @@ microsoft file stream 'Content-Type'</p><p><figure class="highlight bash"><table
 
 
   
-    <article id="post-tech/linux/deploy/unavailable_modifier_requested" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/09/tech/linux/deploy/unavailable_modifier_requested/">-- unavailable modifier requested: 0 --  解决方案</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/09/tech/linux/deploy/unavailable_modifier_requested/" class="archive-article-date">
-  	<time datetime="2018-03-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 class="section-number-1" >uwsgi 遇到比较多的一个问题</h1><p>
-</p><h2 class="section-number-2" >错误信息</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*** Operational MODE: single process ***</span><br><span class="line">*** no app loaded. going <span class="keyword">in</span> full dynamic mode ***</span><br><span class="line">*** uWSGI is running <span class="keyword">in</span> multiple interpreter mode ***</span><br><span class="line">spawned uWSGI master process (pid: 14105)</span><br><span class="line">spawned uWSGI worker 1 (pid: 14108, cores: 1)</span><br><span class="line">-- unavailable modifier requested: 0 --</span><br><span class="line">-- unavailable modifier requested: 0 --</span><br></pre></td></tr></table></figure>
-以上是当我访问nginx服务的时候，uwsgi给出的错误信息
-每次访问都是一个: "-- unavailable modifier requested: 0 --"</p><p>
-        
-          <a class="article-more-a" href="/2018/03/09/tech/linux/deploy/unavailable_modifier_requested/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">uwsgi</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/09/tech/linux/deploy/unavailable_modifier_requested/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-live/summary-2017" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/20/live/summary-2017/">flytrap 2017</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/20/live/summary-2017/" class="archive-article-date">
-  	<time datetime="2018-02-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 class="section-number-1" >恍惚2017</h1><p></p><h2 class="section-number-2" >读了几本不错的书</h2><p></p><h3 class="section-number-3" >技术类:</h3><p><ul>
-<li>程序员的生存之道</li>
-<li>领域驱动开发</li>
-<li>Django 设计模式与最佳实践</li>
-<li>...</li>
-</ul></p><p></p><h3 class="section-number-3" >人物/历史:</h3><p><ul>
-<li>逝去的武林</li>
-<li>未来简史</li>
-<li>三体</li>
-<li>庄子</li>
-<li>武人琴音</li>
-</ul></p><p></p><h3 class="section-number-3" >总结一下</h3><p>感觉阅读量明显减少(虽然读过的肯定远不止这些，感觉比较重要的也就这么多了)，今年一定补回来.
- 
-</p><h2 class="section-number-2" >新的语言</h2><p><ul>
-<li>swift --可以说基本入门吧，搞个简单的app应该问题不大，看了不少开源的项目.</li>
-<li>typescript -- 前端，学习了angularjs框架，做了个比较丑的前端页面，一直想着优化来着，太懒了，今年一定做.</li>
-<li>java（spring) 用spring 做了两个web项目，算是曾经学过的用上了吧</li>
-<li>python3 这个其实不算新语言，不过使用python3新启了几个项目，感觉项目感强了不少，3的变化还是不少，先写这儿吧</li>
-</ul></p><p>
-        
-          <a class="article-more-a" href="/2018/02/20/live/summary-2017/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">形意</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">coder</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">read</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">book</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/live//" class="article-tag-list-link color5">live</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/20/live/summary-2017/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1353,6 +1331,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">problems</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SeaFile</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">verdaccio</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1656,15 +1642,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">login</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">port</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">forward</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">login</a>
               </li>
              
               <li class="article-tag-list-item">

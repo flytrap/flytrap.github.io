@@ -6,7 +6,7 @@
   <link href="http://blog.flytrap.top/atom.xml" rel="self"/>
   
   <link href="http://blog.flytrap.top/"/>
-  <updated>2024-04-17T09:16:43.172Z</updated>
+  <updated>2024-05-10T09:03:54.464Z</updated>
   <id>http://blog.flytrap.top/</id>
   
   <author>
@@ -17,11 +17,58 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SeaFile</title>
+    <link href="http://blog.flytrap.top/2024/05/11/tech/env/seafile/"/>
+    <id>http://blog.flytrap.top/2024/05/11/tech/env/seafile/</id>
+    <published>2024-05-11T02:10:00.000Z</published>
+    <updated>2024-05-10T09:03:54.464Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Seafile 是一款开源的企业云盘，注重可靠性和性能，支持全平台客户端。Seafile 内置协同文档 SeaDoc ，让协作撰写、管理和发布文档更便捷。&lt;br&gt;Seafile 提供全面的网盘功能，用户可以在 Seafile 中存储、管理和共享文件。支持多种文件类型。支持全平台客户端，包括 Windows、Mac、Linux、iOS、Android 多种操作系统以及移动设备，可以在任何设备上轻松访问和管理文件，体验更为统一。&lt;br&gt;Seafile 的协作功能超越了简单的文件共享。它支持多人协同在线编辑、文档编辑锁定，同时提供权限管理、版本控制和事件通知等功能，使得团队协作更加流畅、可控和高效。&lt;/p&gt;
+&lt;p&gt;(官网)[&lt;a href=&quot;https://www.seafile.com/]&quot;&gt;https://www.seafile.com/]&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/tags/tech/"/>
+    
+    <category term="docker-compose" scheme="http://blog.flytrap.top/tags/docker-compose/"/>
+    
+    <category term="SeaFile" scheme="http://blog.flytrap.top/tags/SeaFile/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>verdaccio</title>
+    <link href="http://blog.flytrap.top/2024/05/10/tech/env/verdaccio/"/>
+    <id>http://blog.flytrap.top/2024/05/10/tech/env/verdaccio/</id>
+    <published>2024-05-10T07:10:00.000Z</published>
+    <updated>2024-05-10T08:02:58.913Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我们平时使用 npm publish 进行发布时，上传的仓库默认地址是 npm，公司内部包的管理并不希望发布到公网去，所以需要发布到自己的私有仓库， 之前都是用的 cnpmjs, 由于没有维护了，太老了，所以改用 Verdaccio。 通过 Verdaccio 工具在本地新建一个仓库地址，再把本地的默认上传仓库地址切换到本地仓库地址即可。当 npm install 时没有找到本地的仓库，则 Verdaccio 默认配置中会从 npm 中央仓库下载。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/tags/tech/"/>
+    
+    <category term="docker-compose" scheme="http://blog.flytrap.top/tags/docker-compose/"/>
+    
+    <category term="verdaccio" scheme="http://blog.flytrap.top/tags/verdaccio/"/>
+    
+  </entry>
+  
+  <entry>
     <title>chrony 时间同步</title>
     <link href="http://blog.flytrap.top/2024/04/17/tech/env/chrony/"/>
     <id>http://blog.flytrap.top/2024/04/17/tech/env/chrony/</id>
     <published>2024-04-17T02:04:28.000Z</published>
-    <updated>2024-04-17T09:16:43.172Z</updated>
+    <updated>2024-05-10T07:26:20.513Z</updated>
     
     
     <summary type="html">&lt;p&gt;Chrony 是一个开源自由的网络时间协议 NTP 的客户端和服务器软软件。它能让计算机保持系统时钟与时钟服务器（NTP）同步，因此让你的计算机保持精确的时间，Chrony 也可以作为服务端软件为其他计算机提供时间同步服务。&lt;/p&gt;
@@ -122,7 +169,7 @@
     <link href="http://blog.flytrap.top/2024/03/16/tech/env/k8s/"/>
     <id>http://blog.flytrap.top/2024/03/16/tech/env/k8s/</id>
     <published>2024-03-16T02:00:00.000Z</published>
-    <updated>2024-04-12T09:14:26.201Z</updated>
+    <updated>2024-05-10T08:33:57.889Z</updated>
     
     
     <summary type="html">&lt;p&gt;Kubernetes 是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 Kubernetes 拥有一个庞大且快速增长的生态，其服务、支持和工具的使用范围相当广泛。&lt;br&gt;Kubernetes 这个名字源于希腊语，意为“舵手”或“飞行员”。K8s 这个缩写是因为 K 和 s 之间有 8 个字符的关系。 Google 在 2014 年开源了 Kubernetes 项目。 Kubernetes 建立在 Google 大规模运行生产工作负载十几年经验的基础上， 结合了社区中最优秀的想法和实践。&lt;br&gt;&lt;a href=&quot;https://kubernetes.io/&quot;&gt;官网: https://kubernetes.io&lt;/a&gt;&lt;/p&gt;
@@ -503,77 +550,6 @@ microsoft file stream &#39;Content-Type&#39;&lt;/p&gt;&lt;p&gt;&lt;fig</summary>
     <category term="docx" scheme="http://blog.flytrap.top/tags/docx/"/>
     
     <category term="xls" scheme="http://blog.flytrap.top/tags/xls/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>-- unavailable modifier requested: 0 --  解决方案</title>
-    <link href="http://blog.flytrap.top/2018/03/09/tech/linux/deploy/unavailable_modifier_requested/"/>
-    <id>http://blog.flytrap.top/2018/03/09/tech/linux/deploy/unavailable_modifier_requested/</id>
-    <published>2018-03-08T16:00:00.000Z</published>
-    <updated>2024-04-12T09:14:24.881Z</updated>
-    
-    
-    <summary type="html">&lt;h1 class=&quot;section-number-1&quot; &gt;uwsgi 遇到比较多的一个问题&lt;/h1&gt;&lt;p&gt;
-&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot; &gt;错误信息&lt;/h2&gt;&lt;p&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;*** Operational MODE: single process ***&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*** no app loaded. going &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; full dynamic mode ***&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*** uWSGI is running &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; multiple interpreter mode ***&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;spawned uWSGI master process (pid: 14105)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;spawned uWSGI worker 1 (pid: 14108, cores: 1)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-- unavailable modifier requested: 0 --&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-- unavailable modifier requested: 0 --&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-以上是当我访问nginx服务的时候，uwsgi给出的错误信息
-每次访问都是一个: &quot;-- unavailable modifier requested: 0 --&quot;&lt;/p&gt;&lt;p&gt;</summary>
-    
-    
-    
-    <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
-    
-    
-    <category term="django" scheme="http://blog.flytrap.top/tags/django/"/>
-    
-    <category term="nginx" scheme="http://blog.flytrap.top/tags/nginx/"/>
-    
-    <category term="uwsgi" scheme="http://blog.flytrap.top/tags/uwsgi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>flytrap 2017</title>
-    <link href="http://blog.flytrap.top/2018/02/20/live/summary-2017/"/>
-    <id>http://blog.flytrap.top/2018/02/20/live/summary-2017/</id>
-    <published>2018-02-19T16:00:00.000Z</published>
-    <updated>2024-04-12T09:14:24.881Z</updated>
-    
-    
-    <summary type="html">&lt;h1 class=&quot;section-number-1&quot; &gt;恍惚2017&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot; &gt;读了几本不错的书&lt;/h2&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot; &gt;技术类:&lt;/h3&gt;&lt;p&gt;&lt;ul&gt;
-&lt;li&gt;程序员的生存之道&lt;/li&gt;
-&lt;li&gt;领域驱动开发&lt;/li&gt;
-&lt;li&gt;Django 设计模式与最佳实践&lt;/li&gt;
-&lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot; &gt;人物/历史:&lt;/h3&gt;&lt;p&gt;&lt;ul&gt;
-&lt;li&gt;逝去的武林&lt;/li&gt;
-&lt;li&gt;未来简史&lt;/li&gt;
-&lt;li&gt;三体&lt;/li&gt;
-&lt;li&gt;庄子&lt;/li&gt;
-&lt;li&gt;武人琴音&lt;/li&gt;
-&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class=&quot;section-number-3&quot; &gt;总结一下&lt;/h3&gt;&lt;p&gt;感觉阅读量明显减少(虽然读过的肯定远不止这些，感觉比较重要的也就这么多了)，今年一定补回来.
- 
-&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot; &gt;新的语言&lt;/h2&gt;&lt;p&gt;&lt;ul&gt;
-&lt;li&gt;swift --可以说基本入门吧，搞个简单的app应该问题不大，看了不少开源的项目.&lt;/li&gt;
-&lt;li&gt;typescript -- 前端，学习了angularjs框架，做了个比较丑的前端页面，一直想着优化来着，太懒了，今年一定做.&lt;/li&gt;
-&lt;li&gt;java（spring) 用spring 做了两个web项目，算是曾经学过的用上了吧&lt;/li&gt;
-&lt;li&gt;python3 这个其实不算新语言，不过使用python3新启了几个项目，感觉项目感强了不少，3的变化还是不少，先写这儿吧&lt;/li&gt;
-&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;</summary>
-    
-    
-    
-    <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
-    
-    
-    <category term="形意" scheme="http://blog.flytrap.top/tags/%E5%BD%A2%E6%84%8F/"/>
-    
-    <category term="coder" scheme="http://blog.flytrap.top/tags/coder/"/>
-    
-    <category term="read" scheme="http://blog.flytrap.top/tags/read/"/>
-    
-    <category term="book" scheme="http://blog.flytrap.top/tags/book/"/>
-    
-    <category term="生活" scheme="http://blog.flytrap.top/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
