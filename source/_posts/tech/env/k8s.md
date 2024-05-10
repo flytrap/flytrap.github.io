@@ -7,6 +7,7 @@ tags:
   - tech
   - k8s
   - kubernetes
+  - 集群
 date: 2024-03-16 10:00:00
 ---
 
@@ -419,6 +420,16 @@ wget https://github.com/projectcalico/calico/blob/master/manifests/calico.yaml
 kubectl apply -f conf/calico.yaml
 ```
 
+## 安装集群指标插件
+
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install kube-state-metrics prometheus-community/kube-state-metrics -n kube-system
+kubectl top node  # 测试命令,查看节点资源使用情况
+kubectl top pod   # 查看pod资源使用情况
+```
+
 到此为止，集群已经安装完成
 
 ## 安装 dashboard
@@ -462,7 +473,40 @@ subjects:
     namespace: kubernetes-dashboard
 ```
 
-## 安装 longhorn
+## 安装 nfs(存储可选)
+
+### 安装服务端
+
+```bash
+# sudo apt install nfs-kernel-server  ## 服务器端需要安装
+sudo mkdir -p /data/nfs
+sudo chmod 777 /data/nfs
+sudo chown lbjy:lbjy /data/nfs
+sudo vim /etc/exports
+# 添加配置
+# /data/nfs *(rw,sync,no_root_squash)
+sudo systemctl restart nfs-kernel-server.service
+```
+
+## 安装 rook-ceph(分布式存储，可选)
+
+```bash
+helm repo add lbjy http://192.168.1.143:8080
+helm repo add rook-release https://charts.rook.io/release
+helm install --create-namespace --namespace rook-ceph rook-ceph rook-release/rook-ceph -f conf/rook-ceph.yaml
+
+helm install --create-namespace --namespace rook-ceph rook-ceph-cluster --set operatorNamespace=rook-ceph rook-release/rook-ceph-cluster -f conf/rook-ceph-cluster.yaml
+#  获取密码
+kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
+# 测试工具
+kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- bash
+ceph status
+ceph osd status
+ceph df
+rados df
+```
+
+## 安装 longhorn(分布式存储，可选)
 
 ```bash
 sudo apt install nfs-common -y
@@ -475,7 +519,9 @@ kubectl -n longhorn-system create secret generic basic-auth --from-file=auth
 
 ```
 
-## 安装 istio
+## 安装 istio(网格,可选)
+
+网格服务，服务治理，好东西，推荐安装
 
 ```bash
 wget https://github.com/istio/istio/releases/download/1.21.1/istio-1.21.1-linux-amd64.tar.gz
@@ -484,7 +530,19 @@ cd istio-1.20.3
 export PATH=$PWD/bin:$PATH
 istioctl install -y  # 安装
 kubectl label namespace default istio-injection=enabled  # 开启自动代理
+
+kubectl apply -f samples/addons -n istio-system # 部署loki, Kiali 仪表板、 以及 Prometheus、 Grafana、 还有 Jaeger插件
+
+# 开启访问日志收集
+istioctl install -f samples/open-telemetry/loki/iop.yaml --skip-confirmation
+kubectl apply -f samples/addons/loki.yaml -n istio-system
+kubectl apply -f samples/open-telemetry/loki/otel.yaml -n istio-system
+
+# 开启容器日志收集
+helm repo add grafana https://grafana.github.io/helm-charts
+helm install promtail grafana/promtail -n istio-system --set config.clients[0].url=http://loki-headless.istio-system/loki/api/v1/push
+
 # 添加网关资源
-kubectl get crd gateways.gateway.networking.k8s.io &> /dev/null || { kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd?ref=v1.0.0" | kubectl apply -f -; }
+# kubectl get crd gateways.gateway.networking.k8s.io &> /dev/null || { kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd?ref=v1.0.0" | kubectl apply -f -; }
 
 ```

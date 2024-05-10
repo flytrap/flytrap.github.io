@@ -64,6 +64,8 @@ timedatectl set-ntp true  # 开启网络事件同步
 
 ```bash
 server local.ntp.server iburst
+
+allow 192.168.0.0/16  # 允许使用的网段
 ```
 
 local.ntp.server 为服务器端地址
