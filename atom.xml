@@ -45,6 +45,36 @@
   </entry>
   
   <entry>
+    <title>golang 私有包</title>
+    <link href="http://blog.flytrap.top/2024/05/10/tech/env/golang_repo/"/>
+    <id>http://blog.flytrap.top/2024/05/10/tech/env/golang_repo/</id>
+    <published>2024-05-10T07:10:00.000Z</published>
+    <updated>2024-05-10T09:35:31.096Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=</summary>
+      
+    
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/tags/tech/"/>
+    
+    <category term="gitlab" scheme="http://blog.flytrap.top/tags/gitlab/"/>
+    
+    <category term="golang" scheme="http://blog.flytrap.top/tags/golang/"/>
+    
+    <category term="私有源" scheme="http://blog.flytrap.top/tags/%E7%A7%81%E6%9C%89%E6%BA%90/"/>
+    
+    <category term="mod" scheme="http://blog.flytrap.top/tags/mod/"/>
+    
+  </entry>
+  
+  <entry>
     <title>verdaccio 前端私有源</title>
     <link href="http://blog.flytrap.top/2024/05/10/tech/env/verdaccio/"/>
     <id>http://blog.flytrap.top/2024/05/10/tech/env/verdaccio/</id>
@@ -74,7 +104,7 @@
     <link href="http://blog.flytrap.top/2024/04/17/tech/env/chrony/"/>
     <id>http://blog.flytrap.top/2024/04/17/tech/env/chrony/</id>
     <published>2024-04-17T02:04:28.000Z</published>
-    <updated>2024-05-10T07:26:20.513Z</updated>
+    <updated>2024-05-13T02:20:51.485Z</updated>
     
     
     <summary type="html">&lt;p&gt;Chrony 是一个开源自由的网络时间协议 NTP 的客户端和服务器软软件。它能让计算机保持系统时钟与时钟服务器（NTP）同步，因此让你的计算机保持精确的时间，Chrony 也可以作为服务端软件为其他计算机提供时间同步服务。&lt;/p&gt;
@@ -525,39 +555,6 @@
     <category term="kali" scheme="http://blog.flytrap.top/tags/kali/"/>
     
     <category term="安全" scheme="http://blog.flytrap.top/tags/%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Microsoft Office MIME types for HTTP Content Streaming</title>
-    <link href="http://blog.flytrap.top/2018/06/09/tech/front/msword_content_type/"/>
-    <id>http://blog.flytrap.top/2018/06/09/tech/front/msword_content_type/</id>
-    <published>2018-06-08T16:00:00.000Z</published>
-    <updated>2024-04-12T09:14:24.881Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 class=&quot;section-number-1&quot; &gt;Microsoft Office MIME types for HTTP Content Streaming&lt;/h1&gt;&lt;p&gt;
-microsoft file stream &#39;Content-Type&#39;&lt;/p&gt;&lt;p&gt;&lt;fig</summary>
-      
-    
-    
-    
-    <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
-    
-    
-    <category term="msword" scheme="http://blog.flytrap.top/tags/msword/"/>
-    
-    <category term="office" scheme="http://blog.flytrap.top/tags/office/"/>
-    
-    <category term="conten_type" scheme="http://blog.flytrap.top/tags/conten-type/"/>
-    
-    <category term="doc" scheme="http://blog.flytrap.top/tags/doc/"/>
-    
-    <category term="docx" scheme="http://blog.flytrap.top/tags/docx/"/>
-    
-    <category term="xls" scheme="http://blog.flytrap.top/tags/xls/"/>
     
   </entry>
   
