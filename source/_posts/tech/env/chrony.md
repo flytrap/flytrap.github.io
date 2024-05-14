@@ -79,6 +79,7 @@ chronyc sources -v # 查看连接的时间服务器*是正常状态
 chronyc sourcestats -v  # 查看当前时间同步是否正常
 chronyc tracking -v  # 校准时间服务器
 chronyc activity -v  # ntp servers 是否在线
+chronyc accheck ip  # 检测dns服务是否可用
 chronyc -a makestep  # 强制同步系统时刻
 ```
 

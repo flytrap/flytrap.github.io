@@ -75,3 +75,8 @@ kubectl taint nodes master2 node-role.kubernetes.io/control-plane=:NoSchedule
 
 - Equal：容忍度与污点必须在 key、value 和 effect 三者完全匹配。
 - Exists：容忍度与污点必须在 key 和 effect 二者完全匹配，容忍度中的 value 字段要使用空值。
+
+## k8s 时间同步集群故障
+
+重启 kube-system 命名空间下的服务
+然后重启对应服务
