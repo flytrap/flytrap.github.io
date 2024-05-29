@@ -155,6 +155,224 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-tech/linux/alsamixer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/29/tech/linux/alsamixer/">alsamixer 控制音量</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/29/tech/linux/alsamixer/" class="archive-article-date">
+  	<time datetime="2018-07-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 class="section-number-1" >alsamixer</h1><p>  
+</p><h2 class="section-number-2" >alsamixer 终端交互式设置音量</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">F6 选择网卡</span><br><span class="line">F2 显示系统信息，可以看到系统中已有网卡信息</span><br><span class="line">Esc 后退</span><br></pre></td></tr></table></figure></p><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">M 静音状态切换</span><br><span class="line">Q,W,E 增大 左,右,通道 的音量</span><br><span class="line">Z,X,C 减小 左,右,通道 的音量</span><br></pre></td></tr></table></figure></p><p></p><h2 class="section-number-2" >amixer 命令行控制系统声音</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/asound/cards  <span class="comment"># 查看系统声卡</span></span><br></pre></td></tr></table></figure>
+输出如下
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0 [HDMI           ]: HDA-Intel - HDA Intel HDMI</span><br><span class="line">1 [PCH            ]: HDA-Intel - HDA Intel PCH</span><br></pre></td></tr></table></figure>
+设置声音
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amixer -c 1 -q <span class="built_in">set</span> Master 2dB+ unmute</span><br></pre></td></tr></table></figure></p><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-c 制定声卡<span class="built_in">id</span>, 默认为0</span><br><span class="line">-q 安静模式，不输出结果</span><br></pre></td></tr></table></figure></p><p>
+</p><h2 class="section-number-2" >i3wm 快捷键配置</h2><p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bindsym XF86AudioRaiseVolume <span class="built_in">exec</span> --no-startup-id amixer -c 1 -q <span class="built_in">set</span> Master 2dB+ unmute</span><br><span class="line">bindsym XF86AudioLowerVolume <span class="built_in">exec</span> --no-startup-id amixer -c 1 -q <span class="built_in">set</span> Master 2dB- unmute</span><br><span class="line">bindsym XF86AudioMute <span class="built_in">exec</span> --no-startup-id amixer -c 1 -q <span class="built_in">set</span> Master toggle <span class="built_in">set</span> Headphone toggle</span><br></pre></td></tr></table></figure></p><p></p>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">alasmixer</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">amixer</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">arch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">i3</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/live//" class="article-tag-list-link color5">live</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/29/tech/linux/alsamixer/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-tech/hacker/oneplus_6_root" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/08/tech/hacker/oneplus_6_root/">一加6 获取root权限</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/08/tech/hacker/oneplus_6_root/" class="archive-article-date">
+  	<time datetime="2018-07-08T01:45:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一加6-获取root权限"><a href="#一加6-获取root权限" class="headerlink" title="一加6 获取root权限"></a>一加6 获取root权限</h1><h2 id="下载相关文件"><a href="#下载相关文件" class="headerlink" title="下载相关文件"></a>下载相关文件</h2><ul>
+<li>twrp: <a target="_blank" rel="noopener" href="https://twrp.me/">https://twrp.me/</a></li>
+</ul>
+<p>TeamWin Recovery Project： 全触屏操作的第三方Recovery, 支持多国语言，很强大</p>
+<ul>
+<li>magisk: <a target="_blank" rel="noopener" href="https://github.com/topjohnwu/Magisk/releases/">https://github.com/topjohnwu/Magisk/releases/</a><br>集成 root（MagiskSU）</li>
+</ul>
+<h2 id="推送文件到手机"><a href="#推送文件到手机" class="headerlink" title="推送文件到手机"></a>推送文件到手机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gpg --verify twrp-3.2.2-0-enchilada.img.asc twrp-3.2.2-0-enchilada.img  <span class="comment"># 引导文件校验</span></span><br><span class="line">gpg --verify twrp-installer-enchilada-3.2.2-0.zip.asc twrp-installer-enchilada-3.2.2-0.zip  <span class="comment"># 安装包校验</span></span><br><span class="line">adb push twrp-installer-enchilada-3.2.2-0.zip /sdcard/</span><br><span class="line">adb push Magisk-v16.0.zip /sdcard/</span><br></pre></td></tr></table></figure>
+
+<h2 id="解锁BootLoader"><a href="#解锁BootLoader" class="headerlink" title="解锁BootLoader"></a>解锁BootLoader</h2><ul>
+<li>此升级方式会清空手机内所有内容，请务必先备份。</li>
+<li>设置 -&gt; 系统 -&gt; 关于手机 -&gt; 高级 -&gt; 连续点击“版本号”7次打开开发者选项</li>
+<li>设置 -&gt; 系统 -&gt; 开发者选项 -&gt;  打开“OEM 解锁” -&gt; 打开”高级重启”</li>
+<li>关机 -&gt; 进入fastboot</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb reboot bootloader  <span class="comment"># 进入刷机状态</span></span><br><span class="line">fastboot oem unlock   <span class="comment"># 选择unlock the  bootloader -&gt;确认</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="刷入twrp-Magisk包"><a href="#刷入twrp-Magisk包" class="headerlink" title="刷入twrp, Magisk包"></a>刷入twrp, Magisk包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb reboot bootloader  <span class="comment"># 进入到BootLoader</span></span><br><span class="line">fastboot boot twrp-3.2.2-0-enchilada.img  <span class="comment"># 从twrp启动</span></span><br><span class="line"><span class="comment">## 点击install  选择/sdcard/下的zip包安装, 有两个(twrp-installer-enchilada-3.2.2-0.zip)是更改系统recovery， (Magisk-v16.0.zip)是root管理包, 安装完重启</span></span><br><span class="line"><span class="comment">## 重启就可以看到root管理工具了</span></span><br><span class="line">adb reboot recovery  <span class="comment"># 进入twrp</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hacker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">oneplus</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/08/tech/hacker/oneplus_6_root/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-tech/hacker/ettercap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1001,215 +1219,6 @@ application.properties
 
 
   
-    <article id="post-live/using" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/26/live/using/">中体西用-今解</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/26/live/using/" class="archive-article-date">
-  	<time datetime="2017-11-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 class="section-number-1" >中学为体，西学为用-古学今用</h1><p>  当年洋务运动时张之洞提出“中体西用,想要在不改变国基的基础上，师以夷技以制夷，终以失败告终，以国家计，兹事体大，难以运转，事终难成。
-  时过境迁，细似之，其必有可取之道。“修身治家齐天下”，古之治国之道，吾辈不敢苟同，查吾今日之道路，却有异曲同工之妙。
-  
-</p><h2 class="section-number-2" >体用之道</h2><p></p><h3 class="section-number-3" >体者</h3><p>   根本也，立身之本，终世践行，不可偏废也，所谓本事是也。
-</p><h3 class="section-number-3" >用者</h3><p>   生存之道，活命之源也，顺合时势，以求安身立命，所谓技能，技术，能力，乃外在表现而。
-</p><h3 class="section-number-3" >入世</h3><p>   二者不可偏废，无体则人如行尸，空有皮囊一副，枉来人事，信仰全无，空守根本（原则），不懂变通，终难得一席之地，难活于世也。
-   世人多本末难辨，以用为体，斯为苟活于世，而空乏本质，大道难明。
-</p><h4 class="section-number-4" >example：传统武术</h4><p>   空有花架，而无内涵者多，明人观之，空有架势，华而不实者多。哗众取宠，重架而不重功，老来一场空。</p><p>
-        
-          <a class="article-more-a" href="/2017/11/26/live/using/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">形意</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">国术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">国学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">武术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">中医</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">传统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/live//" class="article-tag-list-link color5">live</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/26/live/using/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-tech/mac/git_errors" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/08/tech/mac/git_errors/">error: RPC failed; curl 18 transfer closed with outstanding read data remaining</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/08/tech/mac/git_errors/" class="archive-article-date">
-  	<time datetime="2017-11-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 class="section-number-1" > Summary</h1><p>  git clone 报错如下: 
- error: RPC failed; curl 18 transfer closed with outstanding read data remaining
- </p><p></p><h1 class="section-number-1" >Function</h1><p>解决方案，设置推送大小限制
-git  config --global http.postBuffer 524288000  # 500M应该足够了</p><p></p>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">error</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/live//" class="article-tag-list-link color5">live</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/08/tech/mac/git_errors/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1335,10 +1344,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">golang</a>
               </li>
              
@@ -1347,7 +1352,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mod</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">istio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubeadm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1363,15 +1388,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">集群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">join</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1707,6 +1728,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">orm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
@@ -1728,10 +1753,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">自动化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">orm</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,7 +6,7 @@
   <link href="http://blog.flytrap.top/atom.xml" rel="self"/>
   
   <link href="http://blog.flytrap.top/"/>
-  <updated>2024-05-13T07:39:21.785Z</updated>
+  <updated>2024-05-29T08:36:30.621Z</updated>
   <id>http://blog.flytrap.top/</id>
   
   <author>
@@ -15,6 +15,69 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>istio 配置</title>
+    <link href="http://blog.flytrap.top/2024/05/29/tech/env/istio/"/>
+    <id>http://blog.flytrap.top/2024/05/29/tech/env/istio/</id>
+    <published>2024-05-29T08:01:05.000Z</published>
+    <updated>2024-05-29T08:36:30.621Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Istio 服务网格&lt;br&gt;Istio 使用功能强大的 Envoy 服务代理扩展了 Kubernetes，以建立一个可编程的、可感知的应用程序网络。 Istio 与 Kubernetes 和传统工作负载一起使用，为复杂的部署带来了标准的通用流量管理、遥测和安全性。&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/tags/tech/"/>
+    
+    <category term="k8s" scheme="http://blog.flytrap.top/tags/k8s/"/>
+    
+    <category term="kubernetes" scheme="http://blog.flytrap.top/tags/kubernetes/"/>
+    
+    <category term="istio" scheme="http://blog.flytrap.top/tags/istio/"/>
+    
+    <category term="kubeadm" scheme="http://blog.flytrap.top/tags/kubeadm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>k8s 节点控制</title>
+    <link href="http://blog.flytrap.top/2024/05/29/tech/env/k8s_join/"/>
+    <id>http://blog.flytrap.top/2024/05/29/tech/env/k8s_join/</id>
+    <published>2024-05-29T07:35:20.000Z</published>
+    <updated>2024-05-29T08:07:04.672Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;在 Kubernetes 中，节点分为两种， 一种是普通节点，一种是控制平面（control-plane）节点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;控制平面组件包括 kube-apiserver、kube-controller-manager、kube-scheduler、etcd，</summary>
+      
+    
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
+    
+    
+    <category term="tech" scheme="http://blog.flytrap.top/tags/tech/"/>
+    
+    <category term="k8s" scheme="http://blog.flytrap.top/tags/k8s/"/>
+    
+    <category term="kubernetes" scheme="http://blog.flytrap.top/tags/kubernetes/"/>
+    
+    <category term="kubeadm" scheme="http://blog.flytrap.top/tags/kubeadm/"/>
+    
+    <category term="join" scheme="http://blog.flytrap.top/tags/join/"/>
+    
+  </entry>
   
   <entry>
     <title>dns 私有服务器</title>
@@ -89,11 +152,11 @@
     
     <category term="tech" scheme="http://blog.flytrap.top/tags/tech/"/>
     
-    <category term="gitlab" scheme="http://blog.flytrap.top/tags/gitlab/"/>
-    
     <category term="golang" scheme="http://blog.flytrap.top/tags/golang/"/>
     
     <category term="私有源" scheme="http://blog.flytrap.top/tags/%E7%A7%81%E6%9C%89%E6%BA%90/"/>
+    
+    <category term="gitlab" scheme="http://blog.flytrap.top/tags/gitlab/"/>
     
     <category term="mod" scheme="http://blog.flytrap.top/tags/mod/"/>
     
@@ -157,7 +220,7 @@
     <link href="http://blog.flytrap.top/2024/04/12/tech/env/k8s_problems/"/>
     <id>http://blog.flytrap.top/2024/04/12/tech/env/k8s_problems/</id>
     <published>2024-04-12T03:35:25.000Z</published>
-    <updated>2024-04-12T09:14:26.201Z</updated>
+    <updated>2024-05-29T08:38:20.971Z</updated>
     
     
     <summary type="html">&lt;p&gt;收录一些 k8s 使用过程中遇到比较常见的问题，以及解决办法&lt;/p&gt;</summary>
@@ -170,6 +233,10 @@
     <category term="tech" scheme="http://blog.flytrap.top/tags/tech/"/>
     
     <category term="k8s" scheme="http://blog.flytrap.top/tags/k8s/"/>
+    
+    <category term="kubernetes" scheme="http://blog.flytrap.top/tags/kubernetes/"/>
+    
+    <category term="kubeadm" scheme="http://blog.flytrap.top/tags/kubeadm/"/>
     
     <category term="problems" scheme="http://blog.flytrap.top/tags/problems/"/>
     
@@ -230,7 +297,7 @@
     <link href="http://blog.flytrap.top/2024/03/16/tech/env/k8s/"/>
     <id>http://blog.flytrap.top/2024/03/16/tech/env/k8s/</id>
     <published>2024-03-16T02:00:00.000Z</published>
-    <updated>2024-05-10T09:06:09.621Z</updated>
+    <updated>2024-05-29T07:32:15.972Z</updated>
     
     
     <summary type="html">&lt;p&gt;Kubernetes 是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 Kubernetes 拥有一个庞大且快速增长的生态，其服务、支持和工具的使用范围相当广泛。&lt;br&gt;Kubernetes 这个名字源于希腊语，意为“舵手”或“飞行员”。K8s 这个缩写是因为 K 和 s 之间有 8 个字符的关系。 Google 在 2014 年开源了 Kubernetes 项目。 Kubernetes 建立在 Google 大规模运行生产工作负载十几年经验的基础上， 结合了社区中最优秀的想法和实践。&lt;br&gt;&lt;a href=&quot;https://kubernetes.io/&quot;&gt;官网: https://kubernetes.io&lt;/a&gt;&lt;/p&gt;
@@ -246,6 +313,8 @@
     <category term="k8s" scheme="http://blog.flytrap.top/tags/k8s/"/>
     
     <category term="kubernetes" scheme="http://blog.flytrap.top/tags/kubernetes/"/>
+    
+    <category term="kubeadm" scheme="http://blog.flytrap.top/tags/kubeadm/"/>
     
     <category term="集群" scheme="http://blog.flytrap.top/tags/%E9%9B%86%E7%BE%A4/"/>
     
@@ -489,63 +558,6 @@
     <category term="dns" scheme="http://blog.flytrap.top/tags/dns/"/>
     
     <category term="sub" scheme="http://blog.flytrap.top/tags/sub/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>alsamixer 控制音量</title>
-    <link href="http://blog.flytrap.top/2018/07/29/tech/linux/alsamixer/"/>
-    <id>http://blog.flytrap.top/2018/07/29/tech/linux/alsamixer/</id>
-    <published>2018-07-28T16:00:00.000Z</published>
-    <updated>2024-04-12T09:14:24.881Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 class=&quot;section-number-1&quot; &gt;alsamixer&lt;/h1&gt;&lt;p&gt;  
-&lt;/p&gt;&lt;h2 class=&quot;section-number-2&quot; &gt;alsamixer 终端交互式设置音量&lt;/h2&gt;&lt;p&gt;&lt;figure class=&quot;highlight bash</summary>
-      
-    
-    
-    
-    <category term="live" scheme="http://blog.flytrap.top/categories/live/"/>
-    
-    
-    <category term="linux" scheme="http://blog.flytrap.top/tags/linux/"/>
-    
-    <category term="alasmixer" scheme="http://blog.flytrap.top/tags/alasmixer/"/>
-    
-    <category term="amixer" scheme="http://blog.flytrap.top/tags/amixer/"/>
-    
-    <category term="arch" scheme="http://blog.flytrap.top/tags/arch/"/>
-    
-    <category term="i3" scheme="http://blog.flytrap.top/tags/i3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一加6 获取root权限</title>
-    <link href="http://blog.flytrap.top/2018/07/08/tech/hacker/oneplus_6_root/"/>
-    <id>http://blog.flytrap.top/2018/07/08/tech/hacker/oneplus_6_root/</id>
-    <published>2018-07-08T01:45:35.000Z</published>
-    <updated>2024-04-12T09:14:24.881Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;一加6-获取root权限&quot;&gt;&lt;a href=&quot;#一加6-获取root权限&quot; class=&quot;headerlink&quot; title=&quot;一加6 获取root权限&quot;&gt;&lt;/a&gt;一加6 获取root权限&lt;/h1&gt;&lt;h2 id=&quot;下载相关文件&quot;&gt;&lt;a href=&quot;#下载相关文件&quot;</summary>
-      
-    
-    
-    
-    <category term="tech" scheme="http://blog.flytrap.top/categories/tech/"/>
-    
-    
-    <category term="hacker" scheme="http://blog.flytrap.top/tags/hacker/"/>
-    
-    <category term="安全" scheme="http://blog.flytrap.top/tags/%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="oneplus" scheme="http://blog.flytrap.top/tags/oneplus/"/>
     
   </entry>
   

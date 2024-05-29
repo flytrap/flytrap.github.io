@@ -155,6 +155,208 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-tech/env/k8s" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/16/tech/env/k8s/">k8s 部署</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/16/tech/env/k8s/" class="archive-article-date">
+  	<time datetime="2024-03-16T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Kubernetes 是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 Kubernetes 拥有一个庞大且快速增长的生态，其服务、支持和工具的使用范围相当广泛。<br>Kubernetes 这个名字源于希腊语，意为“舵手”或“飞行员”。K8s 这个缩写是因为 K 和 s 之间有 8 个字符的关系。 Google 在 2014 年开源了 Kubernetes 项目。 Kubernetes 建立在 Google 大规模运行生产工作负载十几年经验的基础上， 结合了社区中最优秀的想法和实践。<br><a target="_blank" rel="noopener" href="https://kubernetes.io/">官网: https://kubernetes.io</a></p>
+<p>主要记录官网的安装部署实践, 以及一些遇到的问题</p>
+        
+          <a class="article-more-a" href="/2024/03/16/tech/env/k8s/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tech</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">k8s</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kubernetes</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">kubeadm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">集群</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/16/tech/env/k8s/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-tech/linux/xrandr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/02/tech/linux/xrandr/">linux 多显示器管理</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/02/tech/linux/xrandr/" class="archive-article-date">
+  	<time datetime="2019-06-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 class="section-number-1" >linux 通过命令行控制桌面显示</h1><p>
+</p><h2 class="section-number-2" >Summary</h2><p>我这里使用的i3wm 窗口管理器.
+所以,操作的话,基本是靠命令来完成的
+现在我需要使用多个显示器,就用到了xrandr这个工具</p><p></p><h2 class="section-number-2" >可用显示器展示</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&gt; xrandr</span><br><span class="line">eDP-1 connected 1366x768+0+0 (normal left inverted right x axis y axis) 276mm x 155mm</span><br><span class="line">   1366x768      60.11*+</span><br><span class="line">   1280x720      60.00    59.99    59.86    59.74  </span><br><span class="line">   1024x768      60.04    60.00  </span><br><span class="line">   960x720       60.00  </span><br><span class="line">   928x696       60.05  </span><br><span class="line">   896x672       60.01  </span><br><span class="line">   1024x576      59.95    59.96    59.90    59.82  </span><br><span class="line">   960x600       59.93    60.00  </span><br><span class="line">   960x540       59.96    59.99    59.63    59.82  </span><br><span class="line">   800x600       60.00    60.32    56.25  </span><br><span class="line">   840x525       60.01    59.88  </span><br><span class="line">   864x486       59.92    59.57  </span><br><span class="line">   700x525       59.98  </span><br><span class="line">   800x450       59.95    59.82  </span><br><span class="line">   640x512       60.02  </span><br><span class="line">   700x450       59.96    59.88  </span><br><span class="line">   640x480       60.00    59.94  </span><br><span class="line">   720x405       59.51    58.99  </span><br><span class="line">   684x384       59.88    59.85  </span><br><span class="line">   640x400       59.88    59.98  </span><br><span class="line">   640x360       59.86    59.83    59.84    59.32  </span><br><span class="line">   512x384       60.00  </span><br><span class="line">   512x288       60.00    59.92  </span><br><span class="line">   480x270       59.63    59.82  </span><br><span class="line">   400x300       60.32    56.34  </span><br><span class="line">   432x243       59.92    59.57  </span><br><span class="line">   320x240       60.05  </span><br><span class="line">   360x202       59.51    59.13  </span><br><span class="line">   320x180       59.84    59.32  </span><br><span class="line">DP-1 disconnected primary (normal left inverted right x axis y axis)</span><br><span class="line">HDMI-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line">DP-2 connected 1024x768+0+0 (normal left inverted right x axis y axis) 0mm x 0mm</span><br><span class="line">   1024x768      60.00* </span><br><span class="line">   800x600       60.32    56.25  </span><br><span class="line">   848x480       60.00  </span><br><span class="line">   640x480       59.94  </span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/06/02/tech/linux/xrandr/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">xrandr</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">i3wm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/02/tech/linux/xrandr/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-tech/linux/mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -944,224 +1146,6 @@
 
 
   
-    <article id="post-tech/linux/alsamixer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/29/tech/linux/alsamixer/">alsamixer 控制音量</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/29/tech/linux/alsamixer/" class="archive-article-date">
-  	<time datetime="2018-07-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 class="section-number-1" >alsamixer</h1><p>  
-</p><h2 class="section-number-2" >alsamixer 终端交互式设置音量</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">F6 选择网卡</span><br><span class="line">F2 显示系统信息，可以看到系统中已有网卡信息</span><br><span class="line">Esc 后退</span><br></pre></td></tr></table></figure></p><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">M 静音状态切换</span><br><span class="line">Q,W,E 增大 左,右,通道 的音量</span><br><span class="line">Z,X,C 减小 左,右,通道 的音量</span><br></pre></td></tr></table></figure></p><p></p><h2 class="section-number-2" >amixer 命令行控制系统声音</h2><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/asound/cards  <span class="comment"># 查看系统声卡</span></span><br></pre></td></tr></table></figure>
-输出如下
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0 [HDMI           ]: HDA-Intel - HDA Intel HDMI</span><br><span class="line">1 [PCH            ]: HDA-Intel - HDA Intel PCH</span><br></pre></td></tr></table></figure>
-设置声音
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amixer -c 1 -q <span class="built_in">set</span> Master 2dB+ unmute</span><br></pre></td></tr></table></figure></p><p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-c 制定声卡<span class="built_in">id</span>, 默认为0</span><br><span class="line">-q 安静模式，不输出结果</span><br></pre></td></tr></table></figure></p><p>
-</p><h2 class="section-number-2" >i3wm 快捷键配置</h2><p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bindsym XF86AudioRaiseVolume <span class="built_in">exec</span> --no-startup-id amixer -c 1 -q <span class="built_in">set</span> Master 2dB+ unmute</span><br><span class="line">bindsym XF86AudioLowerVolume <span class="built_in">exec</span> --no-startup-id amixer -c 1 -q <span class="built_in">set</span> Master 2dB- unmute</span><br><span class="line">bindsym XF86AudioMute <span class="built_in">exec</span> --no-startup-id amixer -c 1 -q <span class="built_in">set</span> Master toggle <span class="built_in">set</span> Headphone toggle</span><br></pre></td></tr></table></figure></p><p></p>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">alasmixer</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">amixer</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">arch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">i3</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/live//" class="article-tag-list-link color5">live</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/29/tech/linux/alsamixer/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-tech/hacker/oneplus_6_root" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/08/tech/hacker/oneplus_6_root/">一加6 获取root权限</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/08/tech/hacker/oneplus_6_root/" class="archive-article-date">
-  	<time datetime="2018-07-08T01:45:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一加6-获取root权限"><a href="#一加6-获取root权限" class="headerlink" title="一加6 获取root权限"></a>一加6 获取root权限</h1><h2 id="下载相关文件"><a href="#下载相关文件" class="headerlink" title="下载相关文件"></a>下载相关文件</h2><ul>
-<li>twrp: <a target="_blank" rel="noopener" href="https://twrp.me/">https://twrp.me/</a></li>
-</ul>
-<p>TeamWin Recovery Project： 全触屏操作的第三方Recovery, 支持多国语言，很强大</p>
-<ul>
-<li>magisk: <a target="_blank" rel="noopener" href="https://github.com/topjohnwu/Magisk/releases/">https://github.com/topjohnwu/Magisk/releases/</a><br>集成 root（MagiskSU）</li>
-</ul>
-<h2 id="推送文件到手机"><a href="#推送文件到手机" class="headerlink" title="推送文件到手机"></a>推送文件到手机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gpg --verify twrp-3.2.2-0-enchilada.img.asc twrp-3.2.2-0-enchilada.img  <span class="comment"># 引导文件校验</span></span><br><span class="line">gpg --verify twrp-installer-enchilada-3.2.2-0.zip.asc twrp-installer-enchilada-3.2.2-0.zip  <span class="comment"># 安装包校验</span></span><br><span class="line">adb push twrp-installer-enchilada-3.2.2-0.zip /sdcard/</span><br><span class="line">adb push Magisk-v16.0.zip /sdcard/</span><br></pre></td></tr></table></figure>
-
-<h2 id="解锁BootLoader"><a href="#解锁BootLoader" class="headerlink" title="解锁BootLoader"></a>解锁BootLoader</h2><ul>
-<li>此升级方式会清空手机内所有内容，请务必先备份。</li>
-<li>设置 -&gt; 系统 -&gt; 关于手机 -&gt; 高级 -&gt; 连续点击“版本号”7次打开开发者选项</li>
-<li>设置 -&gt; 系统 -&gt; 开发者选项 -&gt;  打开“OEM 解锁” -&gt; 打开”高级重启”</li>
-<li>关机 -&gt; 进入fastboot</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb reboot bootloader  <span class="comment"># 进入刷机状态</span></span><br><span class="line">fastboot oem unlock   <span class="comment"># 选择unlock the  bootloader -&gt;确认</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="刷入twrp-Magisk包"><a href="#刷入twrp-Magisk包" class="headerlink" title="刷入twrp, Magisk包"></a>刷入twrp, Magisk包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb reboot bootloader  <span class="comment"># 进入到BootLoader</span></span><br><span class="line">fastboot boot twrp-3.2.2-0-enchilada.img  <span class="comment"># 从twrp启动</span></span><br><span class="line"><span class="comment">## 点击install  选择/sdcard/下的zip包安装, 有两个(twrp-installer-enchilada-3.2.2-0.zip)是更改系统recovery， (Magisk-v16.0.zip)是root管理包, 安装完重启</span></span><br><span class="line"><span class="comment">## 重启就可以看到root管理工具了</span></span><br><span class="line">adb reboot recovery  <span class="comment"># 进入twrp</span></span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hacker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">oneplus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/tech//" class="article-tag-list-link color5">tech</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/08/tech/hacker/oneplus_6_root/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1287,10 +1271,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">golang</a>
               </li>
              
@@ -1299,7 +1279,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mod</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">istio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kubeadm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1315,15 +1315,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kubernetes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">集群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">join</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1659,6 +1655,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">orm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
@@ -1680,10 +1680,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">自动化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">orm</a>
               </li>
              
               <li class="article-tag-list-item">
