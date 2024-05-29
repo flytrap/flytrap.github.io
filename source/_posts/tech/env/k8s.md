@@ -6,6 +6,7 @@ categories:
 tags:
   - tech
   - k8s
+  - kubeadm
   - kubernetes
   - 集群
 date: 2024-03-16 10:00:00
@@ -524,6 +525,11 @@ kubectl -n longhorn-system create secret generic basic-auth --from-file=auth
 网格服务，服务治理，好东西，推荐安装
 
 ```bash
+## 增强指标
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install kube-state-metrics prometheus-community/kube-state-metrics -n kube-system
+
 wget https://github.com/istio/istio/releases/download/1.21.1/istio-1.21.1-linux-amd64.tar.gz
 tar -xzvf istio-1.20.3-linux-amd64.tar.gz
 cd istio-1.20.3
